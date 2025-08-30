@@ -43,7 +43,7 @@
             etiqueta_cliente = new Label();
             titulo_editar = new Label();
             linea_id = new Panel();
-            entrada_id = new TextBox();
+            entrada_busuqeda = new TextBox();
             etiqueta_buscar = new Label();
             boton_buscar = new Button();
             label2 = new Label();
@@ -51,10 +51,10 @@
             button1 = new Button();
             button2 = new Button();
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            resultados_busqueda = new DataGridView();
             panel_abajo = new Panel();
             panel_arriba = new Panel();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)resultados_busqueda).BeginInit();
             panel_abajo.SuspendLayout();
             panel_arriba.SuspendLayout();
             SuspendLayout();
@@ -249,20 +249,21 @@
             linea_id.Size = new Size(319, 1);
             linea_id.TabIndex = 148;
             // 
-            // entrada_id
+            // entrada_busuqeda
             // 
-            entrada_id.Anchor = AnchorStyles.Top;
-            entrada_id.BackColor = Color.FromArgb(242, 225, 199);
-            entrada_id.BorderStyle = BorderStyle.None;
-            entrada_id.Font = new Font("Montserrat", 15F);
-            entrada_id.ForeColor = Color.FromArgb(144, 144, 144);
-            entrada_id.Location = new Point(127, 40);
-            entrada_id.Name = "entrada_id";
-            entrada_id.Size = new Size(319, 25);
-            entrada_id.TabIndex = 147;
-            entrada_id.Text = "7/Lomo completo";
-            entrada_id.Enter += TodasLasEntradasNormales_Enter;
-            entrada_id.Leave += TodasLasEntradasNormales_Leave;
+            entrada_busuqeda.Anchor = AnchorStyles.Top;
+            entrada_busuqeda.BackColor = Color.FromArgb(242, 225, 199);
+            entrada_busuqeda.BorderStyle = BorderStyle.None;
+            entrada_busuqeda.Font = new Font("Montserrat", 15F);
+            entrada_busuqeda.ForeColor = Color.FromArgb(144, 144, 144);
+            entrada_busuqeda.Location = new Point(127, 40);
+            entrada_busuqeda.Name = "entrada_busuqeda";
+            entrada_busuqeda.Size = new Size(319, 25);
+            entrada_busuqeda.TabIndex = 147;
+            entrada_busuqeda.Text = "#7/Lomo completo";
+            entrada_busuqeda.TextChanged += entrada_busuqeda_TextChanged;
+            entrada_busuqeda.Enter += TodasLasEntradasNormales_Enter;
+            entrada_busuqeda.Leave += TodasLasEntradasNormales_Leave;
             // 
             // etiqueta_buscar
             // 
@@ -295,6 +296,7 @@
             boton_buscar.TabIndex = 154;
             boton_buscar.Text = "Buscar";
             boton_buscar.UseVisualStyleBackColor = false;
+            boton_buscar.Click += boton_buscar_Click;
             // 
             // label2
             // 
@@ -365,20 +367,22 @@
             panel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.Black;
             panel1.Enabled = false;
-            panel1.Location = new Point(1, 462);
+            panel1.Location = new Point(1, 534);
             panel1.Margin = new Padding(3, 3, 3, 30);
             panel1.Name = "panel1";
             panel1.Size = new Size(943, 2);
             panel1.TabIndex = 160;
             // 
-            // dataGridView1
+            // resultados_busqueda
             // 
-            dataGridView1.Anchor = AnchorStyles.Top;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(127, 88);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(709, 236);
-            dataGridView1.TabIndex = 161;
+            resultados_busqueda.Anchor = AnchorStyles.Top;
+            resultados_busqueda.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resultados_busqueda.Location = new Point(12, 88);
+            resultados_busqueda.Name = "resultados_busqueda";
+            resultados_busqueda.ReadOnly = true;
+            resultados_busqueda.Size = new Size(899, 300);
+            resultados_busqueda.TabIndex = 161;
+            resultados_busqueda.CellClick += resultados_busqueda_CellClick;
             // 
             // panel_abajo
             // 
@@ -407,13 +411,13 @@
             // panel_arriba
             // 
             panel_arriba.Controls.Add(etiqueta_buscar);
-            panel_arriba.Controls.Add(entrada_id);
-            panel_arriba.Controls.Add(dataGridView1);
+            panel_arriba.Controls.Add(entrada_busuqeda);
+            panel_arriba.Controls.Add(resultados_busqueda);
             panel_arriba.Controls.Add(linea_id);
             panel_arriba.Controls.Add(boton_buscar);
             panel_arriba.Location = new Point(0, 59);
             panel_arriba.Name = "panel_arriba";
-            panel_arriba.Size = new Size(943, 335);
+            panel_arriba.Size = new Size(943, 400);
             panel_arriba.TabIndex = 163;
             // 
             // EditarMenu
@@ -433,7 +437,7 @@
             Name = "EditarMenu";
             Text = "EditarProyecto";
             Resize += EditarMenu_Resize;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)resultados_busqueda).EndInit();
             panel_abajo.ResumeLayout(false);
             panel_abajo.PerformLayout();
             panel_arriba.ResumeLayout(false);
@@ -458,7 +462,7 @@
         private Label etiqueta_cliente;
         private Label titulo_editar;
         private Panel linea_id;
-        private TextBox entrada_id;
+        private TextBox entrada_busuqeda;
         private Label etiqueta_buscar;
         private ComboBox comboBox1;
         private Label label1;
@@ -468,7 +472,7 @@
         private Button button1;
         private Button button2;
         private Panel panel1;
-        private DataGridView dataGridView1;
+        private DataGridView resultados_busqueda;
         private Panel panel_abajo;
         private Panel panel_arriba;
     }

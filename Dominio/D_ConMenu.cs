@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConexionDatos;
+using System.Data;
 namespace Dominio
 {
     public class D_ConMenu
@@ -13,6 +14,10 @@ namespace Dominio
         public (bool estado, string mensaje) InsertarMenu(Menus menu)
         {
             return conMenu.InsertarMenu(menu);
+        }
+        public (bool estado, string mensaje, DataTable datos) ObtenerMenusPorID(int ID)
+        {
+            return conMenu.ObtenerMenusPorID(ID);
         }
     }
 }
