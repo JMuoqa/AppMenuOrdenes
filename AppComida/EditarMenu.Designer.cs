@@ -34,7 +34,7 @@
             linea_tipo = new Panel();
             linea_descripcion2 = new Panel();
             linea_descripcion = new Panel();
-            entrada_descripcion = new RichTextBox();
+            entrada_ingredientes = new RichTextBox();
             linea_cliente = new Panel();
             entrada_menu = new TextBox();
             etiqueta_tipo = new Label();
@@ -48,8 +48,8 @@
             boton_buscar = new Button();
             label2 = new Label();
             menu_seleccionado = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            boton_confirmar = new Button();
+            boton_vaciar = new Button();
             panel1 = new Panel();
             resultados_busqueda = new DataGridView();
             panel_abajo = new Panel();
@@ -91,15 +91,13 @@
             entrada_tipo.BackColor = Color.FromArgb(242, 225, 199);
             entrada_tipo.FlatStyle = FlatStyle.Flat;
             entrada_tipo.Font = new Font("Montserrat", 15F);
-            entrada_tipo.ForeColor = Color.White;
+            entrada_tipo.ForeColor = Color.Black;
             entrada_tipo.FormattingEnabled = true;
             entrada_tipo.Items.AddRange(new object[] { "Pagian Web", "Aplicacion de escritorio" });
             entrada_tipo.Location = new Point(126, 475);
             entrada_tipo.Name = "entrada_tipo";
             entrada_tipo.Size = new Size(319, 35);
             entrada_tipo.TabIndex = 125;
-            entrada_tipo.Enter += TodasLasEntradasNormales_Enter;
-            entrada_tipo.Leave += TodasLasEntradasNormales_Leave;
             // 
             // linea_tipo
             // 
@@ -134,19 +132,19 @@
             linea_descripcion.Size = new Size(319, 1);
             linea_descripcion.TabIndex = 137;
             // 
-            // entrada_descripcion
+            // entrada_ingredientes
             // 
-            entrada_descripcion.Anchor = AnchorStyles.Top;
-            entrada_descripcion.BackColor = Color.FromArgb(222, 205, 179);
-            entrada_descripcion.BorderStyle = BorderStyle.None;
-            entrada_descripcion.Font = new Font("Montserrat", 15F);
-            entrada_descripcion.ForeColor = Color.White;
-            entrada_descripcion.Location = new Point(126, 194);
-            entrada_descripcion.MaxLength = 350;
-            entrada_descripcion.Name = "entrada_descripcion";
-            entrada_descripcion.Size = new Size(319, 240);
-            entrada_descripcion.TabIndex = 123;
-            entrada_descripcion.Text = "";
+            entrada_ingredientes.Anchor = AnchorStyles.Top;
+            entrada_ingredientes.BackColor = Color.FromArgb(222, 205, 179);
+            entrada_ingredientes.BorderStyle = BorderStyle.None;
+            entrada_ingredientes.Font = new Font("Montserrat", 15F);
+            entrada_ingredientes.ForeColor = Color.Black;
+            entrada_ingredientes.Location = new Point(126, 194);
+            entrada_ingredientes.MaxLength = 350;
+            entrada_ingredientes.Name = "entrada_ingredientes";
+            entrada_ingredientes.Size = new Size(319, 240);
+            entrada_ingredientes.TabIndex = 123;
+            entrada_ingredientes.Text = "";
             // 
             // linea_cliente
             // 
@@ -263,6 +261,7 @@
             entrada_busuqeda.Text = "#7/Lomo completo";
             entrada_busuqeda.TextChanged += entrada_busuqeda_TextChanged;
             entrada_busuqeda.Enter += TodasLasEntradasNormales_Enter;
+            entrada_busuqeda.KeyDown += entrada_busuqeda_KeyDown;
             entrada_busuqeda.Leave += TodasLasEntradasNormales_Leave;
             // 
             // etiqueta_buscar
@@ -317,57 +316,59 @@
             menu_seleccionado.AutoSize = true;
             menu_seleccionado.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             menu_seleccionado.ForeColor = Color.Black;
-            menu_seleccionado.Location = new Point(400, 23);
+            menu_seleccionado.Location = new Point(379, 23);
             menu_seleccionado.Name = "menu_seleccionado";
             menu_seleccionado.Size = new Size(110, 27);
             menu_seleccionado.TabIndex = 156;
             menu_seleccionado.Text = "Ninguno";
             menu_seleccionado.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // button1
+            // boton_confirmar
             // 
-            button1.Anchor = AnchorStyles.Top;
-            button1.BackColor = Color.FromArgb(150, 100, 50);
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.FromArgb(242, 225, 199);
-            button1.Location = new Point(516, 148);
-            button1.Margin = new Padding(3, 3, 3, 30);
-            button1.Name = "button1";
-            button1.Size = new Size(319, 40);
-            button1.TabIndex = 158;
-            button1.Text = "Confirmar cambios";
-            button1.UseVisualStyleBackColor = false;
+            boton_confirmar.Anchor = AnchorStyles.Top;
+            boton_confirmar.BackColor = Color.FromArgb(150, 100, 50);
+            boton_confirmar.Cursor = Cursors.Hand;
+            boton_confirmar.FlatAppearance.BorderSize = 0;
+            boton_confirmar.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
+            boton_confirmar.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
+            boton_confirmar.FlatStyle = FlatStyle.Flat;
+            boton_confirmar.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            boton_confirmar.ForeColor = Color.FromArgb(242, 225, 199);
+            boton_confirmar.Location = new Point(516, 148);
+            boton_confirmar.Margin = new Padding(3, 3, 3, 30);
+            boton_confirmar.Name = "boton_confirmar";
+            boton_confirmar.Size = new Size(319, 40);
+            boton_confirmar.TabIndex = 158;
+            boton_confirmar.Text = "Confirmar cambios";
+            boton_confirmar.UseVisualStyleBackColor = false;
+            boton_confirmar.Click += boton_confirmar_Click;
             // 
-            // button2
+            // boton_vaciar
             // 
-            button2.Anchor = AnchorStyles.Top;
-            button2.BackColor = Color.FromArgb(150, 100, 50);
-            button2.Cursor = Cursors.Hand;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
-            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.FromArgb(220, 0, 0);
-            button2.Location = new Point(516, 202);
-            button2.Margin = new Padding(3, 3, 3, 30);
-            button2.Name = "button2";
-            button2.Size = new Size(319, 40);
-            button2.TabIndex = 159;
-            button2.Text = "Vaciar datos";
-            button2.UseVisualStyleBackColor = false;
+            boton_vaciar.Anchor = AnchorStyles.Top;
+            boton_vaciar.BackColor = Color.FromArgb(150, 100, 50);
+            boton_vaciar.Cursor = Cursors.Hand;
+            boton_vaciar.FlatAppearance.BorderSize = 0;
+            boton_vaciar.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
+            boton_vaciar.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
+            boton_vaciar.FlatStyle = FlatStyle.Flat;
+            boton_vaciar.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            boton_vaciar.ForeColor = Color.FromArgb(220, 0, 0);
+            boton_vaciar.Location = new Point(516, 202);
+            boton_vaciar.Margin = new Padding(3, 3, 3, 30);
+            boton_vaciar.Name = "boton_vaciar";
+            boton_vaciar.Size = new Size(319, 40);
+            boton_vaciar.TabIndex = 159;
+            boton_vaciar.Text = "Vaciar datos";
+            boton_vaciar.UseVisualStyleBackColor = false;
+            boton_vaciar.Click += boton_vaciar_Click;
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.Black;
             panel1.Enabled = false;
-            panel1.Location = new Point(1, 534);
+            panel1.Location = new Point(1, 588);
             panel1.Margin = new Padding(3, 3, 3, 30);
             panel1.Name = "panel1";
             panel1.Size = new Size(943, 2);
@@ -389,14 +390,14 @@
             panel_abajo.Controls.Add(label2);
             panel_abajo.Controls.Add(etiqueta_cliente);
             panel_abajo.Controls.Add(etiqueta_descripcion);
-            panel_abajo.Controls.Add(button2);
+            panel_abajo.Controls.Add(boton_vaciar);
             panel_abajo.Controls.Add(etiqueta_precio);
-            panel_abajo.Controls.Add(button1);
+            panel_abajo.Controls.Add(boton_confirmar);
             panel_abajo.Controls.Add(etiqueta_tipo);
             panel_abajo.Controls.Add(menu_seleccionado);
             panel_abajo.Controls.Add(entrada_menu);
             panel_abajo.Controls.Add(linea_cliente);
-            panel_abajo.Controls.Add(entrada_descripcion);
+            panel_abajo.Controls.Add(entrada_ingredientes);
             panel_abajo.Controls.Add(linea_descripcion);
             panel_abajo.Controls.Add(linea_descripcion2);
             panel_abajo.Controls.Add(linea_tipo);
@@ -453,7 +454,7 @@
         private Panel linea_tipo;
         private Panel linea_descripcion2;
         private Panel linea_descripcion;
-        private RichTextBox entrada_descripcion;
+        private RichTextBox entrada_ingredientes;
         private Panel linea_cliente;
         private TextBox entrada_menu;
         private Label etiqueta_tipo;
@@ -469,8 +470,8 @@
         private Button boton_buscar;
         private Label label2;
         private Label menu_seleccionado;
-        private Button button1;
-        private Button button2;
+        private Button boton_confirmar;
+        private Button boton_vaciar;
         private Panel panel1;
         private DataGridView resultados_busqueda;
         private Panel panel_abajo;

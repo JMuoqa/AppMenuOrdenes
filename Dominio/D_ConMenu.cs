@@ -23,5 +23,9 @@ namespace Dominio
         {
             return conMenu.ObtenerMenusPorNombre(nombre);
         }
+        public (bool estado, string mensaje) ModificarMenu(Menus menu) 
+        {
+            return conMenu.ModificarMenu(menu);
+        }
     }
 }

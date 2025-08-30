@@ -24,7 +24,6 @@ namespace ControlDeProyectos
             if (entrada_tipo.Items.Count > 0)
                 entrada_tipo.SelectedIndex = 0;
         }
-
         private void ObtenerTipos()
         {
             try
@@ -72,6 +71,7 @@ namespace ControlDeProyectos
             entrada_agregar_tipo.ForeColor = colorPlaceHolder;
             entrada_precio.Text = "$12000";
             entrada_precio.ForeColor = colorPlaceHolder;
+            entrada_ingredientes.Text = "";
             ObtenerTipos();
         }
         private void TodasLasEntradasNormales_Enter(object sender, EventArgs e)
@@ -107,7 +107,6 @@ namespace ControlDeProyectos
                     caja.Text = "Empanada/Lomopizza";
             }
         }
-
         private void boton_agregar_tipo_Click(object sender, EventArgs e)
         {
             try
@@ -157,7 +156,6 @@ namespace ControlDeProyectos
             entrada_tipo.Visible = true;
             linea_tipo.Visible = true;
         }
-
         private void entrada_precio_TextChanged(object sender, EventArgs e)
         {
             if (entrada_precio.Text.Length == 0)
@@ -173,7 +171,6 @@ namespace ControlDeProyectos
                 e.Handled = true;
             }
         }
-
         private void boton_confirmar_Click(object sender, EventArgs e)
         {
             try

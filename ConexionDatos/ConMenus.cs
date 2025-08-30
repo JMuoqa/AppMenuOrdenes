@@ -92,5 +92,32 @@ namespace ConexionDatos
                 }
             }
         }
+        public (bool estado, string mensaje) ModificarMenu(Menus menu)
+        {
+            using (MySqlConnection con = ObtenerConexion())
+            {
+                try
+                {
+                    con.Open();
+                    string sql = "UPDATE MenusComida SET Nombre = @nombre, Ingredientes = @ingredientes, TipoID = @tipoid, Precio = @precio WHERE ID = @id;";
+                    using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", menu.NombreMenu);
+                        cmd.Parameters.AddWithValue("@ingredientes", menu.IngredientesMenu);
+                        cmd.Parameters.AddWithValue("@tipoid", menu.TipoMenu);
+                        cmd.Parameters.AddWithValue("@precio", menu.PrecioMenu);
+                        cmd.Parameters.AddWithValue("@id", menu.IDMenu);
+                        int filas = cmd.ExecuteNonQuery();
+                        if (filas > 0)
+                            return (true, "Se guardaron los cambios correctamente");
+                        return (false, "No se guardaron los cambios correctamente");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return (false, $"Error grave | ConexionDatos -> ConMenus -> ObtenerMenus(). \n Error: {ex.Message}");
+                }
+            } 
+        }
     }
 }

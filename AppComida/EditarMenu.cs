@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using ClasesG;
+using Dominio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +19,10 @@ namespace ControlDeProyectos
         public EditarMenu()
         {
             InitializeComponent();
-            ObtenerTipos();
+            ResetearValores();
             if (entrada_tipo.Items.Count > 0)
                 entrada_tipo.SelectedIndex = 0;
+
         }
 
         #region Funciones de cargas/visuales
@@ -38,6 +40,7 @@ namespace ControlDeProyectos
                 {
                     entrada_tipo.Items.Add(dt.Rows[i]["Tipo"].ToString());
                 }
+                entrada_tipo.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -46,6 +49,17 @@ namespace ControlDeProyectos
         }
         private void ResetearValores()
         {
+
+            menu_seleccionado.Text = "Ninguno";
+            entrada_menu.Text = "Buscá un menú arriba";
+            entrada_menu.ReadOnly = true;
+            entrada_menu.ForeColor = colorPlaceHolder;
+            entrada_ingredientes.Text = "";
+            entrada_ingredientes.ReadOnly = true;
+            entrada_precio.Text = "Buscá un menú arriba";
+            entrada_precio.ForeColor = colorPlaceHolder;
+            entrada_precio.ReadOnly = true;
+            resultados_busqueda.DataSource = null;
             ObtenerTipos();
         }
         private void ActualizarColumnas(DataTable dt)
@@ -53,7 +67,7 @@ namespace ControlDeProyectos
             resultados_busqueda.DataSource = null;
             resultados_busqueda.DataSource = dt;
             resultados_busqueda.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-            for (int i = 0; i < resultados_busqueda.Columns.Count; i++) 
+            for (int i = 0; i < resultados_busqueda.Columns.Count; i++)
             {
                 resultados_busqueda.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
@@ -76,6 +90,10 @@ namespace ControlDeProyectos
                         caja.Text = "";
                 }
             }
+        }
+        private void boton_vaciar_Click(object sender, EventArgs e)
+        {
+            ResetearValores();
         }
         private void TodasLasEntradasNormales_Leave(object sender, EventArgs e)
         {
@@ -120,16 +138,44 @@ namespace ControlDeProyectos
         }
         private void resultados_busqueda_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0) // evita clicks en encabezados
+            if (e.RowIndex >= 0) // evita clicks en encabezados
             {
                 DataGridViewRow fila = resultados_busqueda.Rows[e.RowIndex];
-                // Ejemplo: mostrar valor de la primera columna
-                var valorID = fila.Cells[0].Value;
-                MessageBox.Show("Fila clickeada: " + e.RowIndex + "\nID: " + valorID);
+                LlenarDatos(fila);
+            }
+        }
+        private void entrada_busuqeda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (entrada_busuqeda.Text.StartsWith("#"))
+                    BusquedaPorID();
+                else
+                    BusquedaPorNombre();
             }
         }
         #endregion
         #region Funciones principales
+        private void LlenarDatos(DataGridViewRow fila)
+        {
+            try
+            {
+                menu_seleccionado.Text = fila.Cells[0].Value.ToString();
+                entrada_menu.Text = fila.Cells[1].Value.ToString();
+                entrada_menu.ForeColor = Color.Black;
+                entrada_ingredientes.Text = fila.Cells[2].Value.ToString();
+                entrada_tipo.SelectedIndex = int.Parse(fila.Cells[3].Value.ToString()) - 1;
+                entrada_precio.Text = fila.Cells[4].Value.ToString();
+                entrada_precio.ForeColor = Color.Black;
+                entrada_menu.ReadOnly = false;
+                entrada_ingredientes.ReadOnly = false;
+                entrada_precio.ReadOnly = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void BusquedaPorID()
         {
             try
@@ -161,7 +207,7 @@ namespace ControlDeProyectos
             {
                 D_ConMenu conMenu = new D_ConMenu();
                 if (string.IsNullOrWhiteSpace(entrada_busuqeda.Text))
-                    throw new Exception("La entrada de busqueda esta vacia"); 
+                    throw new Exception("La entrada de busqueda esta vacia");
                 var res = conMenu.ObtenerMenusPorNombre(entrada_busuqeda.Text);
                 if (!res.estado)
                     throw new Exception(res.mensaje);
@@ -179,5 +225,43 @@ namespace ControlDeProyectos
             }
         }
         #endregion
+
+        private void boton_confirmar_Click(object sender, EventArgs e)
+        {
+            ConfirmarEdicion();
+        }
+        private void ConfirmarEdicion()
+        {
+            int id = (!string.IsNullOrWhiteSpace(menu_seleccionado.Text) || menu_seleccionado.Text != "Ninguno")
+                ? int.Parse(menu_seleccionado.Text)
+                : throw new Exception("No hay ningun menu seleccionado");
+            string nombre = (!string.IsNullOrWhiteSpace(entrada_menu.Text) || entrada_menu.Text != "Buscá un menú arriba")
+                ? entrada_menu.Text
+                : throw new Exception("La entrada del \"nombre\" esta vacia");
+            string ingredientes = !string.IsNullOrWhiteSpace(entrada_ingredientes.Text)
+                ? entrada_ingredientes.Text
+                : throw new Exception("La entrada de \"ingredientes\" esta vacia");
+            int tipo = !string.IsNullOrWhiteSpace(entrada_tipo.Text)
+                ? entrada_tipo.SelectedIndex
+                : throw new Exception("La entrada del \"tipo\" esta vacia");
+            string precio = (!string.IsNullOrWhiteSpace(entrada_precio.Text) || entrada_precio.Text != "Buscá un menú arriba")
+                ? entrada_precio.Text
+                : throw new Exception("La entrada del \"precio\" esta vacia");
+            tipo += 1;
+            Menus menu = new Menus
+            {
+                IDMenu = id,
+                NombreMenu = nombre,
+                IngredientesMenu = ingredientes,
+                TipoMenu = tipo,
+                PrecioMenu = precio
+            };
+            D_ConMenu conMenu = new D_ConMenu();
+            var res = conMenu.ModificarMenu(menu);
+            if (!res.estado)
+                throw new Exception(res.mensaje);
+            ResetearValores();
+            MessageBox.Show(res.mensaje);
+        }
     }
 }
