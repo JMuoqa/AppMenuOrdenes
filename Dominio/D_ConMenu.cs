@@ -19,5 +19,9 @@ namespace Dominio
         {
             return conMenu.ObtenerMenusPorID(ID);
         }
+        public (bool estado, string mensaje, DataTable datos) ObtenerMenusPorNombre(string nombre)
+        {
+            return conMenu.ObtenerMenusPorNombre(nombre);
+        }
     }
 }

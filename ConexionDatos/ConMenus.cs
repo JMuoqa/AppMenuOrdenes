@@ -47,17 +47,39 @@ namespace ConexionDatos
                     con.Open();
                     DataTable datosObtenidos = new DataTable();
                     string sql = "SELECT * FROM MenusComida WHERE ID = @id ORDER BY ID ASC;"; // MySqlDataAdapter no tiene para añadir parametros
-                    Debug.WriteLine("SQL: "+sql);
                     using (MySqlCommand cmd = new MySqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("id", ID);
+                        cmd.Parameters.AddWithValue("@id", ID);
                         using (MySqlDataAdapter datosMySql = new MySqlDataAdapter(cmd))
                         {
                             datosMySql.Fill(datosObtenidos);
-                            Debug.WriteLine(string.Join(Environment.NewLine,
-                                datosObtenidos.Rows.Cast<DataRow>()
-                                .Select(r => string.Join(", ", r.ItemArray))
-                            ));
+                        }
+                    }
+                    if (datosObtenidos.Rows.Count == 0)
+                        return (false, "No hay datos cargados. Tienes que agregar tipos.", new DataTable());
+                    return (true, "Exitosa", datosObtenidos);
+                }
+                catch (Exception ex)
+                {
+                    return (false, $"Error grave | ConexionDatos -> ConMenus -> ObtenerMenus(). \n Error: {ex.Message}", new DataTable());
+                }
+            }
+        }
+        public (bool estado, string mensaje, DataTable datos) ObtenerMenusPorNombre(string nombre)
+        {
+            using (MySqlConnection con = ObtenerConexion())
+            {
+                try
+                {
+                    con.Open();
+                    DataTable datosObtenidos = new DataTable();
+                    string sql = "SELECT * FROM MenusComida WHERE Nombre LIKE @nombre ORDER BY ID ASC;"; // MySqlDataAdapter no tiene para añadir parametros
+                    using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", "%" + nombre + "%");
+                        using (MySqlDataAdapter datosMySql = new MySqlDataAdapter(cmd))
+                        {
+                            datosMySql.Fill(datosObtenidos);
                         }
                     }
                     if (datosObtenidos.Rows.Count == 0)

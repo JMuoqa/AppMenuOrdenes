@@ -151,6 +151,7 @@ namespace ControlDeProyectos
             {
                 entrada_busuqeda.Text = "#7/Lomo completo";
                 entrada_busuqeda.ForeColor = colorPlaceHolder;
+                resultados_busqueda.DataSource = null;
                 MessageBox.Show(ex.Message);
             }
         }
@@ -158,10 +159,22 @@ namespace ControlDeProyectos
         {
             try
             {
-
+                D_ConMenu conMenu = new D_ConMenu();
+                if (string.IsNullOrWhiteSpace(entrada_busuqeda.Text))
+                    throw new Exception("La entrada de busqueda esta vacia"); 
+                var res = conMenu.ObtenerMenusPorNombre(entrada_busuqeda.Text);
+                if (!res.estado)
+                    throw new Exception(res.mensaje);
+                DataTable dt = res.datos;
+                if (dt.Rows.Count < 0)
+                    throw new Exception("No se encontraron resultados para esa búsqueda");
+                ActualizarColumnas(dt);
             }
             catch (Exception ex)
             {
+                entrada_busuqeda.Text = "#7/Lomo completo";
+                entrada_busuqeda.ForeColor = colorPlaceHolder;
+                resultados_busqueda.DataSource = null;
                 MessageBox.Show(ex.Message);
             }
         }
