@@ -36,7 +36,7 @@
             linea_descripcion = new Panel();
             entrada_descripcion = new RichTextBox();
             linea_cliente = new Panel();
-            entrada_cliente = new TextBox();
+            entrada_menu = new TextBox();
             etiqueta_tipo = new Label();
             etiqueta_precio = new Label();
             etiqueta_descripcion = new Label();
@@ -47,7 +47,7 @@
             etiqueta_buscar = new Label();
             boton_buscar = new Button();
             label2 = new Label();
-            label3 = new Label();
+            menu_seleccionado = new Label();
             button1 = new Button();
             button2 = new Button();
             panel1 = new Panel();
@@ -81,7 +81,7 @@
             entrada_precio.Name = "entrada_precio";
             entrada_precio.Size = new Size(319, 25);
             entrada_precio.TabIndex = 132;
-            entrada_precio.Text = "$400.000";
+            entrada_precio.Text = "Buscá un menú arriba";
             entrada_precio.Enter += TodasLasEntradasNormales_Enter;
             entrada_precio.Leave += TodasLasEntradasNormales_Leave;
             // 
@@ -159,20 +159,20 @@
             linea_cliente.Size = new Size(319, 1);
             linea_cliente.TabIndex = 134;
             // 
-            // entrada_cliente
+            // entrada_menu
             // 
-            entrada_cliente.Anchor = AnchorStyles.Top;
-            entrada_cliente.BackColor = Color.FromArgb(242, 225, 199);
-            entrada_cliente.BorderStyle = BorderStyle.None;
-            entrada_cliente.Font = new Font("Montserrat", 15F);
-            entrada_cliente.ForeColor = Color.FromArgb(144, 144, 144);
-            entrada_cliente.Location = new Point(126, 108);
-            entrada_cliente.Name = "entrada_cliente";
-            entrada_cliente.Size = new Size(319, 25);
-            entrada_cliente.TabIndex = 119;
-            entrada_cliente.Text = "Gaston";
-            entrada_cliente.Enter += TodasLasEntradasNormales_Enter;
-            entrada_cliente.Leave += TodasLasEntradasNormales_Leave;
+            entrada_menu.Anchor = AnchorStyles.Top;
+            entrada_menu.BackColor = Color.FromArgb(242, 225, 199);
+            entrada_menu.BorderStyle = BorderStyle.None;
+            entrada_menu.Font = new Font("Montserrat", 15F);
+            entrada_menu.ForeColor = Color.FromArgb(144, 144, 144);
+            entrada_menu.Location = new Point(126, 108);
+            entrada_menu.Name = "entrada_menu";
+            entrada_menu.Size = new Size(319, 25);
+            entrada_menu.TabIndex = 119;
+            entrada_menu.Text = "Buscá un menú arriba";
+            entrada_menu.Enter += TodasLasEntradasNormales_Enter;
+            entrada_menu.Leave += TodasLasEntradasNormales_Leave;
             // 
             // etiqueta_tipo
             // 
@@ -260,7 +260,7 @@
             entrada_id.Name = "entrada_id";
             entrada_id.Size = new Size(319, 25);
             entrada_id.TabIndex = 147;
-            entrada_id.Text = "7";
+            entrada_id.Text = "7/Lomo completo";
             entrada_id.Enter += TodasLasEntradasNormales_Enter;
             entrada_id.Leave += TodasLasEntradasNormales_Leave;
             // 
@@ -306,21 +306,21 @@
             label2.Name = "label2";
             label2.Size = new Size(233, 27);
             label2.TabIndex = 155;
-            label2.Text = "Menu seleccionado:";
+            label2.Text = "Menú seleccionado:";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // menu_seleccionado
             // 
-            label3.Anchor = AnchorStyles.Top;
-            label3.AutoSize = true;
-            label3.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.Black;
-            label3.Location = new Point(400, 23);
-            label3.Name = "label3";
-            label3.Size = new Size(110, 27);
-            label3.TabIndex = 156;
-            label3.Text = "Ninguno";
-            label3.TextAlign = ContentAlignment.MiddleLeft;
+            menu_seleccionado.Anchor = AnchorStyles.Top;
+            menu_seleccionado.AutoSize = true;
+            menu_seleccionado.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            menu_seleccionado.ForeColor = Color.Black;
+            menu_seleccionado.Location = new Point(400, 23);
+            menu_seleccionado.Name = "menu_seleccionado";
+            menu_seleccionado.Size = new Size(110, 27);
+            menu_seleccionado.TabIndex = 156;
+            menu_seleccionado.Text = "Ninguno";
+            menu_seleccionado.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // button1
             // 
@@ -365,7 +365,7 @@
             panel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.Black;
             panel1.Enabled = false;
-            panel1.Location = new Point(1, 453);
+            panel1.Location = new Point(1, 462);
             panel1.Margin = new Padding(3, 3, 3, 30);
             panel1.Name = "panel1";
             panel1.Size = new Size(943, 2);
@@ -389,8 +389,8 @@
             panel_abajo.Controls.Add(etiqueta_precio);
             panel_abajo.Controls.Add(button1);
             panel_abajo.Controls.Add(etiqueta_tipo);
-            panel_abajo.Controls.Add(label3);
-            panel_abajo.Controls.Add(entrada_cliente);
+            panel_abajo.Controls.Add(menu_seleccionado);
+            panel_abajo.Controls.Add(entrada_menu);
             panel_abajo.Controls.Add(linea_cliente);
             panel_abajo.Controls.Add(entrada_descripcion);
             panel_abajo.Controls.Add(linea_descripcion);
@@ -451,7 +451,7 @@
         private Panel linea_descripcion;
         private RichTextBox entrada_descripcion;
         private Panel linea_cliente;
-        private TextBox entrada_cliente;
+        private TextBox entrada_menu;
         private Label etiqueta_tipo;
         private Label etiqueta_precio;
         private Label etiqueta_descripcion;
@@ -464,7 +464,7 @@
         private Label label1;
         private Button boton_buscar;
         private Label label2;
-        private Label label3;
+        private Label menu_seleccionado;
         private Button button1;
         private Button button2;
         private Panel panel1;

@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using ClasesG;
+using Dominio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace ControlDeProyectos
 {
     public partial class AgregarMenu : Form
     {
+
+        private Color colorPlaceHolder = Color.FromArgb(144, 144, 144);
         public AgregarMenu()
         {
             InitializeComponent();
@@ -27,7 +30,7 @@ namespace ControlDeProyectos
             try
             {
                 entrada_tipo.Items.Clear();
-                DTipos obtenerDatos = new DTipos();
+                D_Tipos obtenerDatos = new D_Tipos();
                 var res = obtenerDatos.ObtenerDatos();
                 if (!res.estado)
                     throw new Exception(res.mensaje);
@@ -62,6 +65,13 @@ namespace ControlDeProyectos
             etiqueta_tipo.Visible = true;
             entrada_tipo.Visible = true;
             linea_tipo.Visible = true;
+            entrada_menu.Text = "Lomo completo";
+            entrada_menu.ForeColor = colorPlaceHolder;
+            entrada_tipo.SelectedIndex = 0;
+            entrada_agregar_tipo.Text = "Empanada/Lomopizza";
+            entrada_agregar_tipo.ForeColor = colorPlaceHolder;
+            entrada_precio.Text = "$12000";
+            entrada_precio.ForeColor = colorPlaceHolder;
             ObtenerTipos();
         }
         private void TodasLasEntradasNormales_Enter(object sender, EventArgs e)
@@ -70,7 +80,7 @@ namespace ControlDeProyectos
             string[] listaDeEjemplos = ["$12000", "Lomo completo", "Empanada/Lomopizza"];
             for (int i = 0; i < listaDeEjemplos.Length; i++)
             {
-                if (caja.ForeColor == Color.FromArgb(144, 144, 144) && caja.Text == listaDeEjemplos[i])
+                if (caja.ForeColor == colorPlaceHolder && caja.Text == listaDeEjemplos[i])
                 {
                     caja.Text = "";
                     caja.ForeColor = Color.Black;
@@ -88,7 +98,7 @@ namespace ControlDeProyectos
             TextBox caja = sender as TextBox;
             if (caja.ForeColor == Color.Black && (string.IsNullOrEmpty(caja.Text) || caja.Text == "$"))
             {
-                caja.ForeColor = Color.FromArgb(144, 144, 144);
+                caja.ForeColor = colorPlaceHolder;
                 if (caja.Name == "entrada_precio")
                     caja.Text = "$12000";
                 if (caja.Name == "entrada_menu")
@@ -104,14 +114,7 @@ namespace ControlDeProyectos
             {
                 if (etiqueta_agregar_tipo.Visible)
                 {
-                    if (string.IsNullOrEmpty(entrada_agregar_tipo.Text) || entrada_agregar_tipo.Text == "Empanada/Lomopizza")
-                        throw new Exception("Llena la entrada de 'Tipo' para cargar uno nuevo");
-                    DTipos cargarTipoNuevo = new DTipos();
-                    var res = cargarTipoNuevo.InsertarTipo(entrada_agregar_tipo.Text);
-                    if (!res.estado)
-                        throw new Exception(res.mensaje);
-                    MessageBox.Show(res.mensaje);
-                    ResetearValores();
+                    AgregarTipos();
                 }
                 else
                 {
@@ -131,7 +134,17 @@ namespace ControlDeProyectos
                 MessageBox.Show(ex.Message);
             }
         }
-
+        private void AgregarTipos()
+        {
+            if (string.IsNullOrEmpty(entrada_agregar_tipo.Text) || entrada_agregar_tipo.Text == "Empanada/Lomopizza")
+                throw new Exception("Llena la entrada de 'Tipo' para cargar uno nuevo");
+            D_Tipos cargarTipoNuevo = new D_Tipos();
+            var res = cargarTipoNuevo.InsertarTipo(entrada_agregar_tipo.Text);
+            if (!res.estado)
+                throw new Exception(res.mensaje);
+            MessageBox.Show(res.mensaje);
+            ResetearValores();
+        }
         private void boton_cancelar_tipo_Click(object sender, EventArgs e)
         {
             etiqueta_agregar_tipo.Visible = false;
@@ -161,7 +174,7 @@ namespace ControlDeProyectos
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void boton_confirmar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -172,18 +185,36 @@ namespace ControlDeProyectos
                 string ingredientes = !string.IsNullOrWhiteSpace(entrada_ingredientes.Text) 
                     ? entrada_ingredientes.Text 
                     : throw new Exception("La entrada de \"ingredientes\" esta vacia");
-                string tipo;
+                int tipo;
                 if (entrada_tipo.Visible)
-                    tipo = !string.IsNullOrWhiteSpace(entrada_tipo.Text) 
-                        ? entrada_tipo.Text 
+                {
+                    tipo = !string.IsNullOrWhiteSpace(entrada_tipo.Text)
+                        ? entrada_tipo.SelectedIndex
                         : throw new Exception("La entrada del \"tipo\" esta vacia");
+                }
                 else
-                    tipo = (!string.IsNullOrWhiteSpace(entrada_agregar_tipo.Text) || entrada_agregar_tipo.Text != "Empanada/Lomopizza") 
-                        ? entrada_agregar_tipo.Text 
-                        : throw new Exception("La entrada del \"tipo\" esta vacia");
+                {
+                    AgregarTipos();
+                    entrada_tipo.SelectedItem = entrada_tipo.Items.Count;
+                    tipo = entrada_tipo.SelectedIndex;
+                }
                 string precio = (!string.IsNullOrWhiteSpace(entrada_precio.Text) || entrada_precio.Text != "$12000") 
                     ? entrada_precio.Text 
                     : throw new Exception("La entrada del \"precio\" esta vacia");
+                tipo += 1;
+                Menus menu = new Menus
+                {
+                    NombreMenu = nombre,
+                    IngredientesMenu = ingredientes,
+                    TipoMenu = tipo,
+                    PrecioMenu = precio
+                };
+                D_ConMenu conMenu = new D_ConMenu();
+                var res = conMenu.InsertarMenu(menu);
+                if (!res.estado)
+                    throw new Exception(res.mensaje);
+                ResetearValores();
+                MessageBox.Show(res.mensaje);
             }
             catch (Exception ex) 
             {

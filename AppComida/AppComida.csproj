@@ -10,6 +10,7 @@
     <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClasesG\ClasesG.csproj" />
     <ProjectReference Include="..\Dominio\Dominio.csproj" />
   </ItemGroup>
   <ItemGroup>

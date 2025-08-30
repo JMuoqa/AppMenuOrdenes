@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ClasesG\ClasesG.csproj" />
     <ProjectReference Include="..\ConexionDatos\ConexionDatos.csproj" />
   </ItemGroup>
 

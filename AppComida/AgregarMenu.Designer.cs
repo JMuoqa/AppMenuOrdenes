@@ -42,7 +42,7 @@
             entrada_tipo = new ComboBox();
             linea_precio = new Panel();
             entrada_precio = new TextBox();
-            button1 = new Button();
+            boton_confirmar = new Button();
             boton_agregar_tipo = new Button();
             linea_agregar_tipo = new Panel();
             entrada_agregar_tipo = new TextBox();
@@ -193,6 +193,7 @@
             // 
             entrada_tipo.Anchor = AnchorStyles.Top;
             entrada_tipo.BackColor = Color.FromArgb(242, 225, 199);
+            entrada_tipo.DropDownStyle = ComboBoxStyle.DropDownList;
             entrada_tipo.FlatStyle = FlatStyle.Flat;
             entrada_tipo.Font = new Font("Montserrat", 15F);
             entrada_tipo.ForeColor = Color.Black;
@@ -230,25 +231,25 @@
             entrada_precio.KeyPress += entrada_precio_KeyPress;
             entrada_precio.Leave += TodasLasEntradasNormales_Leave;
             // 
-            // button1
+            // boton_confirmar
             // 
-            button1.Anchor = AnchorStyles.Top;
-            button1.BackColor = Color.FromArgb(150, 100, 50);
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.FromArgb(242, 225, 199);
-            button1.Location = new Point(503, 172);
-            button1.Margin = new Padding(3, 3, 3, 30);
-            button1.Name = "button1";
-            button1.Size = new Size(319, 40);
-            button1.TabIndex = 177;
-            button1.Text = "Confirmar";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            boton_confirmar.Anchor = AnchorStyles.Top;
+            boton_confirmar.BackColor = Color.FromArgb(150, 100, 50);
+            boton_confirmar.Cursor = Cursors.Hand;
+            boton_confirmar.FlatAppearance.BorderSize = 0;
+            boton_confirmar.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
+            boton_confirmar.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
+            boton_confirmar.FlatStyle = FlatStyle.Flat;
+            boton_confirmar.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            boton_confirmar.ForeColor = Color.FromArgb(242, 225, 199);
+            boton_confirmar.Location = new Point(503, 172);
+            boton_confirmar.Margin = new Padding(3, 3, 3, 30);
+            boton_confirmar.Name = "boton_confirmar";
+            boton_confirmar.Size = new Size(319, 40);
+            boton_confirmar.TabIndex = 177;
+            boton_confirmar.Text = "Confirmar";
+            boton_confirmar.UseVisualStyleBackColor = false;
+            boton_confirmar.Click += boton_confirmar_Click;
             // 
             // boton_agregar_tipo
             // 
@@ -366,7 +367,7 @@
             Controls.Add(entrada_agregar_tipo);
             Controls.Add(etiqueta_agregar_tipo);
             Controls.Add(boton_agregar_tipo);
-            Controls.Add(button1);
+            Controls.Add(boton_confirmar);
             Controls.Add(linea_precio);
             Controls.Add(entrada_precio);
             Controls.Add(entrada_tipo);
@@ -405,7 +406,7 @@
         private ComboBox entrada_tipo;
         private Panel linea_precio;
         private TextBox entrada_precio;
-        private Button button1;
+        private Button boton_confirmar;
         private Button boton_agregar_tipo;
         private Panel linea_agregar_tipo;
         private TextBox entrada_agregar_tipo;

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class DTipos
+    public class D_Tipos
     {
         Tipos agregarTipos = new Tipos();
         public (bool estado, string mensaje) InsertarTipo(string tipo)

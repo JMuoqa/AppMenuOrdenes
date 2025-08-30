@@ -41,7 +41,7 @@ namespace ConexionDatos
                 {
                     con.Open();
                     DataTable datosObtenidos = new DataTable();
-                    string sql = "SELECT * FROM TiposDeMenu;";
+                    string sql = "SELECT * FROM TiposDeMenu ORDER BY ID ASC;";
                     using (MySqlDataAdapter datosMySql = new MySqlDataAdapter(sql, con))
                     {
                         datosMySql.Fill(datosObtenidos);
