@@ -204,6 +204,7 @@
             Controls.Add(linea_usuario);
             Controls.Add(panel_logo);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "autenticacion_principal";
             Opacity = 0.98D;
             StartPosition = FormStartPosition.CenterScreen;

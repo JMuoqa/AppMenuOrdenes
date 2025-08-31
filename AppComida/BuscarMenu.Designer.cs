@@ -98,10 +98,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(319, 1);
             panel1.TabIndex = 178;
-            //
-            //
-            //
-
             // 
             // entrada_busqueda
             // 
@@ -143,10 +139,12 @@
             // 
             // panel_abajo
             // 
+            panel_abajo.AutoScroll = true;
             panel_abajo.Controls.Add(label2);
-            panel_abajo.Location = new Point(0, 417);
+            panel_abajo.Dock = DockStyle.Bottom;
+            panel_abajo.Location = new Point(0, 411);
             panel_abajo.Name = "panel_abajo";
-            panel_abajo.Size = new Size(933, 424);
+            panel_abajo.Size = new Size(933, 412);
             panel_abajo.TabIndex = 184;
             // 
             // panel_arriba

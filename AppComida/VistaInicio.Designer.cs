@@ -62,7 +62,6 @@
             titulo_principal = new Label();
             div_botones0 = new Panel();
             panelHijo = new Panel();
-            logo_inicio = new PictureBox();
             menu_lateral.SuspendLayout();
             panelSubMenuEstadisticas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
@@ -78,8 +77,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelSubMenuLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo_principal).BeginInit();
-            panelHijo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)logo_inicio).BeginInit();
             SuspendLayout();
             // 
             // menu_lateral
@@ -141,7 +138,7 @@
             // 
             pictureBox8.BackColor = Color.Transparent;
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(3, 46);
+            pictureBox8.Location = new Point(3, 48);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(26, 26);
             pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
@@ -152,7 +149,7 @@
             // 
             pictureBox7.BackColor = Color.Transparent;
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(3, 6);
+            pictureBox7.Location = new Point(3, 8);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(26, 26);
             pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
@@ -343,6 +340,7 @@
             boton_lista.Text = "Agendar orden";
             boton_lista.TextAlign = ContentAlignment.MiddleLeft;
             boton_lista.UseVisualStyleBackColor = true;
+            boton_lista.Click += boton_lista_Click;
             // 
             // boton_busqueda
             // 
@@ -402,7 +400,7 @@
             // 
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(3, 46);
+            pictureBox2.Location = new Point(3, 48);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(26, 26);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -545,23 +543,11 @@
             // 
             panelHijo.AutoScroll = true;
             panelHijo.BackColor = Color.FromArgb(242, 225, 199);
-            panelHijo.Controls.Add(logo_inicio);
             panelHijo.Dock = DockStyle.Fill;
             panelHijo.Location = new Point(250, 0);
             panelHijo.Name = "panelHijo";
             panelHijo.Size = new Size(933, 742);
             panelHijo.TabIndex = 1;
-            // 
-            // logo_inicio
-            // 
-            logo_inicio.Anchor = AnchorStyles.None;
-            logo_inicio.Image = (Image)resources.GetObject("logo_inicio.Image");
-            logo_inicio.Location = new Point(273, 154);
-            logo_inicio.Name = "logo_inicio";
-            logo_inicio.Size = new Size(400, 400);
-            logo_inicio.SizeMode = PictureBoxSizeMode.Zoom;
-            logo_inicio.TabIndex = 0;
-            logo_inicio.TabStop = false;
             // 
             // VistaInicio
             // 
@@ -571,10 +557,11 @@
             Controls.Add(panelHijo);
             Controls.Add(menu_lateral);
             Font = new Font("Montserrat", 10F);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1100, 750);
             Name = "VistaInicio";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "VistaInicio";
+            Text = "Muoqa";
             menu_lateral.ResumeLayout(false);
             panelSubMenuEstadisticas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
@@ -591,8 +578,6 @@
             panelSubMenuLogo.ResumeLayout(false);
             panelSubMenuLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)logo_principal).EndInit();
-            panelHijo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)logo_inicio).EndInit();
             ResumeLayout(false);
         }
 
@@ -608,7 +593,6 @@
         private Panel panelHijo;
         private Panel div_botones0;
         private Panel div_botones1;
-        private PictureBox logo_inicio;
         private PictureBox logo_principal;
         private Label titulo_principal;
         private Button boton_busqueda;

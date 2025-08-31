@@ -136,6 +136,11 @@ namespace ControlDeProyectos
         }
         private void VistaGrafica(DataTable datos)
         {
+            D_Tipos obtenerDatos = new D_Tipos();
+            var res = obtenerDatos.ObtenerDatos();
+            if (!res.estado)
+                throw new Exception(res.mensaje);
+            DataTable dt = res.datos;
             panel_abajo.Controls.Clear();
             int ancho = panel_abajo.Width;
             for (int i = 0; i < datos.Rows.Count; i++)
@@ -143,6 +148,8 @@ namespace ControlDeProyectos
                 int sumarX = i * 286;
                 int x = 54 + sumarX;
                 int y = 67;
+                int tipoID = int.Parse(datos.Rows[i]["TipoID"].ToString());
+                string tipo = dt.Rows[tipoID-1]["Tipo"].ToString();
                 LabelPer titulo_id = new LabelPer();
                 titulo_id.Size = new Size(34, 26);
                 titulo_id.Text = "#"+datos.Rows[i]["ID"].ToString();
@@ -156,24 +163,11 @@ namespace ControlDeProyectos
                 detalles_ingredientes.Font = new Font("Montserrat", 14F);
                 detalles_ingredientes.Text = datos.Rows[i]["Ingredientes"].ToString();
                 LabelPer titulo_tipo = new LabelPer();
-                titulo_tipo.Text = "Tipo: " + datos.Rows[i]["TipoID"].ToString();
+                titulo_tipo.Text = "Tipo: " + tipo;
                 LabelPer titulo_precio = new LabelPer();
                 titulo_precio.Text = "Precio: " + datos.Rows[i]["Precio"].ToString();
-                Button boton_editar = new Button();
-                boton_editar.BackColor = Color.FromArgb(150, 100, 50);
-                boton_editar.Cursor = Cursors.Hand;
-                boton_editar.FlatAppearance.BorderSize = 0;
-                boton_editar.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
-                boton_editar.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
-                boton_editar.FlatStyle = FlatStyle.Flat;
-                boton_editar.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-                boton_editar.ForeColor = Color.FromArgb(242, 225, 199);
-                boton_editar.Margin = new Padding(3, 3, 3, 30);
-                boton_editar.Text = "Editar";
-                boton_editar.UseVisualStyleBackColor = false;
                 FlowLayoutPanel panel = new FlowLayoutPanel();
                 panel.FlowDirection = FlowDirection.TopDown;
-                panel.Anchor = AnchorStyles.Top; 
                 panel.WrapContents = false;
                 panel.AutoScroll = true;
                 panel.BackColor = Color.FromArgb(222, 205, 179);
@@ -182,12 +176,10 @@ namespace ControlDeProyectos
                 panel.Controls.Add(detalles_ingredientes);
                 panel.Controls.Add(titulo_tipo);
                 panel.Controls.Add(titulo_precio);
-                panel.Controls.Add(boton_editar);
                 panel.Padding = new Padding(5);
                 panel.Size = new Size(276, 316);
                 panel.Location = new Point(x, y);
                 int anchoPanel = panel.Width - 15;
-                boton_editar.Size = new Size(anchoPanel, 40);
                 detalles_ingredientes.Size = new Size(anchoPanel, 100);
                 panel_abajo.Controls.Add(panel);
             }

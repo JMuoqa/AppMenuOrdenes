@@ -5,7 +5,11 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>IconoMuoqa.ico</ApplicationIcon>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="IconoMuoqa.ico" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppComida;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +16,8 @@ namespace ControlDeProyectos
         public VistaInicio()
         {
             InitializeComponent();
-            OcultarSubMenus();
         }
+        #region Funciones visuales
         private void OcultarSubMenus()
         {
             panelSubMenuAdministrar.Visible = false;
@@ -46,6 +47,8 @@ namespace ControlDeProyectos
                 subMenu.Visible = false;
             }
         }
+        #endregion
+        #region Eventos visuales
         private void boton_administrar_Click(object sender, EventArgs e)
         {
             AbrirSubMenu(panelSubMenuAdministrar);
@@ -58,7 +61,8 @@ namespace ControlDeProyectos
         {
             AbrirSubMenu(panelSubMenuEstadisticas);
         }
-        #region SubMenuAdministrar
+        #endregion
+        #region Eventos principales
         private void boton_agregar_Click(object sender, EventArgs e)
         {
             AgregarMenu agregarProyecto = new(); // Es lo mismo que: "= new AgregarProyecto();" 
@@ -71,14 +75,12 @@ namespace ControlDeProyectos
         {
             EditarMenu editarProyecto = new EditarMenu();
             CambiarFormulario(editarProyecto);
-            //Arriba de esto iria codigo
             ActualizarSubMenus();
         }
         private void boton_error_Click(object sender, EventArgs e)
         {
             BuscarMenu registrarError = new BuscarMenu();
             CambiarFormulario(registrarError);
-            //Arriba de esto iria codigo
             ActualizarSubMenus();
         }
 
@@ -86,10 +88,16 @@ namespace ControlDeProyectos
         {
             DashBoard verEstadisticas = new DashBoard();
             CambiarFormulario(verEstadisticas);
-            //Arriba de esto iria codigo
+            ActualizarSubMenus();
+        }
+        private void boton_lista_Click(object sender, EventArgs e)
+        {
+            AgregarOrden agregarordenr = new AgregarOrden();
+            CambiarFormulario(agregarordenr);
             ActualizarSubMenus();
         }
         #endregion
+        #region Funciones principales
         private Form formularioActivo = null;
         private void CambiarFormulario(Form formularioHijo)
         {
@@ -103,5 +111,6 @@ namespace ControlDeProyectos
             formularioHijo.BringToFront();
             formularioHijo.Show();
         }
+        #endregion
     }
 }
