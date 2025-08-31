@@ -11,6 +11,9 @@
     <Compile Update="EditarMenu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ElementosPersonalizados\LabelPer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="ElementosPersonalizados\PanelPer.cs">
       <SubType>Component</SubType>
     </Compile>

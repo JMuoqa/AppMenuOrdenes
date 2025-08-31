@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             titulo_editar = new Label();
-            button2 = new Button();
+            boton_buscar = new Button();
             label1 = new Label();
             panel1 = new Panel();
-            textBox1 = new TextBox();
-            panel2 = new Panel();
-            dataGridView1 = new DataGridView();
+            entrada_busqueda = new TextBox();
+            resultados_busqueda = new DataGridView();
             label2 = new Label();
             panel_abajo = new Panel();
             panel_arriba = new Panel();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)resultados_busqueda).BeginInit();
             panel_abajo.SuspendLayout();
             panel_arriba.SuspendLayout();
             SuspendLayout();
@@ -56,24 +55,25 @@
             titulo_editar.Text = "Buscar menu";
             titulo_editar.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button2
+            // boton_buscar
             // 
-            button2.Anchor = AnchorStyles.Top;
-            button2.BackColor = Color.FromArgb(150, 100, 50);
-            button2.Cursor = Cursors.Hand;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
-            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.FromArgb(242, 225, 199);
-            button2.Location = new Point(522, 32);
-            button2.Margin = new Padding(3, 3, 3, 30);
-            button2.Name = "button2";
-            button2.Size = new Size(319, 40);
-            button2.TabIndex = 180;
-            button2.Text = "Buscar";
-            button2.UseVisualStyleBackColor = false;
+            boton_buscar.Anchor = AnchorStyles.Top;
+            boton_buscar.BackColor = Color.FromArgb(150, 100, 50);
+            boton_buscar.Cursor = Cursors.Hand;
+            boton_buscar.FlatAppearance.BorderSize = 0;
+            boton_buscar.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
+            boton_buscar.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
+            boton_buscar.FlatStyle = FlatStyle.Flat;
+            boton_buscar.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            boton_buscar.ForeColor = Color.FromArgb(242, 225, 199);
+            boton_buscar.Location = new Point(522, 32);
+            boton_buscar.Margin = new Padding(3, 3, 3, 30);
+            boton_buscar.Name = "boton_buscar";
+            boton_buscar.Size = new Size(319, 40);
+            boton_buscar.TabIndex = 180;
+            boton_buscar.Text = "Buscar";
+            boton_buscar.UseVisualStyleBackColor = false;
+            boton_buscar.Click += boton_buscar_Click;
             // 
             // label1
             // 
@@ -98,39 +98,35 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(319, 1);
             panel1.TabIndex = 178;
+            //
+            //
+            //
+
             // 
-            // textBox1
+            // entrada_busqueda
             // 
-            textBox1.Anchor = AnchorStyles.Top;
-            textBox1.BackColor = Color.FromArgb(242, 225, 199);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Montserrat", 15F);
-            textBox1.ForeColor = Color.FromArgb(144, 144, 144);
-            textBox1.Location = new Point(109, 38);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(319, 25);
-            textBox1.TabIndex = 177;
-            textBox1.Text = "7/";
+            entrada_busqueda.Anchor = AnchorStyles.Top;
+            entrada_busqueda.BackColor = Color.FromArgb(242, 225, 199);
+            entrada_busqueda.BorderStyle = BorderStyle.None;
+            entrada_busqueda.Font = new Font("Montserrat", 15F);
+            entrada_busqueda.ForeColor = Color.FromArgb(144, 144, 144);
+            entrada_busqueda.Location = new Point(109, 38);
+            entrada_busqueda.Name = "entrada_busqueda";
+            entrada_busqueda.Size = new Size(319, 25);
+            entrada_busqueda.TabIndex = 177;
+            entrada_busqueda.Text = "#7/Lomo completo";
+            entrada_busqueda.TextChanged += entrada_busuqeda_TextChanged;
+            entrada_busqueda.Enter += TodasLasEntradasNormales_Enter;
+            entrada_busqueda.Leave += TodasLasEntradasNormales_Leave;
             // 
-            // panel2
+            // resultados_busqueda
             // 
-            panel2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            panel2.BackColor = Color.Black;
-            panel2.Enabled = false;
-            panel2.Location = new Point(0, 401);
-            panel2.Margin = new Padding(3, 3, 3, 30);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(933, 2);
-            panel2.TabIndex = 181;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.Anchor = AnchorStyles.Top;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(109, 87);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(732, 227);
-            dataGridView1.TabIndex = 182;
+            resultados_busqueda.Anchor = AnchorStyles.Top;
+            resultados_busqueda.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resultados_busqueda.Location = new Point(109, 87);
+            resultados_busqueda.Name = "resultados_busqueda";
+            resultados_busqueda.Size = new Size(732, 245);
+            resultados_busqueda.TabIndex = 182;
             // 
             // label2
             // 
@@ -138,7 +134,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Montserrat SemiBold", 25.25F, FontStyle.Bold);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(336, 17);
+            label2.Location = new Point(352, 0);
             label2.Name = "label2";
             label2.Size = new Size(238, 47);
             label2.TabIndex = 183;
@@ -148,21 +144,21 @@
             // panel_abajo
             // 
             panel_abajo.Controls.Add(label2);
-            panel_abajo.Location = new Point(0, 412);
+            panel_abajo.Location = new Point(0, 417);
             panel_abajo.Name = "panel_abajo";
-            panel_abajo.Size = new Size(933, 331);
+            panel_abajo.Size = new Size(933, 424);
             panel_abajo.TabIndex = 184;
             // 
             // panel_arriba
             // 
-            panel_arriba.Controls.Add(dataGridView1);
-            panel_arriba.Controls.Add(button2);
-            panel_arriba.Controls.Add(textBox1);
+            panel_arriba.Controls.Add(resultados_busqueda);
+            panel_arriba.Controls.Add(boton_buscar);
+            panel_arriba.Controls.Add(entrada_busqueda);
             panel_arriba.Controls.Add(panel1);
             panel_arriba.Controls.Add(label1);
-            panel_arriba.Location = new Point(0, 77);
+            panel_arriba.Location = new Point(0, 59);
             panel_arriba.Name = "panel_arriba";
-            panel_arriba.Size = new Size(933, 317);
+            panel_arriba.Size = new Size(933, 352);
             panel_arriba.TabIndex = 185;
             // 
             // BuscarMenu
@@ -174,7 +170,6 @@
             ClientSize = new Size(933, 741);
             Controls.Add(panel_arriba);
             Controls.Add(panel_abajo);
-            Controls.Add(panel2);
             Controls.Add(titulo_editar);
             Font = new Font("Montserrat", 10F);
             FormBorderStyle = FormBorderStyle.None;
@@ -182,7 +177,7 @@
             Name = "BuscarMenu";
             Text = "RegistrarError";
             Resize += BuscarMenu_Resize;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)resultados_busqueda).EndInit();
             panel_abajo.ResumeLayout(false);
             panel_abajo.PerformLayout();
             panel_arriba.ResumeLayout(false);
@@ -193,12 +188,11 @@
 
         #endregion
         private Label titulo_editar;
-        private Button button2;
+        private Button boton_buscar;
         private Label label1;
         private Panel panel1;
-        private TextBox textBox1;
-        private Panel panel2;
-        private DataGridView dataGridView1;
+        private TextBox entrada_busqueda;
+        private DataGridView resultados_busqueda;
         private Label label2;
         private Panel panel_abajo;
         private Panel panel_arriba;

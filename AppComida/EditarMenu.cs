@@ -24,6 +24,13 @@ namespace ControlDeProyectos
                 entrada_tipo.SelectedIndex = 0;
 
         }
+        public EditarMenu(int id)
+        {
+            InitializeComponent();
+            ResetearValores();
+            if (entrada_tipo.Items.Count > 0)
+                entrada_tipo.SelectedIndex = 0;
+        }
 
         #region Funciones de cargas/visuales
         private void ObtenerTipos()
@@ -48,8 +55,7 @@ namespace ControlDeProyectos
             }
         }
         private void ResetearValores()
-        {
-
+        { 
             menu_seleccionado.Text = "Ninguno";
             entrada_menu.Text = "Buscá un menú arriba";
             entrada_menu.ReadOnly = true;
@@ -91,10 +97,6 @@ namespace ControlDeProyectos
                 }
             }
         }
-        private void boton_vaciar_Click(object sender, EventArgs e)
-        {
-            ResetearValores();
-        }
         private void TodasLasEntradasNormales_Leave(object sender, EventArgs e)
         {
             TextBox caja = sender as TextBox;
@@ -111,6 +113,10 @@ namespace ControlDeProyectos
                     caja.Text = "#7/Lomo completo";
             }
         }
+        private void boton_vaciar_Click(object sender, EventArgs e)
+        {
+            ResetearValores();
+        }
         private void EditarMenu_Resize(object sender, EventArgs e)
         {
             panel_arriba.Width = panel_arriba.Parent.Width;
@@ -118,7 +124,7 @@ namespace ControlDeProyectos
         }
         private void entrada_busuqeda_TextChanged(object sender, EventArgs e)
         {
-            if (entrada_busuqeda.Text.StartsWith("#"))
+            if (entrada_busuqeda.Text.StartsWith("#") && entrada_busuqeda.Text != "#7/Lomo completo")
             {
                 entrada_busuqeda.ForeColor = colorCeleste;
             }
