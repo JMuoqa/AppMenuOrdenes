@@ -37,6 +37,8 @@
             panel_arriba = new Panel();
             entrada_busqueda = new TextBox();
             panel1 = new Panel();
+            label10 = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)resultados_busqueda).BeginInit();
             panel_abajo.SuspendLayout();
             panel_arriba.SuspendLayout();
@@ -66,7 +68,7 @@
             boton_buscar.FlatStyle = FlatStyle.Flat;
             boton_buscar.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             boton_buscar.ForeColor = Color.FromArgb(242, 225, 199);
-            boton_buscar.Location = new Point(522, 32);
+            boton_buscar.Location = new Point(522, 86);
             boton_buscar.Margin = new Padding(3, 3, 3, 30);
             boton_buscar.Name = "boton_buscar";
             boton_buscar.Size = new Size(319, 40);
@@ -81,7 +83,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(109, 8);
+            label1.Location = new Point(109, 62);
             label1.Name = "label1";
             label1.Size = new Size(131, 27);
             label1.TabIndex = 179;
@@ -92,7 +94,7 @@
             // 
             resultados_busqueda.Anchor = AnchorStyles.Top;
             resultados_busqueda.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resultados_busqueda.Location = new Point(109, 87);
+            resultados_busqueda.Location = new Point(109, 141);
             resultados_busqueda.Name = "resultados_busqueda";
             resultados_busqueda.Size = new Size(732, 245);
             resultados_busqueda.TabIndex = 182;
@@ -103,7 +105,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Montserrat SemiBold", 25.25F, FontStyle.Bold);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(352, 0);
+            label2.Location = new Point(343, 0);
             label2.Name = "label2";
             label2.Size = new Size(238, 47);
             label2.TabIndex = 183;
@@ -115,21 +117,23 @@
             panel_abajo.AutoScroll = true;
             panel_abajo.Controls.Add(label2);
             panel_abajo.Dock = DockStyle.Bottom;
-            panel_abajo.Location = new Point(0, 411);
+            panel_abajo.Location = new Point(0, 502);
             panel_abajo.Name = "panel_abajo";
-            panel_abajo.Size = new Size(933, 412);
+            panel_abajo.Size = new Size(933, 349);
             panel_abajo.TabIndex = 184;
             // 
             // panel_arriba
             // 
+            panel_arriba.Controls.Add(label10);
             panel_arriba.Controls.Add(resultados_busqueda);
+            panel_arriba.Controls.Add(label5);
             panel_arriba.Controls.Add(boton_buscar);
             panel_arriba.Controls.Add(entrada_busqueda);
             panel_arriba.Controls.Add(panel1);
             panel_arriba.Controls.Add(label1);
-            panel_arriba.Location = new Point(0, 59);
+            panel_arriba.Location = new Point(0, 70);
             panel_arriba.Name = "panel_arriba";
-            panel_arriba.Size = new Size(933, 352);
+            panel_arriba.Size = new Size(933, 426);
             panel_arriba.TabIndex = 185;
             // 
             // entrada_busqueda
@@ -139,7 +143,7 @@
             entrada_busqueda.BorderStyle = BorderStyle.None;
             entrada_busqueda.Font = new Font("Montserrat", 15F);
             entrada_busqueda.ForeColor = Color.FromArgb(144, 144, 144);
-            entrada_busqueda.Location = new Point(109, 38);
+            entrada_busqueda.Location = new Point(109, 92);
             entrada_busqueda.Name = "entrada_busqueda";
             entrada_busqueda.Size = new Size(319, 25);
             entrada_busqueda.TabIndex = 1;
@@ -154,11 +158,37 @@
             panel1.Anchor = AnchorStyles.Top;
             panel1.BackColor = Color.Black;
             panel1.Enabled = false;
-            panel1.Location = new Point(109, 69);
+            panel1.Location = new Point(109, 123);
             panel1.Margin = new Padding(3, 3, 3, 30);
             panel1.Name = "panel1";
             panel1.Size = new Size(319, 2);
             panel1.TabIndex = 178;
+            // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Top;
+            label10.AutoSize = true;
+            label10.Font = new Font("Montserrat", 12F);
+            label10.ForeColor = Color.Black;
+            label10.Location = new Point(109, 34);
+            label10.Name = "label10";
+            label10.Size = new Size(284, 22);
+            label10.TabIndex = 260;
+            label10.Text = "Ejemplo: \"#1\" buscara el menú Nº 1";
+            label10.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top;
+            label5.AutoSize = true;
+            label5.Font = new Font("Montserrat", 12F);
+            label5.ForeColor = Color.Black;
+            label5.Location = new Point(109, 8);
+            label5.Name = "label5";
+            label5.Size = new Size(455, 22);
+            label5.TabIndex = 259;
+            label5.Text = "Coloca \"#\" en la busqueda para buscar por Nº del menú.";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // BuscarMenu
             // 
@@ -166,7 +196,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.FromArgb(242, 225, 199);
-            ClientSize = new Size(933, 741);
+            ClientSize = new Size(933, 851);
             Controls.Add(panel_arriba);
             Controls.Add(panel_abajo);
             Controls.Add(titulo_editar);
@@ -195,5 +225,7 @@
         private Panel panel_arriba;
         private TextBox entrada_busqueda;
         private Panel panel1;
+        private Label label10;
+        private Label label5;
     }
 }
