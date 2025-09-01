@@ -75,27 +75,28 @@ namespace AppComida
             {
                 if (panel_pedidos.Controls.Count == 0)
                     throw new Exception("No se agregó ningún menú a esta orden.");
-                string nombreCliente = (!string.IsNullOrWhiteSpace(entrada_nombre_cliente.Text) || (entrada_nombre_cliente.Text != "Jesus" && entrada_nombre_cliente.ForeColor != colorPlaceHolder))
+                string nombreCliente = (!string.IsNullOrWhiteSpace(entrada_nombre_cliente.Text) && entrada_nombre_cliente.ForeColor != colorPlaceHolder)
                     ? entrada_nombre_cliente.Text
                     : throw new Exception("No se agregó ningún nombre del cliente a esta orden");
-                string numeroTelefono = (!string.IsNullOrWhiteSpace(entrada_numero.Text) || (entrada_numero.Text != "3518182222" && entrada_numero.ForeColor != colorPlaceHolder))
+                string numeroTelefono = (!string.IsNullOrWhiteSpace(entrada_numero.Text) && entrada_numero.ForeColor != colorPlaceHolder)
                     ? entrada_numero.Text
                     : throw new Exception("No se agregó ningún numero de telefono a esta orden");
-                string docmicilio = (!string.IsNullOrWhiteSpace(entrada_direccion.Text) || (entrada_direccion.Text != "Local/Lagunilla 1111" && entrada_direccion.ForeColor != colorPlaceHolder))
+                string docmicilio = (!string.IsNullOrWhiteSpace(entrada_direccion.Text) && entrada_direccion.ForeColor != colorPlaceHolder)
                     ? entrada_direccion.Text
                     : throw new Exception("No se agregó ningún domicilio a esta orden");
-                string horaIngreso = (!string.IsNullOrWhiteSpace(entrada_hora_pedida.Text) || (entrada_hora_pedida.Text != "20" && entrada_hora_pedida.ForeColor != colorPlaceHolder))
+                string horaIngreso = (!string.IsNullOrWhiteSpace(entrada_hora_pedida.Text) && entrada_hora_pedida.ForeColor != colorPlaceHolder)
                     ? entrada_hora_pedida.Text
                     : throw new Exception("No se agregó ningún horario de ingreso a esta orden");
-                string minutoIngreso = (!string.IsNullOrWhiteSpace(entrada_minuto_pedido.Text) || (entrada_minuto_pedido.Text != "30" && entrada_minuto_pedido.ForeColor != colorPlaceHolder))
+                string minutoIngreso = (!string.IsNullOrWhiteSpace(entrada_minuto_pedido.Text) && entrada_minuto_pedido.ForeColor != colorPlaceHolder)
                     ? entrada_minuto_pedido.Text
                     : throw new Exception("No se agregó ningún horario de ingreso a esta orden");
-                string horaEntrega = (!string.IsNullOrWhiteSpace(entrada_hora_entrega.Text) || (entrada_hora_entrega.Text != "20" && entrada_hora_entrega.ForeColor != colorPlaceHolder))
+                string horaEntrega = (!string.IsNullOrWhiteSpace(entrada_hora_entrega.Text) && entrada_hora_entrega.ForeColor != colorPlaceHolder)
                     ? entrada_hora_entrega.Text
                     : throw new Exception("No se agregó ningún horario de entrega estimada a esta orden");
-                string minutoEntrega = (!string.IsNullOrWhiteSpace(entrada_minuto_entrega.Text) || (entrada_minuto_entrega.Text != "30" && entrada_minuto_entrega.ForeColor != colorPlaceHolder))
+                string minutoEntrega = (!string.IsNullOrWhiteSpace(entrada_minuto_entrega.Text) && entrada_minuto_entrega.ForeColor != colorPlaceHolder)
                     ? entrada_minuto_entrega.Text
                     : throw new Exception("No se agregó ningún horario de entrega estimada a esta orden");
+                string comentarios = entrada_comentarios.Text ?? ""; // Comentarios si puede estar vacio
                 horaIngreso = horaIngreso.Length == 1
                     ? horaIngreso = "0" + horaIngreso
                     : horaIngreso;
@@ -110,7 +111,7 @@ namespace AppComida
                     : minutoEntrega;
                 string horarioDeIngreso = horaIngreso + ":" + minutoIngreso;
                 string horarioDeEntrega = horaEntrega + ":" + minutoEntrega;
-
+                int productosSeleccionados = panel_pedidos.Controls.Count;
                 Orden orden = new Orden
                 {
                     NombreCliente = nombreCliente,
@@ -118,6 +119,8 @@ namespace AppComida
                     DireccionCliente = docmicilio,
                     HoraIngresoPedido = DateTime.ParseExact(horarioDeIngreso, "HH:mm", CultureInfo.InvariantCulture),
                     HoraEstimadaEntrega = DateTime.ParseExact(horarioDeEntrega, "HH:mm", CultureInfo.InvariantCulture),
+                    Comentarios = comentarios,
+                    ProductosSeleccionados = productosSeleccionados,
                     Estado = "Confirmado"
                 };
                 List<DetallesDeLosPedidos> detallesDeLosPedidos = new List<DetallesDeLosPedidos>();
@@ -167,6 +170,7 @@ namespace AppComida
             int total = precio * cantidad;
             etiqueta_precioTotal.Text = $"Precio total: ${total}";
             etiqueta_cantidad.Text = $"Cantidad: {cantidad.ToString()}";
+            ActualizarPrecioEItems();
         }
         private void boton_pedidos_restar_Click(object sender, EventArgs e)
         {
@@ -189,17 +193,20 @@ namespace AppComida
                 etiqueta_precioTotal.Text = $"Precio total: ${total}";
                 etiqueta_cantidad.Text = $"Cantidad: {cantidad.ToString()}";
             }
+            ActualizarPrecioEItems();
         }
         private void boton_pedidos_quitar_Click(object sender, EventArgs e)
         {
             Button boton = sender as Button;
             string id = boton.Name.Replace("BTNQ_", "");
             QuitarMenuDelPedido(id);
+            ActualizarPrecioEItems();
         }
         private void panel_Click(object sender, EventArgs e)
         {
             try
             {
+
                 Panel panel = sender as Panel;
                 string id = panel.Name.Replace("Panel_", "");
                 if (panel_pedidos.Controls[$"contenedor_{id}"] != null)
@@ -295,6 +302,7 @@ namespace AppComida
                 contenedor_pedidos.Name = $"contenedor_{id}";
                 panel_pedidos.Controls.Add(contenedor_pedidos);
                 panel_contenedor_menus.Controls.Clear();
+                ActualizarPrecioEItems();
             }
             catch (Exception ex)
             {
@@ -303,10 +311,37 @@ namespace AppComida
         }
         #endregion
         #region Funciones principales
+        //Esto actualiza los label de precio total y productos seleccionados
+        private void ActualizarPrecioEItems()
+        {
+            etiqueta_items.Text = $"Productos seleccionados: {panel_pedidos.Controls.Count}";
+            int precioTotal = 0;
+            foreach (Control panel in panel_pedidos.Controls)
+            {
+                if (panel is Panel)
+                {
+                    foreach (Control flow in panel.Controls)
+                    {
+                        if (flow is FlowLayoutPanel)
+                        {
+                            foreach (Control label in flow.Controls)
+                            {
+                                if (label is LabelPerPedidos && label.Name.StartsWith("LPPrecioTotal_"))
+                                {
+                                    precioTotal += int.Parse(label.Text.Replace("Precio total: $", ""));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            etiqueta_precio_final.Text = $"Precio final: ${precioTotal}";
+        }
         private void QuitarMenuDelPedido(string id)
         {
             Panel panel = panel_pedidos.Controls[$"contenedor_{id}"] as Panel;
             panel.Dispose();
+            ActualizarPrecioEItems();
         }
         private void BusquedaPorNombre()
         {
@@ -393,6 +428,50 @@ namespace AppComida
             {
                 BusquedaPorNombre();
             }
+        }
+
+        private void entrada_hora_pedida_TextChanged(object sender, EventArgs e)
+        {
+            if (entrada_hora_pedida.Text.Length == 2)
+            {
+                entrada_minuto_pedido.Select();
+            }
+        }
+
+        private void entrada_minuto_pedido_TextChanged(object sender, EventArgs e)
+        {
+            if (entrada_minuto_pedido.Text.Length == 2)
+            {
+                entrada_hora_entrega.Select();
+            }
+        }
+
+        private void entrada_hora_entrega_TextChanged(object sender, EventArgs e)
+        {
+            if (entrada_hora_entrega.Text.Length == 2)
+            {
+                entrada_minuto_entrega.Select();
+            }
+        }
+
+        private void entrada_horario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox texto = sender as TextBox;
+            if (e.KeyChar == (char)Keys.Space)
+                e.Handled = true;
+            if (texto.ForeColor != colorPlaceHolder)
+            {
+                if (texto.Text.Length == 2 && (e.KeyChar != (char)Keys.Back))
+                    e.Handled = true;
+                else if (char.IsLetter(e.KeyChar) || char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+                    e.Handled = true;
+            }
+        }
+
+        private void entrada_numero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar) || char.IsLetter(e.KeyChar))
+                e.Handled = true;
         }
     }
 }

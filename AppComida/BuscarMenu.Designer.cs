@@ -31,12 +31,12 @@
             titulo_editar = new Label();
             boton_buscar = new Button();
             label1 = new Label();
-            panel1 = new Panel();
-            entrada_busqueda = new TextBox();
             resultados_busqueda = new DataGridView();
             label2 = new Label();
             panel_abajo = new Panel();
             panel_arriba = new Panel();
+            entrada_busqueda = new TextBox();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)resultados_busqueda).BeginInit();
             panel_abajo.SuspendLayout();
             panel_arriba.SuspendLayout();
@@ -70,7 +70,7 @@
             boton_buscar.Margin = new Padding(3, 3, 3, 30);
             boton_buscar.Name = "boton_buscar";
             boton_buscar.Size = new Size(319, 40);
-            boton_buscar.TabIndex = 180;
+            boton_buscar.TabIndex = 2;
             boton_buscar.Text = "Buscar";
             boton_buscar.UseVisualStyleBackColor = false;
             boton_buscar.Click += boton_buscar_Click;
@@ -87,34 +87,6 @@
             label1.TabIndex = 179;
             label1.Text = "Busqueda:";
             label1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // panel1
-            // 
-            panel1.Anchor = AnchorStyles.Top;
-            panel1.BackColor = Color.Black;
-            panel1.Enabled = false;
-            panel1.Location = new Point(109, 69);
-            panel1.Margin = new Padding(3, 3, 3, 30);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(319, 1);
-            panel1.TabIndex = 178;
-            // 
-            // entrada_busqueda
-            // 
-            entrada_busqueda.Anchor = AnchorStyles.Top;
-            entrada_busqueda.BackColor = Color.FromArgb(242, 225, 199);
-            entrada_busqueda.BorderStyle = BorderStyle.None;
-            entrada_busqueda.Font = new Font("Montserrat", 15F);
-            entrada_busqueda.ForeColor = Color.FromArgb(144, 144, 144);
-            entrada_busqueda.Location = new Point(109, 38);
-            entrada_busqueda.Name = "entrada_busqueda";
-            entrada_busqueda.Size = new Size(319, 25);
-            entrada_busqueda.TabIndex = 177;
-            entrada_busqueda.Text = "#7/Lomo completo";
-            entrada_busqueda.TextChanged += entrada_busuqeda_TextChanged;
-            entrada_busqueda.Enter += TodasLasEntradasNormales_Enter;
-            entrada_busqueda.KeyDown += entrada_busqueda_KeyDown;
-            entrada_busqueda.Leave += TodasLasEntradasNormales_Leave;
             // 
             // resultados_busqueda
             // 
@@ -160,6 +132,34 @@
             panel_arriba.Size = new Size(933, 352);
             panel_arriba.TabIndex = 185;
             // 
+            // entrada_busqueda
+            // 
+            entrada_busqueda.Anchor = AnchorStyles.Top;
+            entrada_busqueda.BackColor = Color.FromArgb(242, 225, 199);
+            entrada_busqueda.BorderStyle = BorderStyle.None;
+            entrada_busqueda.Font = new Font("Montserrat", 15F);
+            entrada_busqueda.ForeColor = Color.FromArgb(144, 144, 144);
+            entrada_busqueda.Location = new Point(109, 38);
+            entrada_busqueda.Name = "entrada_busqueda";
+            entrada_busqueda.Size = new Size(319, 25);
+            entrada_busqueda.TabIndex = 1;
+            entrada_busqueda.Text = "#7/Lomo completo";
+            entrada_busqueda.TextChanged += entrada_busuqeda_TextChanged;
+            entrada_busqueda.Enter += TodasLasEntradasNormales_Enter;
+            entrada_busqueda.KeyDown += entrada_busqueda_KeyDown;
+            entrada_busqueda.Leave += TodasLasEntradasNormales_Leave;
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Top;
+            panel1.BackColor = Color.Black;
+            panel1.Enabled = false;
+            panel1.Location = new Point(109, 69);
+            panel1.Margin = new Padding(3, 3, 3, 30);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(319, 2);
+            panel1.TabIndex = 178;
+            // 
             // BuscarMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 18F);
@@ -189,11 +189,11 @@
         private Label titulo_editar;
         private Button boton_buscar;
         private Label label1;
-        private Panel panel1;
-        private TextBox entrada_busqueda;
         private DataGridView resultados_busqueda;
         private Label label2;
         private Panel panel_abajo;
         private Panel panel_arriba;
+        private TextBox entrada_busqueda;
+        private Panel panel1;
     }
 }

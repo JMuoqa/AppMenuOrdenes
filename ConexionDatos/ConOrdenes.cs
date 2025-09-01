@@ -26,7 +26,7 @@ namespace ConexionDatos
                     }
                     string precioFinal = "$"+precioTotal.ToString();
                     int ultimoID;
-                    string insertarOrden = "INSERT INTO Orden (NombreDelCliente, TelefonoDelCliente, DireccionDelCliente, PrecioTotal, Estado, HoraIngresoPedido, HoraEstimadaEntrega) VALUES(@nombre, @tel, @dire, @precio, @estado, @ingreso, @entrega);";
+                    string insertarOrden = "INSERT INTO Orden (NombreDelCliente, TelefonoDelCliente, DireccionDelCliente, PrecioTotal, Estado, Comentarios, ProductosSeleccionados, HoraIngresoPedido, HoraEstimadaEntrega) VALUES(@nombre, @tel, @dire, @precio, @estado, @comentarios, @seleccionados, @ingreso, @entrega);";
                     using(MySqlCommand cmd = new MySqlCommand(insertarOrden, con))
                     {
                         cmd.Parameters.AddWithValue("@nombre", orden.NombreCliente);
@@ -34,6 +34,8 @@ namespace ConexionDatos
                         cmd.Parameters.AddWithValue("@dire", orden.DireccionCliente);
                         cmd.Parameters.AddWithValue("@precio", precioFinal);
                         cmd.Parameters.AddWithValue("@estado", orden.Estado);
+                        cmd.Parameters.AddWithValue("@comentarios", orden.Comentarios);
+                        cmd.Parameters.AddWithValue("@seleccionados", orden.ProductosSeleccionados);
                         cmd.Parameters.AddWithValue("@ingreso", orden.HoraIngresoPedido);
                         cmd.Parameters.AddWithValue("@entrega", orden.HoraEstimadaEntrega);
                         int fila = cmd.ExecuteNonQuery();

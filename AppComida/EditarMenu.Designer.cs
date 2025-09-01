@@ -67,7 +67,7 @@
             linea_precio.Location = new Point(516, 134);
             linea_precio.Margin = new Padding(3, 3, 3, 10);
             linea_precio.Name = "linea_precio";
-            linea_precio.Size = new Size(319, 1);
+            linea_precio.Size = new Size(319, 2);
             linea_precio.TabIndex = 144;
             // 
             // entrada_precio
@@ -80,7 +80,7 @@
             entrada_precio.Location = new Point(516, 105);
             entrada_precio.Name = "entrada_precio";
             entrada_precio.Size = new Size(319, 25);
-            entrada_precio.TabIndex = 132;
+            entrada_precio.TabIndex = 6;
             entrada_precio.Text = "Buscá un menú arriba";
             entrada_precio.Enter += TodasLasEntradasNormales_Enter;
             entrada_precio.Leave += TodasLasEntradasNormales_Leave;
@@ -97,7 +97,7 @@
             entrada_tipo.Location = new Point(126, 475);
             entrada_tipo.Name = "entrada_tipo";
             entrada_tipo.Size = new Size(319, 35);
-            entrada_tipo.TabIndex = 125;
+            entrada_tipo.TabIndex = 5;
             // 
             // linea_tipo
             // 
@@ -107,7 +107,7 @@
             linea_tipo.Location = new Point(126, 514);
             linea_tipo.Margin = new Padding(3, 3, 3, 10);
             linea_tipo.Name = "linea_tipo";
-            linea_tipo.Size = new Size(319, 1);
+            linea_tipo.Size = new Size(319, 2);
             linea_tipo.TabIndex = 139;
             // 
             // linea_descripcion2
@@ -118,7 +118,7 @@
             linea_descripcion2.Location = new Point(126, 437);
             linea_descripcion2.Margin = new Padding(3, 3, 3, 10);
             linea_descripcion2.Name = "linea_descripcion2";
-            linea_descripcion2.Size = new Size(319, 1);
+            linea_descripcion2.Size = new Size(319, 2);
             linea_descripcion2.TabIndex = 138;
             // 
             // linea_descripcion
@@ -129,7 +129,7 @@
             linea_descripcion.Location = new Point(126, 187);
             linea_descripcion.Margin = new Padding(3, 3, 3, 10);
             linea_descripcion.Name = "linea_descripcion";
-            linea_descripcion.Size = new Size(319, 1);
+            linea_descripcion.Size = new Size(319, 2);
             linea_descripcion.TabIndex = 137;
             // 
             // entrada_ingredientes
@@ -143,7 +143,7 @@
             entrada_ingredientes.MaxLength = 350;
             entrada_ingredientes.Name = "entrada_ingredientes";
             entrada_ingredientes.Size = new Size(319, 240);
-            entrada_ingredientes.TabIndex = 123;
+            entrada_ingredientes.TabIndex = 4;
             entrada_ingredientes.Text = "";
             // 
             // linea_cliente
@@ -154,7 +154,7 @@
             linea_cliente.Location = new Point(126, 137);
             linea_cliente.Margin = new Padding(3, 3, 3, 10);
             linea_cliente.Name = "linea_cliente";
-            linea_cliente.Size = new Size(319, 1);
+            linea_cliente.Size = new Size(319, 2);
             linea_cliente.TabIndex = 134;
             // 
             // entrada_menu
@@ -167,7 +167,7 @@
             entrada_menu.Location = new Point(126, 108);
             entrada_menu.Name = "entrada_menu";
             entrada_menu.Size = new Size(319, 25);
-            entrada_menu.TabIndex = 119;
+            entrada_menu.TabIndex = 3;
             entrada_menu.Text = "Buscá un menú arriba";
             entrada_menu.Enter += TodasLasEntradasNormales_Enter;
             entrada_menu.Leave += TodasLasEntradasNormales_Leave;
@@ -244,7 +244,7 @@
             linea_id.Location = new Point(127, 71);
             linea_id.Margin = new Padding(3, 3, 3, 30);
             linea_id.Name = "linea_id";
-            linea_id.Size = new Size(319, 1);
+            linea_id.Size = new Size(319, 2);
             linea_id.TabIndex = 148;
             // 
             // entrada_busuqeda
@@ -257,7 +257,7 @@
             entrada_busuqeda.Location = new Point(127, 40);
             entrada_busuqeda.Name = "entrada_busuqeda";
             entrada_busuqeda.Size = new Size(319, 25);
-            entrada_busuqeda.TabIndex = 147;
+            entrada_busuqeda.TabIndex = 1;
             entrada_busuqeda.Text = "#7/Lomo completo";
             entrada_busuqeda.TextChanged += entrada_busuqeda_TextChanged;
             entrada_busuqeda.Enter += TodasLasEntradasNormales_Enter;
@@ -292,7 +292,7 @@
             boton_buscar.Margin = new Padding(3, 3, 3, 30);
             boton_buscar.Name = "boton_buscar";
             boton_buscar.Size = new Size(319, 40);
-            boton_buscar.TabIndex = 154;
+            boton_buscar.TabIndex = 2;
             boton_buscar.Text = "Buscar";
             boton_buscar.UseVisualStyleBackColor = false;
             boton_buscar.Click += boton_buscar_Click;
@@ -338,7 +338,7 @@
             boton_confirmar.Margin = new Padding(3, 3, 3, 30);
             boton_confirmar.Name = "boton_confirmar";
             boton_confirmar.Size = new Size(319, 40);
-            boton_confirmar.TabIndex = 158;
+            boton_confirmar.TabIndex = 7;
             boton_confirmar.Text = "Confirmar cambios";
             boton_confirmar.UseVisualStyleBackColor = false;
             boton_confirmar.Click += boton_confirmar_Click;
@@ -358,7 +358,7 @@
             boton_vaciar.Margin = new Padding(3, 3, 3, 30);
             boton_vaciar.Name = "boton_vaciar";
             boton_vaciar.Size = new Size(319, 40);
-            boton_vaciar.TabIndex = 159;
+            boton_vaciar.TabIndex = 8;
             boton_vaciar.Text = "Vaciar datos";
             boton_vaciar.UseVisualStyleBackColor = false;
             boton_vaciar.Click += boton_vaciar_Click;
@@ -368,7 +368,7 @@
             panel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.Black;
             panel1.Enabled = false;
-            panel1.Location = new Point(1, 588);
+            panel1.Location = new Point(1, 606);
             panel1.Margin = new Padding(3, 3, 3, 30);
             panel1.Name = "panel1";
             panel1.Size = new Size(943, 2);

@@ -44,13 +44,10 @@ namespace AppComida
             panel2 = new Panel();
             entrada_hora_pedida = new TextBox();
             etiqueta_hora_pedida = new Label();
-            panel3 = new Panel();
             entrada_minuto_pedido = new TextBox();
             label2 = new Label();
             label3 = new Label();
-            panel4 = new Panel();
             entrada_minuto_entrega = new TextBox();
-            panel5 = new Panel();
             entrada_hora_entrega = new TextBox();
             etiqueta_hora_entrega = new Label();
             etiqueta_pedido = new Label();
@@ -60,6 +57,13 @@ namespace AppComida
             entrada_busqueda = new TextBox();
             panel7 = new Panel();
             panel_contenedor_menus = new Panel();
+            entrada_comentarios = new RichTextBox();
+            etiqueta_comentarios = new Label();
+            panel8 = new Panel();
+            panel6 = new Panel();
+            panel3 = new Panel();
+            etiqueta_precio_final = new Label();
+            etiqueta_items = new Label();
             SuspendLayout();
             // 
             // titulo_agregar
@@ -84,11 +88,11 @@ namespace AppComida
             boton_confirmar.FlatStyle = FlatStyle.Flat;
             boton_confirmar.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             boton_confirmar.ForeColor = Color.FromArgb(242, 225, 199);
-            boton_confirmar.Location = new Point(788, 263);
+            boton_confirmar.Location = new Point(788, 572);
             boton_confirmar.Margin = new Padding(3, 3, 3, 30);
             boton_confirmar.Name = "boton_confirmar";
             boton_confirmar.Size = new Size(586, 40);
-            boton_confirmar.TabIndex = 181;
+            boton_confirmar.TabIndex = 11;
             boton_confirmar.Text = "Agendar orden";
             boton_confirmar.UseVisualStyleBackColor = false;
             boton_confirmar.Click += boton_confirmar_Click;
@@ -112,7 +116,7 @@ namespace AppComida
             entrada_nombre_cliente.Location = new Point(407, 79);
             entrada_nombre_cliente.Name = "entrada_nombre_cliente";
             entrada_nombre_cliente.Size = new Size(375, 25);
-            entrada_nombre_cliente.TabIndex = 178;
+            entrada_nombre_cliente.TabIndex = 1;
             entrada_nombre_cliente.Text = "Jesus";
             entrada_nombre_cliente.Enter += TodasLasEntradasNormales_Enter;
             entrada_nombre_cliente.Leave += TodasLasEntradasNormales_Leave;
@@ -148,9 +152,10 @@ namespace AppComida
             entrada_numero.Location = new Point(407, 126);
             entrada_numero.Name = "entrada_numero";
             entrada_numero.Size = new Size(375, 25);
-            entrada_numero.TabIndex = 182;
+            entrada_numero.TabIndex = 2;
             entrada_numero.Text = "3518182222";
             entrada_numero.Enter += TodasLasEntradasNormales_Enter;
+            entrada_numero.KeyPress += entrada_numero_KeyPress;
             entrada_numero.Leave += TodasLasEntradasNormales_Leave;
             // 
             // etiqueta_numero
@@ -184,7 +189,7 @@ namespace AppComida
             entrada_direccion.Location = new Point(407, 170);
             entrada_direccion.Name = "entrada_direccion";
             entrada_direccion.Size = new Size(375, 25);
-            entrada_direccion.TabIndex = 185;
+            entrada_direccion.TabIndex = 3;
             entrada_direccion.Text = "Local/Lagunilla 1111";
             entrada_direccion.Enter += TodasLasEntradasNormales_Enter;
             entrada_direccion.Leave += TodasLasEntradasNormales_Leave;
@@ -208,7 +213,7 @@ namespace AppComida
             panel2.Location = new Point(1055, 110);
             panel2.Margin = new Padding(3, 3, 3, 10);
             panel2.Name = "panel2";
-            panel2.Size = new Size(44, 2);
+            panel2.Size = new Size(118, 2);
             panel2.TabIndex = 189;
             // 
             // entrada_hora_pedida
@@ -220,9 +225,11 @@ namespace AppComida
             entrada_hora_pedida.Location = new Point(1055, 81);
             entrada_hora_pedida.Name = "entrada_hora_pedida";
             entrada_hora_pedida.Size = new Size(44, 25);
-            entrada_hora_pedida.TabIndex = 188;
+            entrada_hora_pedida.TabIndex = 4;
             entrada_hora_pedida.Text = "20";
+            entrada_hora_pedida.TextChanged += entrada_hora_pedida_TextChanged;
             entrada_hora_pedida.Enter += TodasLasEntradasNormales_Enter;
+            entrada_hora_pedida.KeyPress += entrada_horario_KeyPress;
             entrada_hora_pedida.Leave += TodasLasEntradasNormales_Leave;
             // 
             // etiqueta_hora_pedida
@@ -237,16 +244,6 @@ namespace AppComida
             etiqueta_hora_pedida.Text = "Hora en que se pidió:";
             etiqueta_hora_pedida.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // panel3
-            // 
-            panel3.BackColor = Color.Black;
-            panel3.Enabled = false;
-            panel3.Location = new Point(1129, 110);
-            panel3.Margin = new Padding(3, 3, 3, 10);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(44, 2);
-            panel3.TabIndex = 192;
-            // 
             // entrada_minuto_pedido
             // 
             entrada_minuto_pedido.BackColor = Color.FromArgb(242, 225, 199);
@@ -256,9 +253,11 @@ namespace AppComida
             entrada_minuto_pedido.Location = new Point(1129, 81);
             entrada_minuto_pedido.Name = "entrada_minuto_pedido";
             entrada_minuto_pedido.Size = new Size(44, 25);
-            entrada_minuto_pedido.TabIndex = 191;
+            entrada_minuto_pedido.TabIndex = 5;
             entrada_minuto_pedido.Text = "30";
+            entrada_minuto_pedido.TextChanged += entrada_minuto_pedido_TextChanged;
             entrada_minuto_pedido.Enter += TodasLasEntradasNormales_Enter;
+            entrada_minuto_pedido.KeyPress += entrada_horario_KeyPress;
             entrada_minuto_pedido.Leave += TodasLasEntradasNormales_Leave;
             // 
             // label2
@@ -285,16 +284,6 @@ namespace AppComida
             label3.Text = ":";
             label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // panel4
-            // 
-            panel4.BackColor = Color.Black;
-            panel4.Enabled = false;
-            panel4.Location = new Point(1129, 155);
-            panel4.Margin = new Padding(3, 3, 3, 10);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(44, 2);
-            panel4.TabIndex = 198;
-            // 
             // entrada_minuto_entrega
             // 
             entrada_minuto_entrega.BackColor = Color.FromArgb(242, 225, 199);
@@ -304,20 +293,11 @@ namespace AppComida
             entrada_minuto_entrega.Location = new Point(1129, 126);
             entrada_minuto_entrega.Name = "entrada_minuto_entrega";
             entrada_minuto_entrega.Size = new Size(44, 25);
-            entrada_minuto_entrega.TabIndex = 197;
+            entrada_minuto_entrega.TabIndex = 7;
             entrada_minuto_entrega.Text = "15";
             entrada_minuto_entrega.Enter += TodasLasEntradasNormales_Enter;
+            entrada_minuto_entrega.KeyPress += entrada_horario_KeyPress;
             entrada_minuto_entrega.Leave += TodasLasEntradasNormales_Leave;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.Black;
-            panel5.Enabled = false;
-            panel5.Location = new Point(1055, 155);
-            panel5.Margin = new Padding(3, 3, 3, 10);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(44, 2);
-            panel5.TabIndex = 195;
             // 
             // entrada_hora_entrega
             // 
@@ -328,9 +308,11 @@ namespace AppComida
             entrada_hora_entrega.Location = new Point(1055, 126);
             entrada_hora_entrega.Name = "entrada_hora_entrega";
             entrada_hora_entrega.Size = new Size(44, 25);
-            entrada_hora_entrega.TabIndex = 194;
+            entrada_hora_entrega.TabIndex = 6;
             entrada_hora_entrega.Text = "21";
+            entrada_hora_entrega.TextChanged += entrada_hora_entrega_TextChanged;
             entrada_hora_entrega.Enter += TodasLasEntradasNormales_Enter;
+            entrada_hora_entrega.KeyPress += entrada_horario_KeyPress;
             entrada_hora_entrega.Leave += TodasLasEntradasNormales_Leave;
             // 
             // etiqueta_hora_entrega
@@ -350,7 +332,7 @@ namespace AppComida
             etiqueta_pedido.AutoSize = true;
             etiqueta_pedido.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             etiqueta_pedido.ForeColor = Color.Black;
-            etiqueta_pedido.Location = new Point(160, 233);
+            etiqueta_pedido.Location = new Point(160, 223);
             etiqueta_pedido.Name = "etiqueta_pedido";
             etiqueta_pedido.Size = new Size(97, 27);
             etiqueta_pedido.TabIndex = 200;
@@ -361,10 +343,10 @@ namespace AppComida
             // 
             panel_pedidos.AutoScroll = true;
             panel_pedidos.BackColor = Color.FromArgb(222, 205, 179);
-            panel_pedidos.Location = new Point(165, 263);
+            panel_pedidos.Location = new Point(160, 253);
             panel_pedidos.Name = "panel_pedidos";
             panel_pedidos.Padding = new Padding(10);
-            panel_pedidos.Size = new Size(617, 417);
+            panel_pedidos.Size = new Size(622, 427);
             panel_pedidos.TabIndex = 201;
             // 
             // boton_buscar
@@ -381,7 +363,7 @@ namespace AppComida
             boton_buscar.Margin = new Padding(3, 3, 3, 30);
             boton_buscar.Name = "boton_buscar";
             boton_buscar.Size = new Size(261, 40);
-            boton_buscar.TabIndex = 209;
+            boton_buscar.TabIndex = 10;
             boton_buscar.Text = "Buscar";
             boton_buscar.UseVisualStyleBackColor = false;
             boton_buscar.Click += boton_buscar_Click;
@@ -393,9 +375,9 @@ namespace AppComida
             label7.ForeColor = Color.Black;
             label7.Location = new Point(788, 615);
             label7.Name = "label7";
-            label7.Size = new Size(159, 27);
+            label7.Size = new Size(307, 27);
             label7.TabIndex = 208;
-            label7.Text = "Buscar menu";
+            label7.Text = "Buscar menu para agregar";
             label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // entrada_busqueda
@@ -407,7 +389,7 @@ namespace AppComida
             entrada_busqueda.Location = new Point(788, 645);
             entrada_busqueda.Name = "entrada_busqueda";
             entrada_busqueda.Size = new Size(319, 25);
-            entrada_busqueda.TabIndex = 206;
+            entrada_busqueda.TabIndex = 9;
             entrada_busqueda.Text = "Lomo completo";
             entrada_busqueda.Enter += TodasLasEntradasNormales_Enter;
             entrada_busqueda.KeyDown += entrada_busqueda_KeyDown;
@@ -426,10 +408,85 @@ namespace AppComida
             // panel_contenedor_menus
             // 
             panel_contenedor_menus.AutoScroll = true;
-            panel_contenedor_menus.Location = new Point(165, 686);
+            panel_contenedor_menus.Location = new Point(160, 686);
             panel_contenedor_menus.Name = "panel_contenedor_menus";
-            panel_contenedor_menus.Size = new Size(1209, 407);
+            panel_contenedor_menus.Size = new Size(1214, 407);
             panel_contenedor_menus.TabIndex = 205;
+            // 
+            // entrada_comentarios
+            // 
+            entrada_comentarios.BackColor = Color.FromArgb(222, 205, 179);
+            entrada_comentarios.BorderStyle = BorderStyle.None;
+            entrada_comentarios.Location = new Point(792, 261);
+            entrada_comentarios.Name = "entrada_comentarios";
+            entrada_comentarios.Size = new Size(582, 182);
+            entrada_comentarios.TabIndex = 8;
+            entrada_comentarios.Text = "";
+            // 
+            // etiqueta_comentarios
+            // 
+            etiqueta_comentarios.AutoSize = true;
+            etiqueta_comentarios.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            etiqueta_comentarios.ForeColor = Color.Black;
+            etiqueta_comentarios.Location = new Point(788, 223);
+            etiqueta_comentarios.Name = "etiqueta_comentarios";
+            etiqueta_comentarios.Size = new Size(154, 27);
+            etiqueta_comentarios.TabIndex = 212;
+            etiqueta_comentarios.Text = "Comentarios";
+            etiqueta_comentarios.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.Black;
+            panel8.Enabled = false;
+            panel8.Location = new Point(792, 253);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(582, 2);
+            panel8.TabIndex = 214;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.Black;
+            panel6.Enabled = false;
+            panel6.Location = new Point(792, 449);
+            panel6.Margin = new Padding(3, 3, 3, 10);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(582, 2);
+            panel6.TabIndex = 215;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Black;
+            panel3.Enabled = false;
+            panel3.Location = new Point(1055, 155);
+            panel3.Margin = new Padding(3, 3, 3, 10);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(118, 2);
+            panel3.TabIndex = 216;
+            // 
+            // etiqueta_precio_final
+            // 
+            etiqueta_precio_final.AutoSize = true;
+            etiqueta_precio_final.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            etiqueta_precio_final.ForeColor = Color.Black;
+            etiqueta_precio_final.Location = new Point(788, 499);
+            etiqueta_precio_final.Name = "etiqueta_precio_final";
+            etiqueta_precio_final.Size = new Size(176, 27);
+            etiqueta_precio_final.TabIndex = 217;
+            etiqueta_precio_final.Text = "Precio final: $0";
+            etiqueta_precio_final.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // etiqueta_items
+            // 
+            etiqueta_items.AutoSize = true;
+            etiqueta_items.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            etiqueta_items.ForeColor = Color.Black;
+            etiqueta_items.Location = new Point(788, 461);
+            etiqueta_items.Name = "etiqueta_items";
+            etiqueta_items.Size = new Size(261, 27);
+            etiqueta_items.TabIndex = 218;
+            etiqueta_items.Text = "Productos añadidos: 0";
+            etiqueta_items.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // AgregarOrden
             // 
@@ -438,6 +495,14 @@ namespace AppComida
             AutoScroll = true;
             BackColor = Color.FromArgb(242, 225, 199);
             ClientSize = new Size(1521, 1061);
+            Controls.Add(etiqueta_items);
+            Controls.Add(etiqueta_precio_final);
+            Controls.Add(panel3);
+            Controls.Add(etiqueta_pedido);
+            Controls.Add(panel6);
+            Controls.Add(panel8);
+            Controls.Add(etiqueta_comentarios);
+            Controls.Add(entrada_comentarios);
             Controls.Add(boton_buscar);
             Controls.Add(label7);
             Controls.Add(titulo_agregar);
@@ -446,7 +511,6 @@ namespace AppComida
             Controls.Add(panel7);
             Controls.Add(entrada_minuto_pedido);
             Controls.Add(panel_contenedor_menus);
-            Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(entrada_nombre_cliente);
             Controls.Add(label2);
@@ -458,15 +522,12 @@ namespace AppComida
             Controls.Add(etiqueta_hora_pedida);
             Controls.Add(etiqueta_numero);
             Controls.Add(entrada_hora_entrega);
-            Controls.Add(etiqueta_pedido);
             Controls.Add(panel1);
             Controls.Add(entrada_numero);
-            Controls.Add(panel5);
             Controls.Add(label3);
             Controls.Add(entrada_direccion);
             Controls.Add(linea_numero);
             Controls.Add(entrada_minuto_entrega);
-            Controls.Add(panel4);
             Controls.Add(etiqueta_direccion);
             Font = new Font("Montserrat", 10F);
             ForeColor = Color.Black;
@@ -494,13 +555,10 @@ namespace AppComida
         private Panel panel2;
         private TextBox entrada_hora_pedida;
         private Label etiqueta_hora_pedida;
-        private Panel panel3;
         private TextBox entrada_minuto_pedido;
         private Label label2;
         private Label label3;
-        private Panel panel4;
         private TextBox entrada_minuto_entrega;
-        private Panel panel5;
         private TextBox entrada_hora_entrega;
         private Label etiqueta_hora_entrega;
         private Label etiqueta_pedido;
@@ -510,5 +568,12 @@ namespace AppComida
         private Label label7;
         private TextBox entrada_busqueda;
         private Panel panel7;
+        private RichTextBox entrada_comentarios;
+        private Label etiqueta_comentarios;
+        private Panel panel8;
+        private Panel panel6;
+        private Panel panel3;
+        private Label etiqueta_precio_final;
+        private Label etiqueta_items;
     }
 }

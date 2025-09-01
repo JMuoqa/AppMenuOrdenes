@@ -176,7 +176,7 @@ namespace ControlDeProyectos
             try
             {
                 // condicion ? true : false -> si !string.IsNullOrWhiteSpace(entrada_menu.Text) es true nombre sera igual a entrada_menu.Text
-                string nombre = (!string.IsNullOrWhiteSpace(entrada_menu.Text) || entrada_menu.Text != "Lomo completo") 
+                string nombre = (!string.IsNullOrWhiteSpace(entrada_menu.Text) && entrada_menu.ForeColor != colorPlaceHolder) 
                     ? entrada_menu.Text 
                     : throw new Exception("La entrada del \"nombre\" esta vacia");
                 string ingredientes = !string.IsNullOrWhiteSpace(entrada_ingredientes.Text) 
@@ -192,10 +192,10 @@ namespace ControlDeProyectos
                 else
                 {
                     AgregarTipos();
-                    entrada_tipo.SelectedItem = entrada_tipo.Items.Count;
+                    entrada_tipo.SelectedIndex = entrada_tipo.Items.Count - 1;
                     tipo = entrada_tipo.SelectedIndex;
                 }
-                string precio = (!string.IsNullOrWhiteSpace(entrada_precio.Text) || entrada_precio.Text != "$12000") 
+                string precio = (!string.IsNullOrWhiteSpace(entrada_precio.Text) && entrada_precio.ForeColor != colorPlaceHolder) 
                     ? entrada_precio.Text 
                     : throw new Exception("La entrada del \"precio\" esta vacia");
                 tipo += 1;

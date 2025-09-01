@@ -15,6 +15,8 @@
         public string NumeroCliente { get; set; }
         public string DireccionCliente { get; set; }
         public string PrecioTotal {  get; set; }
+        public string Comentarios { get; set; }
+        public int ProductosSeleccionados { get; set; }
         public DateTime HoraIngresoPedido { get; set; }
         public DateTime HoraEstimadaEntrega { get; set; }
         public string Estado { get; set; }

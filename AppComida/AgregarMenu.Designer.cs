@@ -139,7 +139,7 @@
             linea_menu.Location = new Point(113, 158);
             linea_menu.Margin = new Padding(3, 3, 3, 10);
             linea_menu.Name = "linea_menu";
-            linea_menu.Size = new Size(319, 1);
+            linea_menu.Size = new Size(319, 2);
             linea_menu.TabIndex = 17;
             // 
             // entrada_ingredientes
@@ -164,7 +164,7 @@
             linea_ingredientes_sup.Location = new Point(113, 208);
             linea_ingredientes_sup.Margin = new Padding(3, 3, 3, 10);
             linea_ingredientes_sup.Name = "linea_ingredientes_sup";
-            linea_ingredientes_sup.Size = new Size(319, 1);
+            linea_ingredientes_sup.Size = new Size(319, 2);
             linea_ingredientes_sup.TabIndex = 102;
             // 
             // linea_ingredientes_inf
@@ -175,7 +175,7 @@
             linea_ingredientes_inf.Location = new Point(113, 458);
             linea_ingredientes_inf.Margin = new Padding(3, 3, 3, 10);
             linea_ingredientes_inf.Name = "linea_ingredientes_inf";
-            linea_ingredientes_inf.Size = new Size(319, 1);
+            linea_ingredientes_inf.Size = new Size(319, 2);
             linea_ingredientes_inf.TabIndex = 103;
             // 
             // linea_tipo
@@ -186,7 +186,7 @@
             linea_tipo.Location = new Point(113, 538);
             linea_tipo.Margin = new Padding(3, 3, 3, 10);
             linea_tipo.Name = "linea_tipo";
-            linea_tipo.Size = new Size(319, 1);
+            linea_tipo.Size = new Size(319, 2);
             linea_tipo.TabIndex = 105;
             // 
             // entrada_tipo
@@ -211,7 +211,7 @@
             linea_precio.Location = new Point(503, 158);
             linea_precio.Margin = new Padding(3, 3, 3, 10);
             linea_precio.Name = "linea_precio";
-            linea_precio.Size = new Size(319, 1);
+            linea_precio.Size = new Size(319, 2);
             linea_precio.TabIndex = 114;
             // 
             // entrada_precio
@@ -224,7 +224,7 @@
             entrada_precio.Location = new Point(503, 129);
             entrada_precio.Name = "entrada_precio";
             entrada_precio.Size = new Size(319, 25);
-            entrada_precio.TabIndex = 15;
+            entrada_precio.TabIndex = 12;
             entrada_precio.Text = "$12000";
             entrada_precio.TextChanged += entrada_precio_TextChanged;
             entrada_precio.Enter += TodasLasEntradasNormales_Enter;
@@ -246,7 +246,7 @@
             boton_confirmar.Margin = new Padding(3, 3, 3, 30);
             boton_confirmar.Name = "boton_confirmar";
             boton_confirmar.Size = new Size(319, 40);
-            boton_confirmar.TabIndex = 177;
+            boton_confirmar.TabIndex = 15;
             boton_confirmar.Text = "Confirmar";
             boton_confirmar.UseVisualStyleBackColor = false;
             boton_confirmar.Click += boton_confirmar_Click;
@@ -266,7 +266,7 @@
             boton_agregar_tipo.Margin = new Padding(3, 3, 3, 30);
             boton_agregar_tipo.Name = "boton_agregar_tipo";
             boton_agregar_tipo.Size = new Size(319, 40);
-            boton_agregar_tipo.TabIndex = 178;
+            boton_agregar_tipo.TabIndex = 14;
             boton_agregar_tipo.Text = "Agregar nuevo tipo";
             boton_agregar_tipo.UseVisualStyleBackColor = false;
             boton_agregar_tipo.Click += boton_agregar_tipo_Click;
@@ -279,7 +279,7 @@
             linea_agregar_tipo.Location = new Point(113, 608);
             linea_agregar_tipo.Margin = new Padding(3, 3, 3, 10);
             linea_agregar_tipo.Name = "linea_agregar_tipo";
-            linea_agregar_tipo.Size = new Size(319, 1);
+            linea_agregar_tipo.Size = new Size(319, 2);
             linea_agregar_tipo.TabIndex = 180;
             // 
             // entrada_agregar_tipo
@@ -292,7 +292,7 @@
             entrada_agregar_tipo.Location = new Point(113, 579);
             entrada_agregar_tipo.Name = "entrada_agregar_tipo";
             entrada_agregar_tipo.Size = new Size(319, 25);
-            entrada_agregar_tipo.TabIndex = 179;
+            entrada_agregar_tipo.TabIndex = 13;
             entrada_agregar_tipo.Text = "Empanada/Lomopizza";
             entrada_agregar_tipo.Enter += TodasLasEntradasNormales_Enter;
             entrada_agregar_tipo.Leave += TodasLasEntradasNormales_Leave;
@@ -325,7 +325,7 @@
             boton_cancelar_tipo.Margin = new Padding(3, 3, 3, 30);
             boton_cancelar_tipo.Name = "boton_cancelar_tipo";
             boton_cancelar_tipo.Size = new Size(116, 40);
-            boton_cancelar_tipo.TabIndex = 182;
+            boton_cancelar_tipo.TabIndex = 16;
             boton_cancelar_tipo.Text = "Cancelar";
             boton_cancelar_tipo.UseVisualStyleBackColor = false;
             boton_cancelar_tipo.Click += boton_cancelar_tipo_Click;
