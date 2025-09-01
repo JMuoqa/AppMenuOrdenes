@@ -113,6 +113,7 @@
             entrada_busqueda.Text = "#7/Lomo completo";
             entrada_busqueda.TextChanged += entrada_busuqeda_TextChanged;
             entrada_busqueda.Enter += TodasLasEntradasNormales_Enter;
+            entrada_busqueda.KeyDown += entrada_busqueda_KeyDown;
             entrada_busqueda.Leave += TodasLasEntradasNormales_Leave;
             // 
             // resultados_busqueda

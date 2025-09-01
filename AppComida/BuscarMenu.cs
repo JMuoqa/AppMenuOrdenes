@@ -83,6 +83,16 @@ namespace ControlDeProyectos
             else
                 BusquedaPorNombre();
         }
+        private void entrada_busqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) 
+            {
+                if (entrada_busqueda.Text.StartsWith("#"))
+                    BusquedaPorID();
+                else
+                    BusquedaPorNombre();
+            }
+        }
         #endregion
         #region Funciones principales
         private void BusquedaPorID()
@@ -149,10 +159,10 @@ namespace ControlDeProyectos
                 int x = 54 + sumarX;
                 int y = 67;
                 int tipoID = int.Parse(datos.Rows[i]["TipoID"].ToString());
-                string tipo = dt.Rows[tipoID-1]["Tipo"].ToString();
+                string tipo = dt.Rows[tipoID - 1]["Tipo"].ToString();
                 LabelPer titulo_id = new LabelPer();
                 titulo_id.Size = new Size(34, 26);
-                titulo_id.Text = "#"+datos.Rows[i]["ID"].ToString();
+                titulo_id.Text = "#" + datos.Rows[i]["ID"].ToString();
                 LabelPer titulo_nombre = new LabelPer();
                 titulo_nombre.Text = datos.Rows[i]["Nombre"].ToString();
                 titulo_nombre.AutoEllipsis = false;
@@ -185,5 +195,6 @@ namespace ControlDeProyectos
             }
         }
         #endregion
+
     }
 }

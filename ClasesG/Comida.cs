@@ -15,8 +15,9 @@
         public string NumeroCliente { get; set; }
         public string DireccionCliente { get; set; }
         public string PrecioTotal {  get; set; }
-        public string HoraIngresoPedido { get; set; }
-        public string HoraEstimadaEntrega { get; set; }
+        public DateTime HoraIngresoPedido { get; set; }
+        public DateTime HoraEstimadaEntrega { get; set; }
+        public string Estado { get; set; }
     }
     public class DetallesDeLosPedidos
     {
@@ -26,5 +27,6 @@
         public string NombreMenu { get; set; }
         public int Cantidad { get; set; }
         public string Precio { get; set; }
+        public string Activo { get; set; }
     }
 }

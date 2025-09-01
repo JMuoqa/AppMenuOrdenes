@@ -41,6 +41,8 @@
             boton_estadisticas = new Button();
             div_botones2 = new Panel();
             panelSubMenuOrdenes = new Panel();
+            pictureBox10 = new PictureBox();
+            button1 = new Button();
             pictureBox6 = new PictureBox();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
@@ -62,14 +64,13 @@
             titulo_principal = new Label();
             div_botones0 = new Panel();
             panelHijo = new Panel();
-            button1 = new Button();
-            pictureBox10 = new PictureBox();
             menu_lateral.SuspendLayout();
             panelSubMenuEstadisticas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             panelSubMenuOrdenes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -79,7 +80,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelSubMenuLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo_principal).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             SuspendLayout();
             // 
             // menu_lateral
@@ -259,6 +259,35 @@
             panelSubMenuOrdenes.Size = new Size(250, 164);
             panelSubMenuOrdenes.TabIndex = 6;
             // 
+            // pictureBox10
+            // 
+            pictureBox10.BackColor = Color.Transparent;
+            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
+            pictureBox10.Location = new Point(3, 126);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(26, 26);
+            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox10.TabIndex = 14;
+            pictureBox10.TabStop = false;
+            // 
+            // button1
+            // 
+            button1.Cursor = Cursors.Hand;
+            button1.Dock = DockStyle.Top;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 195, 169);
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(232, 215, 189);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(0, 120);
+            button1.Name = "button1";
+            button1.Padding = new Padding(35, 0, 0, 0);
+            button1.Size = new Size(250, 40);
+            button1.TabIndex = 13;
+            button1.Text = "Buscar orden";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = true;
+            // 
             // pictureBox6
             // 
             pictureBox6.BackColor = Color.Transparent;
@@ -342,7 +371,7 @@
             boton_lista.Padding = new Padding(35, 0, 0, 0);
             boton_lista.Size = new Size(250, 40);
             boton_lista.TabIndex = 5;
-            boton_lista.Text = "Agendar orden";
+            boton_lista.Text = "Agendar orden ";
             boton_lista.TextAlign = ContentAlignment.MiddleLeft;
             boton_lista.UseVisualStyleBackColor = true;
             boton_lista.Click += boton_lista_Click;
@@ -554,35 +583,6 @@
             panelHijo.Size = new Size(933, 742);
             panelHijo.TabIndex = 1;
             // 
-            // button1
-            // 
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Top;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 195, 169);
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(232, 215, 189);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(0, 120);
-            button1.Name = "button1";
-            button1.Padding = new Padding(35, 0, 0, 0);
-            button1.Size = new Size(250, 40);
-            button1.TabIndex = 13;
-            button1.Text = "Buscar orden";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox10
-            // 
-            pictureBox10.BackColor = Color.Transparent;
-            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(3, 126);
-            pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(26, 26);
-            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox10.TabIndex = 14;
-            pictureBox10.TabStop = false;
-            // 
             // VistaInicio
             // 
             AutoScaleDimensions = new SizeF(8F, 18F);
@@ -602,6 +602,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             panelSubMenuOrdenes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
@@ -612,7 +613,6 @@
             panelSubMenuLogo.ResumeLayout(false);
             panelSubMenuLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)logo_principal).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ResumeLayout(false);
         }
 

@@ -67,11 +67,11 @@ namespace AppComida
             titulo_agregar.AutoSize = true;
             titulo_agregar.Font = new Font("Montserrat SemiBold", 25.25F, FontStyle.Bold);
             titulo_agregar.ForeColor = Color.Black;
-            titulo_agregar.Location = new Point(635, 9);
+            titulo_agregar.Location = new Point(496, 9);
             titulo_agregar.Name = "titulo_agregar";
-            titulo_agregar.Size = new Size(282, 47);
+            titulo_agregar.Size = new Size(539, 47);
             titulo_agregar.TabIndex = 160;
-            titulo_agregar.Text = "Agendar orden";
+            titulo_agregar.Text = "Agendar orden manualmente";
             titulo_agregar.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // boton_confirmar
@@ -91,6 +91,7 @@ namespace AppComida
             boton_confirmar.TabIndex = 181;
             boton_confirmar.Text = "Agendar orden";
             boton_confirmar.UseVisualStyleBackColor = false;
+            boton_confirmar.Click += boton_confirmar_Click;
             // 
             // linea_nombre_cliente
             // 
@@ -195,9 +196,9 @@ namespace AppComida
             etiqueta_direccion.ForeColor = Color.Black;
             etiqueta_direccion.Location = new Point(160, 173);
             etiqueta_direccion.Name = "etiqueta_direccion";
-            etiqueta_direccion.Size = new Size(125, 27);
+            etiqueta_direccion.Size = new Size(126, 27);
             etiqueta_direccion.TabIndex = 187;
-            etiqueta_direccion.Text = "Dirección:";
+            etiqueta_direccion.Text = "Domicilio:";
             etiqueta_direccion.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // panel2
@@ -409,6 +410,7 @@ namespace AppComida
             entrada_busqueda.TabIndex = 206;
             entrada_busqueda.Text = "Lomo completo";
             entrada_busqueda.Enter += TodasLasEntradasNormales_Enter;
+            entrada_busqueda.KeyDown += entrada_busqueda_KeyDown;
             entrada_busqueda.Leave += TodasLasEntradasNormales_Leave;
             // 
             // panel7
@@ -435,7 +437,7 @@ namespace AppComida
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.FromArgb(242, 225, 199);
-            ClientSize = new Size(1521, 1100);
+            ClientSize = new Size(1521, 1061);
             Controls.Add(boton_buscar);
             Controls.Add(label7);
             Controls.Add(titulo_agregar);

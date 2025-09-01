@@ -1,14 +1,17 @@
 ﻿using AppComida.ElementosPersonalizados;
+using ClasesG;
 using Dominio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AppComida
 {
@@ -66,7 +69,91 @@ namespace AppComida
         {
             BusquedaPorNombre();
         }
-        private void boton_pedidos_agregar_Click(object sender, EventArgs e) 
+        private void boton_confirmar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (panel_pedidos.Controls.Count == 0)
+                    throw new Exception("No se agregó ningún menú a esta orden.");
+                string nombreCliente = (!string.IsNullOrWhiteSpace(entrada_nombre_cliente.Text) || (entrada_nombre_cliente.Text != "Jesus" && entrada_nombre_cliente.ForeColor != colorPlaceHolder))
+                    ? entrada_nombre_cliente.Text
+                    : throw new Exception("No se agregó ningún nombre del cliente a esta orden");
+                string numeroTelefono = (!string.IsNullOrWhiteSpace(entrada_numero.Text) || (entrada_numero.Text != "3518182222" && entrada_numero.ForeColor != colorPlaceHolder))
+                    ? entrada_numero.Text
+                    : throw new Exception("No se agregó ningún numero de telefono a esta orden");
+                string docmicilio = (!string.IsNullOrWhiteSpace(entrada_direccion.Text) || (entrada_direccion.Text != "Local/Lagunilla 1111" && entrada_direccion.ForeColor != colorPlaceHolder))
+                    ? entrada_direccion.Text
+                    : throw new Exception("No se agregó ningún domicilio a esta orden");
+                string horaIngreso = (!string.IsNullOrWhiteSpace(entrada_hora_pedida.Text) || (entrada_hora_pedida.Text != "20" && entrada_hora_pedida.ForeColor != colorPlaceHolder))
+                    ? entrada_hora_pedida.Text
+                    : throw new Exception("No se agregó ningún horario de ingreso a esta orden");
+                string minutoIngreso = (!string.IsNullOrWhiteSpace(entrada_minuto_pedido.Text) || (entrada_minuto_pedido.Text != "30" && entrada_minuto_pedido.ForeColor != colorPlaceHolder))
+                    ? entrada_minuto_pedido.Text
+                    : throw new Exception("No se agregó ningún horario de ingreso a esta orden");
+                string horaEntrega = (!string.IsNullOrWhiteSpace(entrada_hora_entrega.Text) || (entrada_hora_entrega.Text != "20" && entrada_hora_entrega.ForeColor != colorPlaceHolder))
+                    ? entrada_hora_entrega.Text
+                    : throw new Exception("No se agregó ningún horario de entrega estimada a esta orden");
+                string minutoEntrega = (!string.IsNullOrWhiteSpace(entrada_minuto_entrega.Text) || (entrada_minuto_entrega.Text != "30" && entrada_minuto_entrega.ForeColor != colorPlaceHolder))
+                    ? entrada_minuto_entrega.Text
+                    : throw new Exception("No se agregó ningún horario de entrega estimada a esta orden");
+                horaIngreso = horaIngreso.Length == 1
+                    ? horaIngreso = "0" + horaIngreso
+                    : horaIngreso;
+                minutoIngreso = minutoIngreso.Length == 1
+                    ? minutoIngreso = "0" + minutoIngreso
+                    : minutoIngreso;
+                horaEntrega = horaEntrega.Length == 1
+                    ? horaEntrega = "0" + horaEntrega
+                    : horaEntrega;
+                minutoEntrega = minutoEntrega.Length == 1
+                    ? minutoEntrega = "0" + minutoEntrega
+                    : minutoEntrega;
+                string horarioDeIngreso = horaIngreso + ":" + minutoIngreso;
+                string horarioDeEntrega = horaEntrega + ":" + minutoEntrega;
+
+                Orden orden = new Orden
+                {
+                    NombreCliente = nombreCliente,
+                    NumeroCliente = numeroTelefono,
+                    DireccionCliente = docmicilio,
+                    HoraIngresoPedido = DateTime.ParseExact(horarioDeIngreso, "HH:mm", CultureInfo.InvariantCulture),
+                    HoraEstimadaEntrega = DateTime.ParseExact(horarioDeEntrega, "HH:mm", CultureInfo.InvariantCulture),
+                    Estado = "Confirmado"
+                };
+                List<DetallesDeLosPedidos> detallesDeLosPedidos = new List<DetallesDeLosPedidos>();
+                for (int i = 0; i < panel_pedidos.Controls.Count; i++)
+                {
+                    Panel panel = panel_pedidos.Controls[i] as Panel;
+                    string id = panel.Name.Replace("contenedor_", "");
+                    LabelPerPedidos eti_id = panel.Controls[$"FLOWLAYOUT_{id}"].Controls[$"LPID_{id}"] as LabelPerPedidos;
+                    LabelPerPedidos eti_nombre = panel.Controls[$"FLOWLAYOUT_{id}"].Controls[$"LPNombre_{id}"] as LabelPerPedidos;
+                    LabelPerPedidos eti_cantidad = panel.Controls[$"FLOWLAYOUT_{id}"].Controls[$"LPCantidad_{id}"] as LabelPerPedidos;
+                    LabelPerPedidos eti_precioTotal = panel.Controls[$"FLOWLAYOUT_{id}"].Controls[$"LPPrecioTotal_{id}"] as LabelPerPedidos;
+                    int idMenu = int.Parse(eti_id.Text.Replace("#", ""));
+                    string nombre = eti_nombre.Text;
+                    int cantidad = int.Parse(eti_cantidad.Text.Replace("Cantidad: ", ""));
+                    string precioTotal = eti_precioTotal.Text.Replace("Precio total: ", "");
+                    DetallesDeLosPedidos detalles = new DetallesDeLosPedidos
+                    {
+                        IDMenu = idMenu,
+                        NombreMenu = nombre,
+                        Cantidad = cantidad,
+                        Precio = precioTotal
+                    };
+                    detallesDeLosPedidos.Add(detalles);
+                }
+                D_ConOrdenes conOrdenes = new D_ConOrdenes();
+                var res = conOrdenes.InsertarOrden(detallesDeLosPedidos, orden);
+                if (!res.estado)
+                    throw new Exception(res.mensaje);
+                MessageBox.Show(res.mensaje);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void boton_pedidos_agregar_Click(object sender, EventArgs e)
         {
             Button boton = sender as Button;
             string id = boton.Name.Replace("BTNA_", "");
@@ -120,7 +207,7 @@ namespace AppComida
                 Label etiqueta_nombre = panel.Controls[$"TN{id}"] as Label;
                 Label etiqueta_precio = panel.Controls[$"TP{id}"] as Label;
                 string nombre = etiqueta_nombre.Text;
-                string precioUnidad = etiqueta_precio.Text;
+                string precioUnidad = etiqueta_precio.Text.Replace("Precio: $", "");
                 //Aca le mando los argumentos para que se les asignen un name diferente
                 LabelPerPedidos etiqueta_nueva_nombre = new LabelPerPedidos(id, "LPNombre");
                 LabelPerPedidos etiqueta_nueva_precio = new LabelPerPedidos(id, "LPPrecioUni");
@@ -130,9 +217,9 @@ namespace AppComida
 
                 etiqueta_nueva_id.Text = "#" + id;
                 etiqueta_nueva_nombre.Text = nombre;
-                etiqueta_nueva_precio.Text = $"Precio de unidad: ${precioUnidad.Replace("Precio: $", "")}";
+                etiqueta_nueva_precio.Text = $"Precio de unidad: ${precioUnidad}";
                 etiqueta_cantidad.Text = "Cantidad: 1";
-                etiqueta_nueva_precioTotal.Text = $"Precio total: ${precioUnidad.Replace("Precio: $", "")}";
+                etiqueta_nueva_precioTotal.Text = $"Precio total: ${precioUnidad}";
                 Button btn_agregar = new Button();
                 btn_agregar.BackColor = Color.Green;
                 btn_agregar.Cursor = Cursors.Hand;
@@ -300,5 +387,12 @@ namespace AppComida
         }
         #endregion
 
+        private void entrada_busqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BusquedaPorNombre();
+            }
+        }
     }
 }
