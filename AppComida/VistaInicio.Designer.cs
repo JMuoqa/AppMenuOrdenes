@@ -40,11 +40,11 @@
             button4 = new Button();
             boton_estadisticas = new Button();
             div_botones2 = new Panel();
-            panelSubMenuBusquedas = new Panel();
+            panelSubMenuOrdenes = new Panel();
             pictureBox6 = new PictureBox();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
-            boton_id = new Button();
+            boton_ver_ordenes = new Button();
             boton_tarjetas = new Button();
             boton_lista = new Button();
             boton_busqueda = new Button();
@@ -62,12 +62,14 @@
             titulo_principal = new Label();
             div_botones0 = new Panel();
             panelHijo = new Panel();
+            button1 = new Button();
+            pictureBox10 = new PictureBox();
             menu_lateral.SuspendLayout();
             panelSubMenuEstadisticas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            panelSubMenuBusquedas.SuspendLayout();
+            panelSubMenuOrdenes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -77,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelSubMenuLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo_principal).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             SuspendLayout();
             // 
             // menu_lateral
@@ -87,7 +90,7 @@
             menu_lateral.Controls.Add(panelSubMenuEstadisticas);
             menu_lateral.Controls.Add(boton_estadisticas);
             menu_lateral.Controls.Add(div_botones2);
-            menu_lateral.Controls.Add(panelSubMenuBusquedas);
+            menu_lateral.Controls.Add(panelSubMenuOrdenes);
             menu_lateral.Controls.Add(boton_busqueda);
             menu_lateral.Controls.Add(div_botones1);
             menu_lateral.Controls.Add(panelSubMenuAdministrar);
@@ -103,7 +106,7 @@
             // 
             div_botones3.BackColor = Color.Black;
             div_botones3.Dock = DockStyle.Top;
-            div_botones3.Location = new Point(0, 617);
+            div_botones3.Location = new Point(0, 658);
             div_botones3.Name = "div_botones3";
             div_botones3.Size = new Size(250, 1);
             div_botones3.TabIndex = 10;
@@ -118,7 +121,7 @@
             panelSubMenuEstadisticas.Controls.Add(button3);
             panelSubMenuEstadisticas.Controls.Add(button4);
             panelSubMenuEstadisticas.Dock = DockStyle.Top;
-            panelSubMenuEstadisticas.Location = new Point(0, 494);
+            panelSubMenuEstadisticas.Location = new Point(0, 535);
             panelSubMenuEstadisticas.Name = "panelSubMenuEstadisticas";
             panelSubMenuEstadisticas.Size = new Size(250, 123);
             panelSubMenuEstadisticas.TabIndex = 9;
@@ -220,7 +223,7 @@
             boton_estadisticas.FlatAppearance.MouseOverBackColor = Color.FromArgb(232, 215, 189);
             boton_estadisticas.FlatStyle = FlatStyle.Flat;
             boton_estadisticas.ForeColor = Color.Black;
-            boton_estadisticas.Location = new Point(0, 449);
+            boton_estadisticas.Location = new Point(0, 490);
             boton_estadisticas.Name = "boton_estadisticas";
             boton_estadisticas.Padding = new Padding(10, 0, 0, 0);
             boton_estadisticas.Size = new Size(250, 45);
@@ -234,25 +237,27 @@
             // 
             div_botones2.BackColor = Color.Black;
             div_botones2.Dock = DockStyle.Top;
-            div_botones2.Location = new Point(0, 448);
+            div_botones2.Location = new Point(0, 489);
             div_botones2.Name = "div_botones2";
             div_botones2.Size = new Size(250, 1);
             div_botones2.TabIndex = 7;
             // 
-            // panelSubMenuBusquedas
+            // panelSubMenuOrdenes
             // 
-            panelSubMenuBusquedas.BackColor = Color.FromArgb(242, 225, 199);
-            panelSubMenuBusquedas.Controls.Add(pictureBox6);
-            panelSubMenuBusquedas.Controls.Add(pictureBox5);
-            panelSubMenuBusquedas.Controls.Add(pictureBox4);
-            panelSubMenuBusquedas.Controls.Add(boton_id);
-            panelSubMenuBusquedas.Controls.Add(boton_tarjetas);
-            panelSubMenuBusquedas.Controls.Add(boton_lista);
-            panelSubMenuBusquedas.Dock = DockStyle.Top;
-            panelSubMenuBusquedas.Location = new Point(0, 325);
-            panelSubMenuBusquedas.Name = "panelSubMenuBusquedas";
-            panelSubMenuBusquedas.Size = new Size(250, 123);
-            panelSubMenuBusquedas.TabIndex = 6;
+            panelSubMenuOrdenes.BackColor = Color.FromArgb(242, 225, 199);
+            panelSubMenuOrdenes.Controls.Add(pictureBox10);
+            panelSubMenuOrdenes.Controls.Add(button1);
+            panelSubMenuOrdenes.Controls.Add(pictureBox6);
+            panelSubMenuOrdenes.Controls.Add(pictureBox5);
+            panelSubMenuOrdenes.Controls.Add(pictureBox4);
+            panelSubMenuOrdenes.Controls.Add(boton_ver_ordenes);
+            panelSubMenuOrdenes.Controls.Add(boton_tarjetas);
+            panelSubMenuOrdenes.Controls.Add(boton_lista);
+            panelSubMenuOrdenes.Dock = DockStyle.Top;
+            panelSubMenuOrdenes.Location = new Point(0, 325);
+            panelSubMenuOrdenes.Name = "panelSubMenuOrdenes";
+            panelSubMenuOrdenes.Size = new Size(250, 164);
+            panelSubMenuOrdenes.TabIndex = 6;
             // 
             // pictureBox6
             // 
@@ -287,23 +292,23 @@
             pictureBox4.TabIndex = 10;
             pictureBox4.TabStop = false;
             // 
-            // boton_id
+            // boton_ver_ordenes
             // 
-            boton_id.Cursor = Cursors.Hand;
-            boton_id.Dock = DockStyle.Top;
-            boton_id.FlatAppearance.BorderSize = 0;
-            boton_id.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 195, 169);
-            boton_id.FlatAppearance.MouseOverBackColor = Color.FromArgb(232, 215, 189);
-            boton_id.FlatStyle = FlatStyle.Flat;
-            boton_id.ForeColor = Color.Black;
-            boton_id.Location = new Point(0, 80);
-            boton_id.Name = "boton_id";
-            boton_id.Padding = new Padding(35, 0, 0, 0);
-            boton_id.Size = new Size(250, 40);
-            boton_id.TabIndex = 7;
-            boton_id.Text = "Buscar orden";
-            boton_id.TextAlign = ContentAlignment.MiddleLeft;
-            boton_id.UseVisualStyleBackColor = true;
+            boton_ver_ordenes.Cursor = Cursors.Hand;
+            boton_ver_ordenes.Dock = DockStyle.Top;
+            boton_ver_ordenes.FlatAppearance.BorderSize = 0;
+            boton_ver_ordenes.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 195, 169);
+            boton_ver_ordenes.FlatAppearance.MouseOverBackColor = Color.FromArgb(232, 215, 189);
+            boton_ver_ordenes.FlatStyle = FlatStyle.Flat;
+            boton_ver_ordenes.ForeColor = Color.Black;
+            boton_ver_ordenes.Location = new Point(0, 80);
+            boton_ver_ordenes.Name = "boton_ver_ordenes";
+            boton_ver_ordenes.Padding = new Padding(35, 0, 0, 0);
+            boton_ver_ordenes.Size = new Size(250, 40);
+            boton_ver_ordenes.TabIndex = 7;
+            boton_ver_ordenes.Text = "Ver ordenes";
+            boton_ver_ordenes.TextAlign = ContentAlignment.MiddleLeft;
+            boton_ver_ordenes.UseVisualStyleBackColor = true;
             // 
             // boton_tarjetas
             // 
@@ -549,6 +554,35 @@
             panelHijo.Size = new Size(933, 742);
             panelHijo.TabIndex = 1;
             // 
+            // button1
+            // 
+            button1.Cursor = Cursors.Hand;
+            button1.Dock = DockStyle.Top;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 195, 169);
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(232, 215, 189);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(0, 120);
+            button1.Name = "button1";
+            button1.Padding = new Padding(35, 0, 0, 0);
+            button1.Size = new Size(250, 40);
+            button1.TabIndex = 13;
+            button1.Text = "Buscar orden";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.BackColor = Color.Transparent;
+            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
+            pictureBox10.Location = new Point(3, 126);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(26, 26);
+            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox10.TabIndex = 14;
+            pictureBox10.TabStop = false;
+            // 
             // VistaInicio
             // 
             AutoScaleDimensions = new SizeF(8F, 18F);
@@ -567,7 +601,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            panelSubMenuBusquedas.ResumeLayout(false);
+            panelSubMenuOrdenes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
@@ -578,6 +612,7 @@
             panelSubMenuLogo.ResumeLayout(false);
             panelSubMenuLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)logo_principal).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ResumeLayout(false);
         }
 
@@ -597,8 +632,8 @@
         private Label titulo_principal;
         private Button boton_busqueda;
         private Panel div_botones2;
-        private Panel panelSubMenuBusquedas;
-        private Button boton_id;
+        private Panel panelSubMenuOrdenes;
+        private Button boton_ver_ordenes;
         private Button boton_tarjetas;
         private Button boton_lista;
         private Panel panelSubMenuEstadisticas;
@@ -616,5 +651,7 @@
         private PictureBox pictureBox9;
         private PictureBox pictureBox8;
         private PictureBox pictureBox7;
+        private Button button1;
+        private PictureBox pictureBox10;
     }
 }

@@ -21,7 +21,7 @@ namespace ControlDeProyectos
         private void OcultarSubMenus()
         {
             panelSubMenuAdministrar.Visible = false;
-            panelSubMenuBusquedas.Visible = false;
+            panelSubMenuOrdenes.Visible = false;
             panelSubMenuEstadisticas.Visible = false;
         }
 
@@ -29,8 +29,8 @@ namespace ControlDeProyectos
         {
             if (panelSubMenuAdministrar.Visible == true)
                 panelSubMenuAdministrar.Visible = false;
-            if (panelSubMenuBusquedas.Visible == true)
-                panelSubMenuBusquedas.Visible = false;
+            if (panelSubMenuOrdenes.Visible == true)
+                panelSubMenuOrdenes.Visible = false;
             if (panelSubMenuEstadisticas.Visible == true)
                 panelSubMenuEstadisticas.Visible = false;
         }
@@ -55,7 +55,7 @@ namespace ControlDeProyectos
         }
         private void boton_busqueda_Click(object sender, EventArgs e)
         {
-            AbrirSubMenu(panelSubMenuBusquedas);
+            AbrirSubMenu(panelSubMenuOrdenes);
         }
         private void boton_estadisticas_Click(object sender, EventArgs e)
         {

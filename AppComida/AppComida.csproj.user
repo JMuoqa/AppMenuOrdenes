@@ -17,6 +17,9 @@
     <Compile Update="ElementosPersonalizados\LabelPer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="ElementosPersonalizados\LabelPerPedidos.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="ElementosPersonalizados\PanelPer.cs">
       <SubType>Component</SubType>
     </Compile>
