@@ -114,8 +114,6 @@ namespace ControlDeProyectos
             }
             catch (Exception ex)
             {
-                entrada_busqueda.Text = "#7/Lomo completo";
-                entrada_busqueda.ForeColor = colorPlaceHolder;
                 resultados_busqueda.DataSource = null;
                 MessageBox.Show(ex.Message);
             }
@@ -138,8 +136,6 @@ namespace ControlDeProyectos
             }
             catch (Exception ex)
             {
-                entrada_busqueda.Text = "#7/Lomo completo";
-                entrada_busqueda.ForeColor = colorPlaceHolder;
                 resultados_busqueda.DataSource = null;
                 MessageBox.Show(ex.Message);
             }

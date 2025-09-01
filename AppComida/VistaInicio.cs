@@ -96,6 +96,12 @@ namespace ControlDeProyectos
             CambiarFormulario(agregarordenr);
             ActualizarSubMenus();
         }
+        private void boton_tarjetas_Click(object sender, EventArgs e)
+        {
+            EditarOrden editarOrden = new EditarOrden();
+            CambiarFormulario(editarOrden);
+            ActualizarSubMenus();
+        }
         #endregion
         #region Funciones principales
         private Form formularioActivo = null;

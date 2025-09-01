@@ -356,6 +356,7 @@
             boton_tarjetas.Text = "Editar orden";
             boton_tarjetas.TextAlign = ContentAlignment.MiddleLeft;
             boton_tarjetas.UseVisualStyleBackColor = true;
+            boton_tarjetas.Click += boton_tarjetas_Click;
             // 
             // boton_lista
             // 
@@ -596,6 +597,7 @@
             Name = "VistaInicio";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Muoqa";
+            WindowState = FormWindowState.Maximized;
             menu_lateral.ResumeLayout(false);
             panelSubMenuEstadisticas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();

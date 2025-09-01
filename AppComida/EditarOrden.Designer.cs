@@ -41,9 +41,9 @@
             panel8 = new Panel();
             etiqueta_comentarios = new Label();
             entrada_comentarios = new RichTextBox();
-            button1 = new Button();
+            boton_busqueda_menu = new Button();
             label7 = new Label();
-            entrada_busqueda = new TextBox();
+            entrada_busqueda_menu = new TextBox();
             etiqueta_cliente = new Label();
             panel7 = new Panel();
             entrada_minuto_pedido = new TextBox();
@@ -66,15 +66,15 @@
             linea_numero = new Panel();
             entrada_minuto_entrega = new TextBox();
             etiqueta_direccion = new Label();
-            dataGridView1 = new DataGridView();
+            resultados_busqueda = new DataGridView();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             label8 = new Label();
-            label9 = new Label();
+            etiqueta_IDOrden = new Label();
             label10 = new Label();
             label11 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)resultados_busqueda).BeginInit();
             SuspendLayout();
             // 
             // boton_buscar
@@ -94,6 +94,7 @@
             boton_buscar.TabIndex = 186;
             boton_buscar.Text = "Buscar";
             boton_buscar.UseVisualStyleBackColor = false;
+            boton_buscar.Click += boton_buscar_Click;
             // 
             // label1
             // 
@@ -113,7 +114,7 @@
             titulo_editar.AutoSize = true;
             titulo_editar.Font = new Font("Montserrat SemiBold", 25.25F, FontStyle.Bold);
             titulo_editar.ForeColor = Color.Black;
-            titulo_editar.Location = new Point(598, 9);
+            titulo_editar.Location = new Point(575, 9);
             titulo_editar.Name = "titulo_editar";
             titulo_editar.Size = new Size(236, 47);
             titulo_editar.TabIndex = 187;
@@ -130,7 +131,11 @@
             entrada_busqueda_ordenes.Name = "entrada_busqueda_ordenes";
             entrada_busqueda_ordenes.Size = new Size(319, 25);
             entrada_busqueda_ordenes.TabIndex = 188;
-            entrada_busqueda_ordenes.Text = "#7/Pizza/-3517787224";
+            entrada_busqueda_ordenes.Text = "#7/Julian/-3517787224";
+            entrada_busqueda_ordenes.TextChanged += entrada_busqueda_ordenes_TextChanged;
+            entrada_busqueda_ordenes.Enter += TodasLasEntradasNormales_Enter;
+            entrada_busqueda_ordenes.KeyDown += entrada_busqueda_ordenes_KeyDown;
+            entrada_busqueda_ordenes.Leave += TodasLasEntradasNormales_Leave;
             // 
             // panel1
             // 
@@ -230,23 +235,24 @@
             entrada_comentarios.TabIndex = 226;
             entrada_comentarios.Text = "";
             // 
-            // button1
+            // boton_busqueda_menu
             // 
-            button1.BackColor = Color.FromArgb(150, 100, 50);
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.FromArgb(242, 225, 199);
-            button1.Location = new Point(1119, 1220);
-            button1.Margin = new Padding(3, 3, 3, 30);
-            button1.Name = "button1";
-            button1.Size = new Size(261, 40);
-            button1.TabIndex = 228;
-            button1.Text = "Buscar";
-            button1.UseVisualStyleBackColor = false;
+            boton_busqueda_menu.BackColor = Color.FromArgb(150, 100, 50);
+            boton_busqueda_menu.Cursor = Cursors.Hand;
+            boton_busqueda_menu.FlatAppearance.BorderSize = 0;
+            boton_busqueda_menu.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
+            boton_busqueda_menu.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
+            boton_busqueda_menu.FlatStyle = FlatStyle.Flat;
+            boton_busqueda_menu.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            boton_busqueda_menu.ForeColor = Color.FromArgb(242, 225, 199);
+            boton_busqueda_menu.Location = new Point(1119, 1220);
+            boton_busqueda_menu.Margin = new Padding(3, 3, 3, 30);
+            boton_busqueda_menu.Name = "boton_busqueda_menu";
+            boton_busqueda_menu.Size = new Size(261, 40);
+            boton_busqueda_menu.TabIndex = 228;
+            boton_busqueda_menu.Text = "Buscar";
+            boton_busqueda_menu.UseVisualStyleBackColor = false;
+            boton_busqueda_menu.Click += boton_busqueda_menu_Click;
             // 
             // label7
             // 
@@ -260,17 +266,19 @@
             label7.Text = "Buscar menu para agregar";
             label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // entrada_busqueda
+            // entrada_busqueda_menu
             // 
-            entrada_busqueda.BackColor = Color.FromArgb(242, 225, 199);
-            entrada_busqueda.BorderStyle = BorderStyle.None;
-            entrada_busqueda.Font = new Font("Montserrat", 15F);
-            entrada_busqueda.ForeColor = Color.FromArgb(144, 144, 144);
-            entrada_busqueda.Location = new Point(794, 1226);
-            entrada_busqueda.Name = "entrada_busqueda";
-            entrada_busqueda.Size = new Size(319, 25);
-            entrada_busqueda.TabIndex = 227;
-            entrada_busqueda.Text = "Lomo completo";
+            entrada_busqueda_menu.BackColor = Color.FromArgb(242, 225, 199);
+            entrada_busqueda_menu.BorderStyle = BorderStyle.None;
+            entrada_busqueda_menu.Font = new Font("Montserrat", 15F);
+            entrada_busqueda_menu.ForeColor = Color.FromArgb(144, 144, 144);
+            entrada_busqueda_menu.Location = new Point(794, 1226);
+            entrada_busqueda_menu.Name = "entrada_busqueda_menu";
+            entrada_busqueda_menu.Size = new Size(319, 25);
+            entrada_busqueda_menu.TabIndex = 227;
+            entrada_busqueda_menu.Text = "Lomo completo";
+            entrada_busqueda_menu.Enter += TodasLasEntradasNormales_Enter;
+            entrada_busqueda_menu.Leave += TodasLasEntradasNormales_Leave;
             // 
             // etiqueta_cliente
             // 
@@ -305,6 +313,8 @@
             entrada_minuto_pedido.Size = new Size(44, 25);
             entrada_minuto_pedido.TabIndex = 223;
             entrada_minuto_pedido.Text = "30";
+            entrada_minuto_pedido.Enter += TodasLasEntradasNormales_Enter;
+            entrada_minuto_pedido.Leave += TodasLasEntradasNormales_Leave;
             // 
             // panel_contenedor_menus
             // 
@@ -335,6 +345,8 @@
             entrada_nombre_cliente.Size = new Size(375, 25);
             entrada_nombre_cliente.TabIndex = 219;
             entrada_nombre_cliente.Text = "Busca un orden para editarla";
+            entrada_nombre_cliente.Enter += TodasLasEntradasNormales_Enter;
+            entrada_nombre_cliente.Leave += TodasLasEntradasNormales_Leave;
             // 
             // label2
             // 
@@ -369,6 +381,8 @@
             entrada_hora_pedida.Size = new Size(44, 25);
             entrada_hora_pedida.TabIndex = 222;
             entrada_hora_pedida.Text = "20";
+            entrada_hora_pedida.Enter += TodasLasEntradasNormales_Enter;
+            entrada_hora_pedida.Leave += TodasLasEntradasNormales_Leave;
             // 
             // boton_confirmar
             // 
@@ -387,6 +401,7 @@
             boton_confirmar.TabIndex = 229;
             boton_confirmar.Text = "Agendar orden";
             boton_confirmar.UseVisualStyleBackColor = false;
+            boton_confirmar.Click += boton_confirmar_Click;
             // 
             // etiqueta_hora_entrega
             // 
@@ -445,6 +460,8 @@
             entrada_hora_entrega.Size = new Size(44, 25);
             entrada_hora_entrega.TabIndex = 224;
             entrada_hora_entrega.Text = "21";
+            entrada_hora_entrega.Enter += TodasLasEntradasNormales_Enter;
+            entrada_hora_entrega.Leave += TodasLasEntradasNormales_Leave;
             // 
             // panel4
             // 
@@ -467,6 +484,8 @@
             entrada_numero.Size = new Size(375, 25);
             entrada_numero.TabIndex = 220;
             entrada_numero.Text = "Busca un orden para editarla";
+            entrada_numero.Enter += TodasLasEntradasNormales_Enter;
+            entrada_numero.Leave += TodasLasEntradasNormales_Leave;
             // 
             // label3
             // 
@@ -491,6 +510,8 @@
             entrada_direccion.Size = new Size(375, 25);
             entrada_direccion.TabIndex = 221;
             entrada_direccion.Text = "Busca un orden para editarla";
+            entrada_direccion.Enter += TodasLasEntradasNormales_Enter;
+            entrada_direccion.Leave += TodasLasEntradasNormales_Leave;
             // 
             // linea_numero
             // 
@@ -513,6 +534,8 @@
             entrada_minuto_entrega.Size = new Size(44, 25);
             entrada_minuto_entrega.TabIndex = 225;
             entrada_minuto_entrega.Text = "15";
+            entrada_minuto_entrega.Enter += TodasLasEntradasNormales_Enter;
+            entrada_minuto_entrega.Leave += TodasLasEntradasNormales_Leave;
             // 
             // etiqueta_direccion
             // 
@@ -526,13 +549,15 @@
             etiqueta_direccion.Text = "Domicilio:";
             etiqueta_direccion.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // dataGridView1
+            // resultados_busqueda
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(166, 208);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1214, 326);
-            dataGridView1.TabIndex = 252;
+            resultados_busqueda.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resultados_busqueda.Location = new Point(166, 208);
+            resultados_busqueda.Name = "resultados_busqueda";
+            resultados_busqueda.ReadOnly = true;
+            resultados_busqueda.Size = new Size(1214, 326);
+            resultados_busqueda.TabIndex = 252;
+            resultados_busqueda.CellClick += resultados_busqueda_CellClick;
             // 
             // label4
             // 
@@ -560,11 +585,10 @@
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Top;
             label6.AutoSize = true;
             label6.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(166, 587);
+            label6.Location = new Point(166, 579);
             label6.Name = "label6";
             label6.Size = new Size(245, 27);
             label6.TabIndex = 255;
@@ -583,17 +607,17 @@
             label8.Text = "Coloca \"-\" en la busqueda para buscar por Nº de telefono.";
             label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // label9
+            // etiqueta_IDOrden
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Black;
-            label9.Location = new Point(417, 587);
-            label9.Name = "label9";
-            label9.Size = new Size(109, 27);
-            label9.TabIndex = 257;
-            label9.Text = "Ninguna";
-            label9.TextAlign = ContentAlignment.MiddleLeft;
+            etiqueta_IDOrden.AutoSize = true;
+            etiqueta_IDOrden.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            etiqueta_IDOrden.ForeColor = Color.Black;
+            etiqueta_IDOrden.Location = new Point(425, 579);
+            etiqueta_IDOrden.Name = "etiqueta_IDOrden";
+            etiqueta_IDOrden.Size = new Size(109, 27);
+            etiqueta_IDOrden.TabIndex = 257;
+            etiqueta_IDOrden.Text = "Ninguna";
+            etiqueta_IDOrden.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label10
             // 
@@ -628,12 +652,12 @@
             ClientSize = new Size(1521, 942);
             Controls.Add(label11);
             Controls.Add(label10);
-            Controls.Add(label9);
+            Controls.Add(etiqueta_IDOrden);
             Controls.Add(label8);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(dataGridView1);
+            Controls.Add(resultados_busqueda);
             Controls.Add(etiqueta_items);
             Controls.Add(etiqueta_precio_final);
             Controls.Add(panel3);
@@ -642,9 +666,9 @@
             Controls.Add(panel8);
             Controls.Add(etiqueta_comentarios);
             Controls.Add(entrada_comentarios);
-            Controls.Add(button1);
+            Controls.Add(boton_busqueda_menu);
             Controls.Add(label7);
-            Controls.Add(entrada_busqueda);
+            Controls.Add(entrada_busqueda_menu);
             Controls.Add(etiqueta_cliente);
             Controls.Add(panel7);
             Controls.Add(entrada_minuto_pedido);
@@ -677,7 +701,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "EditarOrden";
             Text = "EditarOrden";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)resultados_busqueda).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -697,9 +721,9 @@
         private Panel panel8;
         private Label etiqueta_comentarios;
         private RichTextBox entrada_comentarios;
-        private Button button1;
+        private Button boton_busqueda_menu;
         private Label label7;
-        private TextBox entrada_busqueda;
+        private TextBox entrada_busqueda_menu;
         private Label etiqueta_cliente;
         private Panel panel7;
         private TextBox entrada_minuto_pedido;
@@ -722,12 +746,12 @@
         private Panel linea_numero;
         private TextBox entrada_minuto_entrega;
         private Label etiqueta_direccion;
-        private DataGridView dataGridView1;
+        private DataGridView resultados_busqueda;
         private Label label4;
         private Label label5;
         private Label label6;
         private Label label8;
-        private Label label9;
+        private Label etiqueta_IDOrden;
         private Label label10;
         private Label label11;
     }

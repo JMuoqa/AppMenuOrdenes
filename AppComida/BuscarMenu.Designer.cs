@@ -35,10 +35,10 @@
             label2 = new Label();
             panel_abajo = new Panel();
             panel_arriba = new Panel();
-            entrada_busqueda = new TextBox();
-            panel1 = new Panel();
             label10 = new Label();
             label5 = new Label();
+            entrada_busqueda = new TextBox();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)resultados_busqueda).BeginInit();
             panel_abajo.SuspendLayout();
             panel_arriba.SuspendLayout();
@@ -96,6 +96,7 @@
             resultados_busqueda.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resultados_busqueda.Location = new Point(109, 141);
             resultados_busqueda.Name = "resultados_busqueda";
+            resultados_busqueda.ReadOnly = true;
             resultados_busqueda.Size = new Size(732, 245);
             resultados_busqueda.TabIndex = 182;
             // 
@@ -136,6 +137,32 @@
             panel_arriba.Size = new Size(933, 426);
             panel_arriba.TabIndex = 185;
             // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Top;
+            label10.AutoSize = true;
+            label10.Font = new Font("Montserrat", 12F);
+            label10.ForeColor = Color.Black;
+            label10.Location = new Point(109, 34);
+            label10.Name = "label10";
+            label10.Size = new Size(284, 22);
+            label10.TabIndex = 260;
+            label10.Text = "Ejemplo: \"#1\" buscara el menú Nº 1";
+            label10.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top;
+            label5.AutoSize = true;
+            label5.Font = new Font("Montserrat", 12F);
+            label5.ForeColor = Color.Black;
+            label5.Location = new Point(109, 8);
+            label5.Name = "label5";
+            label5.Size = new Size(455, 22);
+            label5.TabIndex = 259;
+            label5.Text = "Coloca \"#\" en la busqueda para buscar por Nº del menú.";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // entrada_busqueda
             // 
             entrada_busqueda.Anchor = AnchorStyles.Top;
@@ -163,32 +190,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(319, 2);
             panel1.TabIndex = 178;
-            // 
-            // label10
-            // 
-            label10.Anchor = AnchorStyles.Top;
-            label10.AutoSize = true;
-            label10.Font = new Font("Montserrat", 12F);
-            label10.ForeColor = Color.Black;
-            label10.Location = new Point(109, 34);
-            label10.Name = "label10";
-            label10.Size = new Size(284, 22);
-            label10.TabIndex = 260;
-            label10.Text = "Ejemplo: \"#1\" buscara el menú Nº 1";
-            label10.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label5
-            // 
-            label5.Anchor = AnchorStyles.Top;
-            label5.AutoSize = true;
-            label5.Font = new Font("Montserrat", 12F);
-            label5.ForeColor = Color.Black;
-            label5.Location = new Point(109, 8);
-            label5.Name = "label5";
-            label5.Size = new Size(455, 22);
-            label5.TabIndex = 259;
-            label5.Text = "Coloca \"#\" en la busqueda para buscar por Nº del menú.";
-            label5.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // BuscarMenu
             // 

@@ -26,6 +26,54 @@ namespace AppComida
         #region Funciones visuales
         #endregion
         #region Eventos visuales
+
+        private void entrada_busqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BusquedaPorNombre();
+            }
+        }
+        private void entrada_hora_pedida_TextChanged(object sender, EventArgs e)
+        {
+            if (entrada_hora_pedida.Text.Length == 2)
+            {
+                entrada_minuto_pedido.Select();
+            }
+        }
+        private void entrada_minuto_pedido_TextChanged(object sender, EventArgs e)
+        {
+            if (entrada_minuto_pedido.Text.Length == 2)
+            {
+                entrada_hora_entrega.Select();
+            }
+        }
+        private void entrada_hora_entrega_TextChanged(object sender, EventArgs e)
+        {
+            if (entrada_hora_entrega.Text.Length == 2)
+            {
+                entrada_minuto_entrega.Select();
+            }
+        }
+        private void entrada_horario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox texto = sender as TextBox;
+            if (e.KeyChar == (char)Keys.Space)
+                e.Handled = true;
+            if (texto.ForeColor != colorPlaceHolder)
+            {
+                if (texto.Text.Length == 2 && (e.KeyChar != (char)Keys.Back))
+                    e.Handled = true;
+                else if (char.IsLetter(e.KeyChar) || char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+                    e.Handled = true;
+            }
+        }
+
+        private void entrada_numero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar) || char.IsLetter(e.KeyChar))
+                e.Handled = true;
+        }
         private void TodasLasEntradasNormales_Enter(object sender, EventArgs e)
         {
             var caja = sender as TextBox;
@@ -422,56 +470,5 @@ namespace AppComida
         }
         #endregion
 
-        private void entrada_busqueda_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                BusquedaPorNombre();
-            }
-        }
-
-        private void entrada_hora_pedida_TextChanged(object sender, EventArgs e)
-        {
-            if (entrada_hora_pedida.Text.Length == 2)
-            {
-                entrada_minuto_pedido.Select();
-            }
-        }
-
-        private void entrada_minuto_pedido_TextChanged(object sender, EventArgs e)
-        {
-            if (entrada_minuto_pedido.Text.Length == 2)
-            {
-                entrada_hora_entrega.Select();
-            }
-        }
-
-        private void entrada_hora_entrega_TextChanged(object sender, EventArgs e)
-        {
-            if (entrada_hora_entrega.Text.Length == 2)
-            {
-                entrada_minuto_entrega.Select();
-            }
-        }
-
-        private void entrada_horario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            TextBox texto = sender as TextBox;
-            if (e.KeyChar == (char)Keys.Space)
-                e.Handled = true;
-            if (texto.ForeColor != colorPlaceHolder)
-            {
-                if (texto.Text.Length == 2 && (e.KeyChar != (char)Keys.Back))
-                    e.Handled = true;
-                else if (char.IsLetter(e.KeyChar) || char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar))
-                    e.Handled = true;
-            }
-        }
-
-        private void entrada_numero_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar) || char.IsLetter(e.KeyChar))
-                e.Handled = true;
-        }
     }
 }

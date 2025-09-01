@@ -56,7 +56,7 @@ namespace ConexionDatos
                         }
                     }
                     if (datosObtenidos.Rows.Count == 0)
-                        return (false, "No hay datos cargados. Tienes que agregar tipos.", new DataTable());
+                        return (false, "No hay datos cargados. Tienes que agregar menus.", new DataTable());
                     return (true, "Exitosa", datosObtenidos);
                 }
                 catch (Exception ex)
@@ -83,7 +83,7 @@ namespace ConexionDatos
                         }
                     }
                     if (datosObtenidos.Rows.Count == 0)
-                        return (false, "No hay datos cargados. Tienes que agregar tipos.", new DataTable());
+                        return (false, "No hay datos cargados. Tienes que agregar menus.", new DataTable());
                     return (true, "Exitosa", datosObtenidos);
                 }
                 catch (Exception ex)
