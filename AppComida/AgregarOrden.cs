@@ -21,10 +21,6 @@ namespace AppComida
         }
 
         #region Funciones visuales
-        private void AgregarOrden_Resize(object sender, EventArgs e)
-        {
-            panel_principal.Width = panel_principal.Parent.Width;
-        }
         #endregion
         #region Eventos visuales
         private void TodasLasEntradasNormales_Enter(object sender, EventArgs e)
@@ -76,8 +72,13 @@ namespace AppComida
             string id = boton.Name.Replace("BTNA_", "");
             // Aca accedemos al label de cantidad para sacar la cantidad. Como son dimnamicos no se puede acceder directamente con el name
             LabelPerPedidos etiqueta_cantidad = panel_pedidos.Controls[$"contenedor_{id}"].Controls[$"FLOWLAYOUT_{id}"].Controls[$"LPCantidad_{id}"] as LabelPerPedidos;
+            LabelPerPedidos etiqueta_precio = panel_pedidos.Controls[$"contenedor_{id}"].Controls[$"FLOWLAYOUT_{id}"].Controls[$"LPPrecioUni_{id}"] as LabelPerPedidos;
+            LabelPerPedidos etiqueta_precioTotal = panel_pedidos.Controls[$"contenedor_{id}"].Controls[$"FLOWLAYOUT_{id}"].Controls[$"LPPrecioTotal_{id}"] as LabelPerPedidos;
             int cantidad = int.Parse(etiqueta_cantidad.Text.Replace("Cantidad: ", ""));
+            int precio = int.Parse(etiqueta_precio.Text.Replace("Precio de unidad: $", ""));
             cantidad += 1;
+            int total = precio * cantidad;
+            etiqueta_precioTotal.Text = $"Precio total: ${total}";
             etiqueta_cantidad.Text = $"Cantidad: {cantidad.ToString()}";
         }
         private void boton_pedidos_restar_Click(object sender, EventArgs e)
@@ -86,13 +87,21 @@ namespace AppComida
             string id = boton.Name.Replace("BTNR_", "");
             // Aca accedemos al label de cantidad para sacar la cantidad. Como son dimnamicos no se puede acceder directamente con el name
             LabelPerPedidos etiqueta_cantidad = panel_pedidos.Controls[$"contenedor_{id}"].Controls[$"FLOWLAYOUT_{id}"].Controls[$"LPCantidad_{id}"] as LabelPerPedidos;
+            LabelPerPedidos etiqueta_precio = panel_pedidos.Controls[$"contenedor_{id}"].Controls[$"FLOWLAYOUT_{id}"].Controls[$"LPPrecioUni_{id}"] as LabelPerPedidos;
+            LabelPerPedidos etiqueta_precioTotal = panel_pedidos.Controls[$"contenedor_{id}"].Controls[$"FLOWLAYOUT_{id}"].Controls[$"LPPrecioTotal_{id}"] as LabelPerPedidos;
             int cantidad = int.Parse(etiqueta_cantidad.Text.Replace("Cantidad: ", ""));
+            int precio = int.Parse(etiqueta_precio.Text.Replace("Precio de unidad: $", ""));
             cantidad -= 1;
             if (cantidad == 0)
             {
                 QuitarMenuDelPedido(id);
             }
-            etiqueta_cantidad.Text = $"Cantidad: {cantidad.ToString()}";
+            else
+            {
+                int total = precio * cantidad;
+                etiqueta_precioTotal.Text = $"Precio total: ${total}";
+                etiqueta_cantidad.Text = $"Cantidad: {cantidad.ToString()}";
+            }
         }
         private void boton_pedidos_quitar_Click(object sender, EventArgs e)
         {
@@ -121,9 +130,9 @@ namespace AppComida
 
                 etiqueta_nueva_id.Text = "#" + id;
                 etiqueta_nueva_nombre.Text = nombre;
-                etiqueta_nueva_precio.Text = $"Precio de unidad: {precioUnidad}";
+                etiqueta_nueva_precio.Text = $"Precio de unidad: ${precioUnidad.Replace("Precio: $", "")}";
                 etiqueta_cantidad.Text = "Cantidad: 1";
-                etiqueta_nueva_precioTotal.Text = $"Precio total: {precioUnidad}";
+                etiqueta_nueva_precioTotal.Text = $"Precio total: ${precioUnidad.Replace("Precio: $", "")}";
                 Button btn_agregar = new Button();
                 btn_agregar.BackColor = Color.Green;
                 btn_agregar.Cursor = Cursors.Hand;
