@@ -21,6 +21,7 @@ namespace AppComida
         public EditarOrden()
         {
             InitializeComponent();
+            entrada_metodo_pago.SelectedIndex = 0;
         }
         #region Funciones de cargar/visuales
         private void ActualizarColumnas(DataTable dt)
@@ -54,12 +55,20 @@ namespace AppComida
             entrada_busqueda_ordenes.Text = "Lomo completo";
             entrada_busqueda_ordenes.ForeColor = colorPlaceHolder;
             entrada_comentarios.Text = "";
+            entrada_metodo_pago.SelectedIndex = 0;
             panel_pedidos.Controls.Clear();
             panel_contenedor_menus.Controls.Clear();
         }
         #endregion
         #region Eventos visuales
-        private void entrada_busqueda_ordenes_TextChanged(object sender, EventArgs e)
+        private void entrada_metodo_pago_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 't')
+                entrada_metodo_pago.SelectedIndex = 0;
+            else if (e.KeyChar == 'e')
+                entrada_metodo_pago.SelectedIndex = 1;
+        }
+    private void entrada_busqueda_ordenes_TextChanged(object sender, EventArgs e)
         {
             if (entrada_busqueda_ordenes.Text.StartsWith("#") && entrada_busqueda_ordenes.Text != "#7/Julian/-3517787224")
                 entrada_busqueda_ordenes.ForeColor = colorCeleste;
@@ -158,6 +167,10 @@ namespace AppComida
                     : minutoEntrega;
                 string horarioDeIngreso = horaIngreso + ":" + minutoIngreso;
                 string horarioDeEntrega = horaEntrega + ":" + minutoEntrega;
+                string metodoPago = entrada_metodo_pago.Text;
+                string pago = "NO PAGADO";
+                if (entrada_pago.Checked)
+                    pago = "PAGADO";
                 int productosSeleccionados = panel_pedidos.Controls.Count;
                 int idOrden = int.Parse(etiqueta_IDOrden.Text.Replace("#", ""));
                 Orden orden = new Orden
@@ -169,6 +182,8 @@ namespace AppComida
                     HoraIngresoPedido = DateTime.ParseExact(horarioDeIngreso, "HH:mm", CultureInfo.InvariantCulture),
                     HoraEstimadaEntrega = DateTime.ParseExact(horarioDeEntrega, "HH:mm", CultureInfo.InvariantCulture),
                     Comentarios = comentarios,
+                    MetodoPago = metodoPago,
+                    Pago = pago,
                     ProductosSeleccionados = productosSeleccionados,
                     Estado = "Confirmado"
                 };
@@ -585,8 +600,8 @@ namespace AppComida
                 entrada_numero.ForeColor = Color.Black;
                 entrada_direccion.Text = fila.Cells[3].Value.ToString();
                 entrada_direccion.ForeColor = Color.Black;
-                string horarioCompleto_I = fila.Cells[8].Value.ToString();
-                string horarioCompleto_E = fila.Cells[9].Value.ToString();
+                string horarioCompleto_I = fila.Cells[10].Value.ToString();
+                string horarioCompleto_E = fila.Cells[11].Value.ToString();
                 string[] horarioSeparado_I = horarioCompleto_I.Split(":");
                 string[] horarioSeparado_E = horarioCompleto_E.Split(":");
                 etiqueta_IDOrden.Text = "#" + fila.Cells[0].Value.ToString();
@@ -599,6 +614,16 @@ namespace AppComida
                 entrada_minuto_entrega.Text = horarioSeparado_E[1];
                 entrada_minuto_entrega.ForeColor = Color.Black;
                 entrada_comentarios.Text = fila.Cells[6].Value.ToString() ?? "";
+                string pago = fila.Cells[8].Value.ToString();
+                if (pago == "PAGADO")
+                    entrada_pago.Checked = true;
+                else
+                    entrada_pago.Checked = false;
+                string metodo = fila.Cells[7].Value.ToString();
+                if(metodo == "Transferencia")
+                    entrada_metodo_pago.SelectedIndex = 0;
+                else
+                    entrada_metodo_pago.SelectedIndex = 1;
                 LLenarContenedorDePedidos(dt);
             }
             catch (Exception ex)
@@ -707,5 +732,7 @@ namespace AppComida
             }
         }
         #endregion
+
+        
     }
 }

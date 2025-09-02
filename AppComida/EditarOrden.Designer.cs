@@ -74,6 +74,10 @@
             etiqueta_IDOrden = new Label();
             label10 = new Label();
             label11 = new Label();
+            entrada_pago = new CheckBox();
+            label9 = new Label();
+            label12 = new Label();
+            entrada_metodo_pago = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)resultados_busqueda).BeginInit();
             SuspendLayout();
             // 
@@ -114,7 +118,7 @@
             titulo_editar.AutoSize = true;
             titulo_editar.Font = new Font("Montserrat SemiBold", 25.25F, FontStyle.Bold);
             titulo_editar.ForeColor = Color.Black;
-            titulo_editar.Location = new Point(567, 9);
+            titulo_editar.Location = new Point(543, 9);
             titulo_editar.Name = "titulo_editar";
             titulo_editar.Size = new Size(236, 47);
             titulo_editar.TabIndex = 187;
@@ -130,7 +134,7 @@
             entrada_busqueda_ordenes.Location = new Point(166, 172);
             entrada_busqueda_ordenes.Name = "entrada_busqueda_ordenes";
             entrada_busqueda_ordenes.Size = new Size(319, 25);
-            entrada_busqueda_ordenes.TabIndex = 188;
+            entrada_busqueda_ordenes.TabIndex = 1;
             entrada_busqueda_ordenes.Text = "#7/Julian/-3517787224";
             entrada_busqueda_ordenes.TextChanged += entrada_busqueda_ordenes_TextChanged;
             entrada_busqueda_ordenes.Enter += TodasLasEntradasNormales_Enter;
@@ -152,7 +156,8 @@
             etiqueta_items.AutoSize = true;
             etiqueta_items.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             etiqueta_items.ForeColor = Color.Black;
-            etiqueta_items.Location = new Point(794, 1042);
+            etiqueta_items.Location = new Point(798, 1035);
+            etiqueta_items.Margin = new Padding(5);
             etiqueta_items.Name = "etiqueta_items";
             etiqueta_items.Size = new Size(261, 27);
             etiqueta_items.TabIndex = 251;
@@ -164,7 +169,8 @@
             etiqueta_precio_final.AutoSize = true;
             etiqueta_precio_final.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             etiqueta_precio_final.ForeColor = Color.Black;
-            etiqueta_precio_final.Location = new Point(794, 1080);
+            etiqueta_precio_final.Location = new Point(798, 1073);
+            etiqueta_precio_final.Margin = new Padding(5);
             etiqueta_precio_final.Name = "etiqueta_precio_final";
             etiqueta_precio_final.Size = new Size(176, 27);
             etiqueta_precio_final.TabIndex = 250;
@@ -232,7 +238,7 @@
             entrada_comentarios.Location = new Point(798, 842);
             entrada_comentarios.Name = "entrada_comentarios";
             entrada_comentarios.Size = new Size(582, 182);
-            entrada_comentarios.TabIndex = 226;
+            entrada_comentarios.TabIndex = 10;
             entrada_comentarios.Text = "";
             // 
             // boton_busqueda_menu
@@ -249,7 +255,7 @@
             boton_busqueda_menu.Margin = new Padding(3, 3, 3, 30);
             boton_busqueda_menu.Name = "boton_busqueda_menu";
             boton_busqueda_menu.Size = new Size(261, 40);
-            boton_busqueda_menu.TabIndex = 228;
+            boton_busqueda_menu.TabIndex = 13;
             boton_busqueda_menu.Text = "Buscar";
             boton_busqueda_menu.UseVisualStyleBackColor = false;
             boton_busqueda_menu.Click += boton_busqueda_menu_Click;
@@ -275,7 +281,7 @@
             entrada_busqueda_menu.Location = new Point(794, 1226);
             entrada_busqueda_menu.Name = "entrada_busqueda_menu";
             entrada_busqueda_menu.Size = new Size(319, 25);
-            entrada_busqueda_menu.TabIndex = 227;
+            entrada_busqueda_menu.TabIndex = 12;
             entrada_busqueda_menu.Text = "Lomo completo";
             entrada_busqueda_menu.Enter += TodasLasEntradasNormales_Enter;
             entrada_busqueda_menu.Leave += TodasLasEntradasNormales_Leave;
@@ -311,7 +317,7 @@
             entrada_minuto_pedido.Location = new Point(1135, 662);
             entrada_minuto_pedido.Name = "entrada_minuto_pedido";
             entrada_minuto_pedido.Size = new Size(44, 25);
-            entrada_minuto_pedido.TabIndex = 223;
+            entrada_minuto_pedido.TabIndex = 6;
             entrada_minuto_pedido.Text = "30";
             entrada_minuto_pedido.Enter += TodasLasEntradasNormales_Enter;
             entrada_minuto_pedido.Leave += TodasLasEntradasNormales_Leave;
@@ -343,7 +349,7 @@
             entrada_nombre_cliente.Location = new Point(413, 660);
             entrada_nombre_cliente.Name = "entrada_nombre_cliente";
             entrada_nombre_cliente.Size = new Size(375, 25);
-            entrada_nombre_cliente.TabIndex = 219;
+            entrada_nombre_cliente.TabIndex = 2;
             entrada_nombre_cliente.Text = "Busca un orden para editarla";
             entrada_nombre_cliente.Enter += TodasLasEntradasNormales_Enter;
             entrada_nombre_cliente.Leave += TodasLasEntradasNormales_Leave;
@@ -379,7 +385,7 @@
             entrada_hora_pedida.Location = new Point(1061, 662);
             entrada_hora_pedida.Name = "entrada_hora_pedida";
             entrada_hora_pedida.Size = new Size(44, 25);
-            entrada_hora_pedida.TabIndex = 222;
+            entrada_hora_pedida.TabIndex = 5;
             entrada_hora_pedida.Text = "20";
             entrada_hora_pedida.Enter += TodasLasEntradasNormales_Enter;
             entrada_hora_pedida.Leave += TodasLasEntradasNormales_Leave;
@@ -398,7 +404,7 @@
             boton_confirmar.Margin = new Padding(3, 3, 3, 30);
             boton_confirmar.Name = "boton_confirmar";
             boton_confirmar.Size = new Size(586, 40);
-            boton_confirmar.TabIndex = 229;
+            boton_confirmar.TabIndex = 14;
             boton_confirmar.Text = "Editar orden";
             boton_confirmar.UseVisualStyleBackColor = false;
             boton_confirmar.Click += boton_confirmar_Click;
@@ -458,7 +464,7 @@
             entrada_hora_entrega.Location = new Point(1061, 707);
             entrada_hora_entrega.Name = "entrada_hora_entrega";
             entrada_hora_entrega.Size = new Size(44, 25);
-            entrada_hora_entrega.TabIndex = 224;
+            entrada_hora_entrega.TabIndex = 7;
             entrada_hora_entrega.Text = "21";
             entrada_hora_entrega.Enter += TodasLasEntradasNormales_Enter;
             entrada_hora_entrega.Leave += TodasLasEntradasNormales_Leave;
@@ -482,7 +488,7 @@
             entrada_numero.Location = new Point(413, 707);
             entrada_numero.Name = "entrada_numero";
             entrada_numero.Size = new Size(375, 25);
-            entrada_numero.TabIndex = 220;
+            entrada_numero.TabIndex = 3;
             entrada_numero.Text = "Busca un orden para editarla";
             entrada_numero.Enter += TodasLasEntradasNormales_Enter;
             entrada_numero.Leave += TodasLasEntradasNormales_Leave;
@@ -508,7 +514,7 @@
             entrada_direccion.Location = new Point(413, 751);
             entrada_direccion.Name = "entrada_direccion";
             entrada_direccion.Size = new Size(375, 25);
-            entrada_direccion.TabIndex = 221;
+            entrada_direccion.TabIndex = 4;
             entrada_direccion.Text = "Busca un orden para editarla";
             entrada_direccion.Enter += TodasLasEntradasNormales_Enter;
             entrada_direccion.Leave += TodasLasEntradasNormales_Leave;
@@ -532,7 +538,7 @@
             entrada_minuto_entrega.Location = new Point(1135, 707);
             entrada_minuto_entrega.Name = "entrada_minuto_entrega";
             entrada_minuto_entrega.Size = new Size(44, 25);
-            entrada_minuto_entrega.TabIndex = 225;
+            entrada_minuto_entrega.TabIndex = 8;
             entrada_minuto_entrega.Text = "15";
             entrada_minuto_entrega.Enter += TodasLasEntradasNormales_Enter;
             entrada_minuto_entrega.Leave += TodasLasEntradasNormales_Leave;
@@ -643,6 +649,58 @@
             label11.Text = "Ejemplo: \"-3517787224\" buscara la/las orden/es con el Nº de telefono 3517787224";
             label11.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // entrada_pago
+            // 
+            entrada_pago.AutoSize = true;
+            entrada_pago.Font = new Font("Montserrat", 15F);
+            entrada_pago.Location = new Point(911, 1109);
+            entrada_pago.Margin = new Padding(5);
+            entrada_pago.Name = "entrada_pago";
+            entrada_pago.Size = new Size(49, 31);
+            entrada_pago.TabIndex = 11;
+            entrada_pago.Text = "SI";
+            entrada_pago.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Black;
+            label9.Location = new Point(798, 1110);
+            label9.Margin = new Padding(5);
+            label9.Name = "label9";
+            label9.Size = new Size(103, 27);
+            label9.TabIndex = 261;
+            label9.Text = "Pagado:";
+            label9.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.Black;
+            label12.Location = new Point(798, 754);
+            label12.Name = "label12";
+            label12.Size = new Size(206, 27);
+            label12.TabIndex = 262;
+            label12.Text = "Metodo de pago: ";
+            label12.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // entrada_metodo_pago
+            // 
+            entrada_metodo_pago.BackColor = Color.FromArgb(242, 225, 199);
+            entrada_metodo_pago.DropDownStyle = ComboBoxStyle.DropDownList;
+            entrada_metodo_pago.FlatStyle = FlatStyle.Flat;
+            entrada_metodo_pago.Font = new Font("Montserrat", 15F);
+            entrada_metodo_pago.ForeColor = Color.Black;
+            entrada_metodo_pago.FormattingEnabled = true;
+            entrada_metodo_pago.Items.AddRange(new object[] { "Transferenia", "Efectivo" });
+            entrada_metodo_pago.Location = new Point(1061, 751);
+            entrada_metodo_pago.Name = "entrada_metodo_pago";
+            entrada_metodo_pago.Size = new Size(243, 35);
+            entrada_metodo_pago.TabIndex = 9;
+            entrada_metodo_pago.KeyPress += entrada_metodo_pago_KeyPress;
+            // 
             // EditarOrden
             // 
             AutoScaleDimensions = new SizeF(8F, 18F);
@@ -650,6 +708,10 @@
             AutoScroll = true;
             BackColor = Color.FromArgb(242, 225, 199);
             ClientSize = new Size(1521, 942);
+            Controls.Add(entrada_metodo_pago);
+            Controls.Add(label12);
+            Controls.Add(entrada_pago);
+            Controls.Add(label9);
             Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(etiqueta_IDOrden);
@@ -754,5 +816,9 @@
         private Label etiqueta_IDOrden;
         private Label label10;
         private Label label11;
+        private CheckBox entrada_pago;
+        private Label label9;
+        private Label label12;
+        private ComboBox entrada_metodo_pago;
     }
 }

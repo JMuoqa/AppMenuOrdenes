@@ -14,7 +14,15 @@ namespace Dominio
         ConOrdenes conOrdenes = new ConOrdenes();
         public (bool estado, string mensaje) InsertarOrden(List<DetallesDeLosPedidos> listaDetalles, Orden orden)
         {
-            return conOrdenes.InsertarOrden(listaDetalles, orden);
+            try
+            {
+                orden.ValidarNumero();
+                return conOrdenes.InsertarOrden(listaDetalles, orden);
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.Message);
+            }
         }
         public (bool estado, string mensaje, DataTable datos) ObtenerOrdenPorID(int id)
         {

@@ -21,6 +21,7 @@ namespace AppComida
         public AgregarOrden()
         {
             InitializeComponent();
+            entrada_metodo_pago.SelectedIndex = 0;
         }
 
         #region Funciones visuales
@@ -43,11 +44,21 @@ namespace AppComida
             entrada_busqueda.Text = "Lomo completo";
             entrada_busqueda.ForeColor = colorPlaceHolder;
             entrada_comentarios.Text = "";
+            etiqueta_items.Text = "Productos añadidos: 0";
+            etiqueta_precio_final.Text = "Precio final: $0";
+            entrada_metodo_pago.SelectedIndex = 0;
             panel_pedidos.Controls.Clear();
             panel_contenedor_menus.Controls.Clear();
         }
         #endregion
         #region Eventos visuales
+        private void entrada_metodo_pago_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 't')
+                entrada_metodo_pago.SelectedIndex = 0;
+            else if (e.KeyChar == 'e')
+                entrada_metodo_pago.SelectedIndex = 1;
+        }
 
         private void entrada_busqueda_KeyDown(object sender, KeyEventArgs e)
         {
@@ -181,6 +192,10 @@ namespace AppComida
                     : minutoEntrega;
                 string horarioDeIngreso = horaIngreso + ":" + minutoIngreso;
                 string horarioDeEntrega = horaEntrega + ":" + minutoEntrega;
+                string metodoPago = entrada_metodo_pago.Text;
+                string pago = "NO PAGADO";
+                if (entrada_pago.Checked)
+                    pago = "PAGADO";
                 int productosSeleccionados = panel_pedidos.Controls.Count;
                 Orden orden = new Orden
                 {
@@ -190,6 +205,8 @@ namespace AppComida
                     HoraIngresoPedido = DateTime.ParseExact(horarioDeIngreso, "HH:mm", CultureInfo.InvariantCulture),
                     HoraEstimadaEntrega = DateTime.ParseExact(horarioDeEntrega, "HH:mm", CultureInfo.InvariantCulture),
                     Comentarios = comentarios,
+                    MetodoPago = metodoPago,
+                    Pago = pago,
                     ProductosSeleccionados = productosSeleccionados,
                     Estado = "Confirmado"
                 };
@@ -205,6 +222,7 @@ namespace AppComida
                     int idMenu = int.Parse(eti_id.Text.Replace("#", ""));
                     string nombre = eti_nombre.Text;
                     int cantidad = int.Parse(eti_cantidad.Text.Replace("Cantidad: ", ""));
+                    MessageBox.Show(cantidad.ToString());
                     string precioTotal = eti_precioTotal.Text.Replace("Precio total: ", "");
                     DetallesDeLosPedidos detalles = new DetallesDeLosPedidos
                     {
@@ -493,5 +511,6 @@ namespace AppComida
         }
         #endregion
 
+        
     }
 }

@@ -64,6 +64,10 @@ namespace AppComida
             panel3 = new Panel();
             etiqueta_precio_final = new Label();
             etiqueta_items = new Label();
+            label1 = new Label();
+            entrada_pago = new CheckBox();
+            label4 = new Label();
+            entrada_metodo_pago = new ComboBox();
             SuspendLayout();
             // 
             // titulo_agregar
@@ -88,11 +92,11 @@ namespace AppComida
             boton_confirmar.FlatStyle = FlatStyle.Flat;
             boton_confirmar.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             boton_confirmar.ForeColor = Color.FromArgb(242, 225, 199);
-            boton_confirmar.Location = new Point(788, 572);
+            boton_confirmar.Location = new Point(792, 566);
             boton_confirmar.Margin = new Padding(3, 3, 3, 30);
             boton_confirmar.Name = "boton_confirmar";
-            boton_confirmar.Size = new Size(586, 40);
-            boton_confirmar.TabIndex = 11;
+            boton_confirmar.Size = new Size(582, 40);
+            boton_confirmar.TabIndex = 13;
             boton_confirmar.Text = "Agendar orden";
             boton_confirmar.UseVisualStyleBackColor = false;
             boton_confirmar.Click += boton_confirmar_Click;
@@ -363,7 +367,7 @@ namespace AppComida
             boton_buscar.Margin = new Padding(3, 3, 3, 30);
             boton_buscar.Name = "boton_buscar";
             boton_buscar.Size = new Size(261, 40);
-            boton_buscar.TabIndex = 10;
+            boton_buscar.TabIndex = 12;
             boton_buscar.Text = "Buscar";
             boton_buscar.UseVisualStyleBackColor = false;
             boton_buscar.Click += boton_buscar_Click;
@@ -389,7 +393,7 @@ namespace AppComida
             entrada_busqueda.Location = new Point(788, 645);
             entrada_busqueda.Name = "entrada_busqueda";
             entrada_busqueda.Size = new Size(319, 25);
-            entrada_busqueda.TabIndex = 9;
+            entrada_busqueda.TabIndex = 11;
             entrada_busqueda.Text = "Lomo completo";
             entrada_busqueda.Enter += TodasLasEntradasNormales_Enter;
             entrada_busqueda.KeyDown += entrada_busqueda_KeyDown;
@@ -420,7 +424,7 @@ namespace AppComida
             entrada_comentarios.Location = new Point(792, 261);
             entrada_comentarios.Name = "entrada_comentarios";
             entrada_comentarios.Size = new Size(582, 182);
-            entrada_comentarios.TabIndex = 8;
+            entrada_comentarios.TabIndex = 9;
             entrada_comentarios.Text = "";
             // 
             // etiqueta_comentarios
@@ -469,7 +473,8 @@ namespace AppComida
             etiqueta_precio_final.AutoSize = true;
             etiqueta_precio_final.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             etiqueta_precio_final.ForeColor = Color.Black;
-            etiqueta_precio_final.Location = new Point(788, 499);
+            etiqueta_precio_final.Location = new Point(792, 491);
+            etiqueta_precio_final.Margin = new Padding(5);
             etiqueta_precio_final.Name = "etiqueta_precio_final";
             etiqueta_precio_final.Size = new Size(176, 27);
             etiqueta_precio_final.TabIndex = 217;
@@ -481,12 +486,65 @@ namespace AppComida
             etiqueta_items.AutoSize = true;
             etiqueta_items.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             etiqueta_items.ForeColor = Color.Black;
-            etiqueta_items.Location = new Point(788, 461);
+            etiqueta_items.Location = new Point(792, 454);
+            etiqueta_items.Margin = new Padding(5);
             etiqueta_items.Name = "etiqueta_items";
             etiqueta_items.Size = new Size(261, 27);
             etiqueta_items.TabIndex = 218;
             etiqueta_items.Text = "Productos añadidos: 0";
             etiqueta_items.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(792, 525);
+            label1.Margin = new Padding(5);
+            label1.Name = "label1";
+            label1.Size = new Size(103, 27);
+            label1.TabIndex = 219;
+            label1.Text = "Pagado:";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // entrada_pago
+            // 
+            entrada_pago.AutoSize = true;
+            entrada_pago.Font = new Font("Montserrat", 15F);
+            entrada_pago.Location = new Point(905, 524);
+            entrada_pago.Margin = new Padding(5);
+            entrada_pago.Name = "entrada_pago";
+            entrada_pago.Size = new Size(49, 31);
+            entrada_pago.TabIndex = 10;
+            entrada_pago.Text = "SI";
+            entrada_pago.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Montserrat Medium", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Black;
+            label4.Location = new Point(788, 173);
+            label4.Name = "label4";
+            label4.Size = new Size(206, 27);
+            label4.TabIndex = 220;
+            label4.Text = "Metodo de pago: ";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // entrada_metodo_pago
+            // 
+            entrada_metodo_pago.BackColor = Color.FromArgb(242, 225, 199);
+            entrada_metodo_pago.DropDownStyle = ComboBoxStyle.DropDownList;
+            entrada_metodo_pago.FlatStyle = FlatStyle.Flat;
+            entrada_metodo_pago.Font = new Font("Montserrat", 15F);
+            entrada_metodo_pago.ForeColor = Color.Black;
+            entrada_metodo_pago.FormattingEnabled = true;
+            entrada_metodo_pago.Items.AddRange(new object[] { "Transferencia", "Efectivo" });
+            entrada_metodo_pago.Location = new Point(1055, 170);
+            entrada_metodo_pago.Name = "entrada_metodo_pago";
+            entrada_metodo_pago.Size = new Size(219, 35);
+            entrada_metodo_pago.TabIndex = 8;
+            entrada_metodo_pago.KeyPress += entrada_metodo_pago_KeyPress;
             // 
             // AgregarOrden
             // 
@@ -495,6 +553,11 @@ namespace AppComida
             AutoScroll = true;
             BackColor = Color.FromArgb(242, 225, 199);
             ClientSize = new Size(1521, 1061);
+            Controls.Add(entrada_metodo_pago);
+            Controls.Add(label4);
+            Controls.Add(boton_confirmar);
+            Controls.Add(entrada_pago);
+            Controls.Add(label1);
             Controls.Add(etiqueta_items);
             Controls.Add(etiqueta_precio_final);
             Controls.Add(panel3);
@@ -516,7 +579,6 @@ namespace AppComida
             Controls.Add(label2);
             Controls.Add(linea_nombre_cliente);
             Controls.Add(entrada_hora_pedida);
-            Controls.Add(boton_confirmar);
             Controls.Add(etiqueta_hora_entrega);
             Controls.Add(panel_pedidos);
             Controls.Add(etiqueta_hora_pedida);
@@ -575,5 +637,9 @@ namespace AppComida
         private Panel panel3;
         private Label etiqueta_precio_final;
         private Label etiqueta_items;
+        private Label label1;
+        private CheckBox entrada_pago;
+        private Label label4;
+        private ComboBox entrada_metodo_pago;
     }
 }

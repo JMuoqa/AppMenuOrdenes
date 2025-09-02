@@ -70,7 +70,6 @@ namespace ControlDeProyectos
             //Arriba de esto iria codigo
             ActualizarSubMenus();
         }
-
         private void boton_editar_Click(object sender, EventArgs e)
         {
             EditarMenu editarProyecto = new EditarMenu();

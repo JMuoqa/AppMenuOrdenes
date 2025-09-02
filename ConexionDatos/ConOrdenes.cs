@@ -27,7 +27,7 @@ namespace ConexionDatos
                     }
                     string precioFinal = "$"+precioTotal.ToString();
                     int ultimoID;
-                    string insertarOrden = "INSERT INTO Orden (NombreDelCliente, TelefonoDelCliente, DireccionDelCliente, PrecioTotal, Estado, Comentarios, ProductosSeleccionados, HoraIngresoPedido, HoraEstimadaEntrega) VALUES(@nombre, @tel, @dire, @precio, @estado, @comentarios, @seleccionados, @ingreso, @entrega);";
+                    string insertarOrden = "INSERT INTO Orden (NombreDelCliente, TelefonoDelCliente, DireccionDelCliente, PrecioTotal, Estado, Comentarios, MetodoDePago, Pago, ProductosSeleccionados, HoraIngresoPedido, HoraEstimadaEntrega) VALUES(@nombre, @tel, @dire, @precio, @estado, @comentarios, @metodo,@pago,@seleccionados, @ingreso, @entrega);";
                     using(MySqlCommand cmd = new MySqlCommand(insertarOrden, con))
                     {
                         cmd.Parameters.AddWithValue("@nombre", orden.NombreCliente);
@@ -36,6 +36,8 @@ namespace ConexionDatos
                         cmd.Parameters.AddWithValue("@precio", precioFinal);
                         cmd.Parameters.AddWithValue("@estado", orden.Estado);
                         cmd.Parameters.AddWithValue("@comentarios", orden.Comentarios);
+                        cmd.Parameters.AddWithValue("@metodo", orden.MetodoPago);
+                        cmd.Parameters.AddWithValue("@pago", orden.Pago);
                         cmd.Parameters.AddWithValue("@seleccionados", orden.ProductosSeleccionados);
                         cmd.Parameters.AddWithValue("@ingreso", orden.HoraIngresoPedido);
                         cmd.Parameters.AddWithValue("@entrega", orden.HoraEstimadaEntrega);
@@ -193,7 +195,7 @@ namespace ConexionDatos
                         precioTotal += int.Parse(listaDetalles[i].Precio.Replace("$", ""));
                     }
                     string precioFinal = "$" + precioTotal.ToString();
-                    string sql = "UPDATE Orden SET NombreDelCliente = @nombre, TelefonoDelCliente = @tel, DireccionDelCliente = @dire, PrecioTotal = @precio, Estado = @estado, Comentarios = @comentarios, ProductosSeleccionados = @seleccionados, HoraIngresoPedido = @ingreso, HoraEstimadaEntrega = @entrega WHERE IDOrden = @id;";
+                    string sql = "UPDATE Orden SET NombreDelCliente = @nombre, TelefonoDelCliente = @tel, DireccionDelCliente = @dire, PrecioTotal = @precio, Estado = @estado, Comentarios = @comentarios, MetodoDePago = @metodo, Pago = @pago, ProductosSeleccionados = @seleccionados, HoraIngresoPedido = @ingreso, HoraEstimadaEntrega = @entrega WHERE IDOrden = @id;";
                     int filas;
                     using (MySqlCommand cmd = new MySqlCommand(sql, con)) 
                     {
@@ -204,6 +206,8 @@ namespace ConexionDatos
                         cmd.Parameters.AddWithValue("@precio", precioFinal);
                         cmd.Parameters.AddWithValue("@estado", orden.Estado);
                         cmd.Parameters.AddWithValue("@comentarios", orden.Comentarios);
+                        cmd.Parameters.AddWithValue("@metodo", orden.MetodoPago);
+                        cmd.Parameters.AddWithValue("@pago", orden.Pago);
                         cmd.Parameters.AddWithValue("@seleccionados", orden.ProductosSeleccionados);
                         cmd.Parameters.AddWithValue("@ingreso", orden.HoraIngresoPedido);
                         cmd.Parameters.AddWithValue("@entrega", orden.HoraEstimadaEntrega);
@@ -222,9 +226,8 @@ namespace ConexionDatos
                         using (MySqlCommand cmd = new MySqlCommand(verSiExiste, con))
                         {
                             cmd.Parameters.AddWithValue("@id", detalles.IDMenu);
-                            object result = cmd.ExecuteScalar(); // EL ExecuteNonQuery Solo devuelve filas afectadas mientras la consulta sea un INSERT UPDATE O DELETE
-                            Debug.WriteLine("Resultado: " + result);
-
+                            //Se usa ExecuteScalar() por que el ExecuteNonQuery Solo devuelve filas afectadas mientras la consulta sea un INSERT UPDATE O DELETE
+                            object result = cmd.ExecuteScalar();// cmd.ExecuteScalar() devuelve la primer columna de la primer fila seleccionada
                             if (result != null) // Si encontró algo
                                 bandera = true;
                         }

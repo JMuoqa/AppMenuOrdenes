@@ -44,6 +44,9 @@
             etiqueta_hora_pedida = new Label();
             label2 = new Label();
             flowLayoutPanel8 = new FlowLayoutPanel();
+            boton_anterior = new Button();
+            comboBox1 = new ComboBox();
+            boton_siguiente = new Button();
             flowLayoutPanel3 = new FlowLayoutPanel();
             flowLayoutPanel4 = new FlowLayoutPanel();
             etiqeuta_nombre_pedido = new Label();
@@ -53,9 +56,8 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            boton_anterior = new Button();
-            comboBox1 = new ComboBox();
-            boton_siguiente = new Button();
+            flowLayoutPanel9 = new FlowLayoutPanel();
+            label9 = new Label();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel5.SuspendLayout();
@@ -64,6 +66,7 @@
             flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
             flowLayoutPanel7.SuspendLayout();
+            flowLayoutPanel9.SuspendLayout();
             SuspendLayout();
             // 
             // titulo_editar
@@ -156,7 +159,7 @@
             // 
             flowLayoutPanel5.Controls.Add(label3);
             flowLayoutPanel5.Controls.Add(label4);
-            flowLayoutPanel5.Controls.Add(label5);
+            flowLayoutPanel5.Controls.Add(flowLayoutPanel9);
             flowLayoutPanel5.Controls.Add(richTextBox1);
             flowLayoutPanel5.Controls.Add(flowLayoutPanel6);
             flowLayoutPanel5.Controls.Add(flowLayoutPanel8);
@@ -197,7 +200,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Montserrat", 12F);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(3, 69);
+            label5.Location = new Point(3, 5);
             label5.Margin = new Padding(3, 5, 3, 5);
             label5.Name = "label5";
             label5.Size = new Size(128, 22);
@@ -210,9 +213,9 @@
             richTextBox1.BackColor = Color.FromArgb(212, 195, 169);
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.Font = new Font("Montserrat", 15F);
-            richTextBox1.Location = new Point(3, 99);
+            richTextBox1.Location = new Point(3, 108);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(468, 132);
+            richTextBox1.Size = new Size(485, 132);
             richTextBox1.TabIndex = 158;
             richTextBox1.Text = "";
             // 
@@ -220,7 +223,7 @@
             // 
             flowLayoutPanel6.Controls.Add(etiqueta_hora_pedida);
             flowLayoutPanel6.Controls.Add(label2);
-            flowLayoutPanel6.Location = new Point(3, 237);
+            flowLayoutPanel6.Location = new Point(3, 246);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Size = new Size(487, 35);
             flowLayoutPanel6.TabIndex = 156;
@@ -256,20 +259,70 @@
             flowLayoutPanel8.Controls.Add(boton_anterior);
             flowLayoutPanel8.Controls.Add(comboBox1);
             flowLayoutPanel8.Controls.Add(boton_siguiente);
-            flowLayoutPanel8.Location = new Point(3, 278);
+            flowLayoutPanel8.Location = new Point(3, 287);
             flowLayoutPanel8.Name = "flowLayoutPanel8";
             flowLayoutPanel8.Size = new Size(487, 51);
             flowLayoutPanel8.TabIndex = 159;
+            // 
+            // boton_anterior
+            // 
+            boton_anterior.BackColor = Color.FromArgb(150, 100, 50);
+            boton_anterior.Cursor = Cursors.Hand;
+            boton_anterior.FlatAppearance.BorderSize = 0;
+            boton_anterior.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
+            boton_anterior.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
+            boton_anterior.FlatStyle = FlatStyle.Flat;
+            boton_anterior.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            boton_anterior.ForeColor = Color.FromArgb(242, 225, 199);
+            boton_anterior.Location = new Point(3, 3);
+            boton_anterior.Margin = new Padding(3, 3, 3, 30);
+            boton_anterior.Name = "boton_anterior";
+            boton_anterior.Size = new Size(138, 40);
+            boton_anterior.TabIndex = 187;
+            boton_anterior.Text = "Anterior";
+            boton_anterior.UseVisualStyleBackColor = false;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Anchor = AnchorStyles.Top;
+            comboBox1.BackColor = Color.FromArgb(202, 185, 159);
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FlatStyle = FlatStyle.Flat;
+            comboBox1.Font = new Font("Montserrat", 15F);
+            comboBox1.ForeColor = Color.Black;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Pendiente", "Confirmada", "En preparación", "Lista", "Entregada" });
+            comboBox1.Location = new Point(147, 3);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(183, 35);
+            comboBox1.TabIndex = 188;
+            // 
+            // boton_siguiente
+            // 
+            boton_siguiente.BackColor = Color.FromArgb(150, 100, 50);
+            boton_siguiente.Cursor = Cursors.Hand;
+            boton_siguiente.FlatAppearance.BorderSize = 0;
+            boton_siguiente.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
+            boton_siguiente.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
+            boton_siguiente.FlatStyle = FlatStyle.Flat;
+            boton_siguiente.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            boton_siguiente.ForeColor = Color.FromArgb(242, 225, 199);
+            boton_siguiente.Location = new Point(336, 3);
+            boton_siguiente.Margin = new Padding(3, 3, 3, 30);
+            boton_siguiente.Name = "boton_siguiente";
+            boton_siguiente.Size = new Size(138, 40);
+            boton_siguiente.TabIndex = 189;
+            boton_siguiente.Text = "Siguiente";
+            boton_siguiente.UseVisualStyleBackColor = false;
             // 
             // flowLayoutPanel3
             // 
             flowLayoutPanel3.Controls.Add(flowLayoutPanel4);
             flowLayoutPanel3.Controls.Add(flowLayoutPanel7);
             flowLayoutPanel3.Dock = DockStyle.Bottom;
-            flowLayoutPanel3.Location = new Point(5, 400);
-            flowLayoutPanel3.Margin = new Padding(0);
+            flowLayoutPanel3.Location = new Point(8, 403);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(496, 205);
+            flowLayoutPanel3.Size = new Size(490, 200);
             flowLayoutPanel3.TabIndex = 151;
             // 
             // flowLayoutPanel4
@@ -282,7 +335,7 @@
             flowLayoutPanel4.Location = new Point(0, 5);
             flowLayoutPanel4.Margin = new Padding(0, 5, 0, 5);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new Size(474, 89);
+            flowLayoutPanel4.Size = new Size(488, 89);
             flowLayoutPanel4.TabIndex = 0;
             // 
             // etiqeuta_nombre_pedido
@@ -333,7 +386,7 @@
             flowLayoutPanel7.Location = new Point(0, 104);
             flowLayoutPanel7.Margin = new Padding(0, 5, 0, 5);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
-            flowLayoutPanel7.Size = new Size(474, 89);
+            flowLayoutPanel7.Size = new Size(488, 89);
             flowLayoutPanel7.TabIndex = 1;
             // 
             // label6
@@ -374,56 +427,27 @@
             label8.Text = "Precio: $16000";
             label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // boton_anterior
+            // flowLayoutPanel9
             // 
-            boton_anterior.BackColor = Color.FromArgb(150, 100, 50);
-            boton_anterior.Cursor = Cursors.Hand;
-            boton_anterior.FlatAppearance.BorderSize = 0;
-            boton_anterior.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
-            boton_anterior.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
-            boton_anterior.FlatStyle = FlatStyle.Flat;
-            boton_anterior.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            boton_anterior.ForeColor = Color.FromArgb(242, 225, 199);
-            boton_anterior.Location = new Point(3, 3);
-            boton_anterior.Margin = new Padding(3, 3, 3, 30);
-            boton_anterior.Name = "boton_anterior";
-            boton_anterior.Size = new Size(138, 40);
-            boton_anterior.TabIndex = 187;
-            boton_anterior.Text = "Anterior";
-            boton_anterior.UseVisualStyleBackColor = false;
+            flowLayoutPanel9.Controls.Add(label5);
+            flowLayoutPanel9.Controls.Add(label9);
+            flowLayoutPanel9.Location = new Point(3, 67);
+            flowLayoutPanel9.Name = "flowLayoutPanel9";
+            flowLayoutPanel9.Size = new Size(487, 35);
+            flowLayoutPanel9.TabIndex = 160;
             // 
-            // comboBox1
+            // label9
             // 
-            comboBox1.Anchor = AnchorStyles.Top;
-            comboBox1.BackColor = Color.FromArgb(202, 185, 159);
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Montserrat", 15F);
-            comboBox1.ForeColor = Color.Black;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "TODOS", "Pendientes", "Confirmadas", "En preparación", "Listas", "Entregadas" });
-            comboBox1.Location = new Point(147, 3);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(183, 35);
-            comboBox1.TabIndex = 188;
-            // 
-            // boton_siguiente
-            // 
-            boton_siguiente.BackColor = Color.FromArgb(150, 100, 50);
-            boton_siguiente.Cursor = Cursors.Hand;
-            boton_siguiente.FlatAppearance.BorderSize = 0;
-            boton_siguiente.FlatAppearance.MouseDownBackColor = Color.FromArgb(120, 80, 40);
-            boton_siguiente.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 120, 70);
-            boton_siguiente.FlatStyle = FlatStyle.Flat;
-            boton_siguiente.Font = new Font("Montserrat", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            boton_siguiente.ForeColor = Color.FromArgb(242, 225, 199);
-            boton_siguiente.Location = new Point(336, 3);
-            boton_siguiente.Margin = new Padding(3, 3, 3, 30);
-            boton_siguiente.Name = "boton_siguiente";
-            boton_siguiente.Size = new Size(138, 40);
-            boton_siguiente.TabIndex = 189;
-            boton_siguiente.Text = "Siguiente";
-            boton_siguiente.UseVisualStyleBackColor = false;
+            label9.AutoSize = true;
+            label9.Font = new Font("Montserrat", 12F);
+            label9.ForeColor = Color.Black;
+            label9.Location = new Point(137, 5);
+            label9.Margin = new Padding(3, 5, 3, 5);
+            label9.Name = "label9";
+            label9.Size = new Size(80, 22);
+            label9.TabIndex = 158;
+            label9.Text = "PAGADO";
+            label9.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // VerOrdenes
             // 
@@ -454,6 +478,8 @@
             flowLayoutPanel4.PerformLayout();
             flowLayoutPanel7.ResumeLayout(false);
             flowLayoutPanel7.PerformLayout();
+            flowLayoutPanel9.ResumeLayout(false);
+            flowLayoutPanel9.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -488,5 +514,7 @@
         private Button boton_anterior;
         private ComboBox comboBox1;
         private Button boton_siguiente;
+        private FlowLayoutPanel flowLayoutPanel9;
+        private Label label9;
     }
 }
