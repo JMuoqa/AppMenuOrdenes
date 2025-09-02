@@ -338,6 +338,7 @@
             boton_ver_ordenes.Text = "Ver ordenes";
             boton_ver_ordenes.TextAlign = ContentAlignment.MiddleLeft;
             boton_ver_ordenes.UseVisualStyleBackColor = true;
+            boton_ver_ordenes.Click += boton_ver_ordenes_Click;
             // 
             // boton_tarjetas
             // 

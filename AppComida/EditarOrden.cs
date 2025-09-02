@@ -12,7 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace AppComida
 {
     public partial class EditarOrden : Form
@@ -708,6 +707,5 @@ namespace AppComida
             }
         }
         #endregion
-
     }
 }

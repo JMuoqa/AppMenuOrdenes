@@ -230,7 +230,7 @@
             titulo_editar.AutoSize = true;
             titulo_editar.Font = new Font("Montserrat SemiBold", 25.25F, FontStyle.Bold);
             titulo_editar.ForeColor = Color.Black;
-            titulo_editar.Location = new Point(352, 9);
+            titulo_editar.Location = new Point(328, 9);
             titulo_editar.Name = "titulo_editar";
             titulo_editar.Size = new Size(237, 47);
             titulo_editar.TabIndex = 146;
@@ -368,7 +368,7 @@
             panel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.Black;
             panel1.Enabled = false;
-            panel1.Location = new Point(1, 606);
+            panel1.Location = new Point(1, 615);
             panel1.Margin = new Padding(3, 3, 3, 30);
             panel1.Name = "panel1";
             panel1.Size = new Size(943, 2);

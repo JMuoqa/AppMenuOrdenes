@@ -29,6 +29,9 @@
     <Compile Update="BuscarMenu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="VerOrdenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="VistaAut.cs">
       <SubType>Form</SubType>
     </Compile>

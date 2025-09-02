@@ -102,6 +102,12 @@ namespace ControlDeProyectos
             CambiarFormulario(editarOrden);
             ActualizarSubMenus();
         }
+        private void boton_ver_ordenes_Click(object sender, EventArgs e)
+        {
+            VerOrdenes verOrdenes = new VerOrdenes();
+            CambiarFormulario(verOrdenes);
+            ActualizarSubMenus();
+        }
         #endregion
         #region Funciones principales
         private Form formularioActivo = null;
