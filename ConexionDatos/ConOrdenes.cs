@@ -161,7 +161,7 @@ namespace ConexionDatos
                 {
                     conn.Open();
                     DataTable datosObtenidos = new DataTable();
-                    string sql = "SELECT * FROM DetallesDeLosPedidos WHERE IDPedido = @id;";
+                    string sql = "SELECT * FROM DetallesDeLosPedidos WHERE IDOrden = @id;";
                     using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@id", idDetalles);
@@ -213,7 +213,7 @@ namespace ConexionDatos
                         return (false, "No se encontro esa orden");
                     bool detallesCambiados = true;
                     bool detallesInsertos = true;
-                    for(int i = 0; i < filas; i++)
+                    for(int i = 0; i < listaDetalles.Count; i++)
                     {
                         DetallesDeLosPedidos detalles = listaDetalles[i];
                         detalles.IDOrden = orden.IDOrden;
@@ -223,6 +223,8 @@ namespace ConexionDatos
                         {
                             cmd.Parameters.AddWithValue("@id", detalles.IDMenu);
                             object result = cmd.ExecuteScalar(); // EL ExecuteNonQuery Solo devuelve filas afectadas mientras la consulta sea un INSERT UPDATE O DELETE
+                            Debug.WriteLine("Resultado: " + result);
+
                             if (result != null) // Si encontró algo
                                 bandera = true;
                         }

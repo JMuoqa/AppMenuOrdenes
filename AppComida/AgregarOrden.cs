@@ -24,6 +24,28 @@ namespace AppComida
         }
 
         #region Funciones visuales
+        private void ResetearDatos()
+        {
+            entrada_nombre_cliente.Text = "Jesus";
+            entrada_nombre_cliente.ForeColor = colorPlaceHolder;
+            entrada_numero.Text = "3518182222";
+            entrada_numero.ForeColor = colorPlaceHolder;
+            entrada_direccion.Text = "Local/Lagunilla 1111";
+            entrada_direccion.ForeColor = colorPlaceHolder;
+            entrada_hora_pedida.Text = "20";
+            entrada_hora_pedida.ForeColor = colorPlaceHolder;
+            entrada_minuto_pedido.Text = "30";
+            entrada_minuto_pedido.ForeColor = colorPlaceHolder;
+            entrada_hora_entrega.Text = "21";
+            entrada_hora_entrega.ForeColor = colorPlaceHolder;
+            entrada_minuto_entrega.Text = "15";
+            entrada_minuto_entrega.ForeColor = colorPlaceHolder;
+            entrada_busqueda.Text = "Lomo completo";
+            entrada_busqueda.ForeColor = colorPlaceHolder;
+            entrada_comentarios.Text = "";
+            panel_pedidos.Controls.Clear();
+            panel_contenedor_menus.Controls.Clear();
+        }
         #endregion
         #region Eventos visuales
 
@@ -197,6 +219,7 @@ namespace AppComida
                 var res = conOrdenes.InsertarOrden(detallesDeLosPedidos, orden);
                 if (!res.estado)
                     throw new Exception(res.mensaje);
+                ResetearDatos();
                 MessageBox.Show(res.mensaje);
             }
             catch (Exception ex)

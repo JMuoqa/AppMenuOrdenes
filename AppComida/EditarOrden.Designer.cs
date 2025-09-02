@@ -114,7 +114,7 @@
             titulo_editar.AutoSize = true;
             titulo_editar.Font = new Font("Montserrat SemiBold", 25.25F, FontStyle.Bold);
             titulo_editar.ForeColor = Color.Black;
-            titulo_editar.Location = new Point(575, 9);
+            titulo_editar.Location = new Point(567, 9);
             titulo_editar.Name = "titulo_editar";
             titulo_editar.Size = new Size(236, 47);
             titulo_editar.TabIndex = 187;
@@ -399,7 +399,7 @@
             boton_confirmar.Name = "boton_confirmar";
             boton_confirmar.Size = new Size(586, 40);
             boton_confirmar.TabIndex = 229;
-            boton_confirmar.Text = "Agendar orden";
+            boton_confirmar.Text = "Editar orden";
             boton_confirmar.UseVisualStyleBackColor = false;
             boton_confirmar.Click += boton_confirmar_Click;
             // 

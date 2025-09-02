@@ -34,6 +34,30 @@ namespace AppComida
                 resultados_busqueda.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
+        private void ResetearDatos()
+        {
+            entrada_nombre_cliente.Text = "Jesus";
+            entrada_nombre_cliente.ForeColor = colorPlaceHolder;
+            entrada_numero.Text = "3518182222";
+            entrada_numero.ForeColor = colorPlaceHolder;
+            entrada_direccion.Text = "Local/Lagunilla 1111";
+            entrada_direccion.ForeColor = colorPlaceHolder;
+            entrada_hora_pedida.Text = "20";
+            entrada_hora_pedida.ForeColor = colorPlaceHolder;
+            entrada_minuto_pedido.Text = "30";
+            entrada_minuto_pedido.ForeColor = colorPlaceHolder;
+            entrada_hora_entrega.Text = "21";
+            entrada_hora_entrega.ForeColor = colorPlaceHolder;
+            entrada_minuto_entrega.Text = "15";
+            entrada_minuto_entrega.ForeColor = colorPlaceHolder;
+            entrada_busqueda_menu.Text = "Lomo completo";
+            entrada_busqueda_menu.ForeColor = colorPlaceHolder;
+            entrada_busqueda_ordenes.Text = "Lomo completo";
+            entrada_busqueda_ordenes.ForeColor = colorPlaceHolder;
+            entrada_comentarios.Text = "";
+            panel_pedidos.Controls.Clear();
+            panel_contenedor_menus.Controls.Clear();
+        }
         #endregion
         #region Eventos visuales
         private void entrada_busqueda_ordenes_TextChanged(object sender, EventArgs e)
@@ -52,6 +76,7 @@ namespace AppComida
             if (e.RowIndex >= 0) // evita clicks en encabezados
             {
                 DataGridViewRow fila = resultados_busqueda.Rows[e.RowIndex];
+                panel_pedidos.Controls.Clear();
                 LlenarDatos(fila);
             }
         }
@@ -174,6 +199,7 @@ namespace AppComida
                 var res = conOrdenes.ModificarOrden(detallesDeLosPedidos, orden);
                 if (!res.estado)
                     throw new Exception(res.mensaje);
+                ResetearDatos();
                 MessageBox.Show(res.mensaje);
             }
             catch (Exception ex)
