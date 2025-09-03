@@ -18,6 +18,7 @@ namespace AppComida
     {
         private Color colorPlaceHolder = Color.FromArgb(144, 144, 144);
         private Color colorCeleste = Color.FromArgb(57, 146, 235);
+        //DateTime.ParseExact(horarioDeEntrega, "HH:mm", CultureInfo.InvariantCulture)
         public EditarOrden()
         {
             InitializeComponent();
@@ -55,6 +56,9 @@ namespace AppComida
             entrada_busqueda_ordenes.Text = "Lomo completo";
             entrada_busqueda_ordenes.ForeColor = colorPlaceHolder;
             entrada_comentarios.Text = "";
+            etiqueta_precio_final.Text = "Precio final: $0";
+            etiqueta_items.Text = "Productos añadidos: 0";
+            entrada_pago.Checked = false;
             entrada_metodo_pago.SelectedIndex = 0;
             panel_pedidos.Controls.Clear();
             panel_contenedor_menus.Controls.Clear();
@@ -68,7 +72,7 @@ namespace AppComida
             else if (e.KeyChar == 'e')
                 entrada_metodo_pago.SelectedIndex = 1;
         }
-    private void entrada_busqueda_ordenes_TextChanged(object sender, EventArgs e)
+        private void entrada_busqueda_ordenes_TextChanged(object sender, EventArgs e)
         {
             if (entrada_busqueda_ordenes.Text.StartsWith("#") && entrada_busqueda_ordenes.Text != "#7/Julian/-3517787224")
                 entrada_busqueda_ordenes.ForeColor = colorCeleste;
@@ -185,7 +189,7 @@ namespace AppComida
                     MetodoPago = metodoPago,
                     Pago = pago,
                     ProductosSeleccionados = productosSeleccionados,
-                    Estado = "Confirmado"
+                    Estado = "Confirmada"
                 };
                 List<DetallesDeLosPedidos> detallesDeLosPedidos = new List<DetallesDeLosPedidos>();
                 for (int i = 0; i < panel_pedidos.Controls.Count; i++)
@@ -732,7 +736,5 @@ namespace AppComida
             }
         }
         #endregion
-
-        
     }
 }

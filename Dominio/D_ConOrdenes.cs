@@ -24,6 +24,18 @@ namespace Dominio
                 return (false, ex.Message);
             }
         }
+        public (bool estado, string mensaje, DataTable datos) ObtenerOrdenesPorEstado(Orden orden)
+        {
+            try
+            {
+                orden.ValidarEstadoParaBusquedas();
+                return conOrdenes.ObtenerOrdenesPorEstado(orden);
+            }
+            catch (Exception ex)
+            {
+                return (false, $"Error: D_ConOrdenes -> ObtenerOrdenesPorEstado():\r\n {ex.Message}", new DataTable());
+            }   
+        }
         public (bool estado, string mensaje, DataTable datos) ObtenerOrdenPorID(int id)
         {
             return conOrdenes.ObtenerOrdenPorID(id);

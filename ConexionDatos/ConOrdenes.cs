@@ -74,6 +74,38 @@ namespace ConexionDatos
                 }
             }
         }
+        public (bool estado, string mensaje, DataTable datos) ObtenerOrdenesPorEstado(Orden orden)
+        {
+            using (MySqlConnection con = ObtenerConexion())
+            {
+                try
+                {
+                    con.Open();
+                    DataTable dataTable = new DataTable();
+                    string sql;
+                    if(orden.Estado == "TODOS")
+                        sql = "SELECT * FROM Orden";
+                    else
+                        sql = "SELECT * FROM Orden WHERE Estado = @estado";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@estado", orden.Estado);
+                        using (MySqlDataAdapter datosMySql = new MySqlDataAdapter(cmd))
+                        {
+                            datosMySql.Fill(dataTable);
+                        }
+                        if (dataTable.Rows.Count == 0)
+                            return (false, "No hay datos cargados. Tienes que agregar ordenes.", new DataTable());
+                        return (true, "Exitosa", dataTable);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return (false, $"Error grave | ConexionDatos -> ConOrdenes -> ObtenerOrdenesPorEstado(). \n Error: {ex.Message}", new DataTable());
+                }
+            }
+        } 
         public (bool estado, string mensaje, DataTable datos) ObtenerOrdenPorID(int ID)
         {
             using(MySqlConnection con = ObtenerConexion())

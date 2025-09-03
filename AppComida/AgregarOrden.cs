@@ -46,6 +46,7 @@ namespace AppComida
             entrada_comentarios.Text = "";
             etiqueta_items.Text = "Productos añadidos: 0";
             etiqueta_precio_final.Text = "Precio final: $0";
+            entrada_pago.Checked = false;
             entrada_metodo_pago.SelectedIndex = 0;
             panel_pedidos.Controls.Clear();
             panel_contenedor_menus.Controls.Clear();
@@ -208,7 +209,7 @@ namespace AppComida
                     MetodoPago = metodoPago,
                     Pago = pago,
                     ProductosSeleccionados = productosSeleccionados,
-                    Estado = "Confirmado"
+                    Estado = "Confirmada"
                 };
                 List<DetallesDeLosPedidos> detallesDeLosPedidos = new List<DetallesDeLosPedidos>();
                 for (int i = 0; i < panel_pedidos.Controls.Count; i++)
@@ -222,7 +223,6 @@ namespace AppComida
                     int idMenu = int.Parse(eti_id.Text.Replace("#", ""));
                     string nombre = eti_nombre.Text;
                     int cantidad = int.Parse(eti_cantidad.Text.Replace("Cantidad: ", ""));
-                    MessageBox.Show(cantidad.ToString());
                     string precioTotal = eti_precioTotal.Text.Replace("Precio total: ", "");
                     DetallesDeLosPedidos detalles = new DetallesDeLosPedidos
                     {

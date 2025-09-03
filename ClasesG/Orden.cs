@@ -66,5 +66,24 @@ namespace ClasesG
                 }
             }
         }
+        public void ValidarEstadoParaBusquedas()
+        {
+            string[] estadosBusqueda = ["TODOS", "Pendientes", "Confirmadas", "En preparación", "Listas", "Entregadas"];
+            string[] estados = ["TODOS", "Pendiente", "Confirmada", "En preparación", "Lista", "Entregada"];
+            bool bandera = false;
+            for (int i = 0; i < estadosBusqueda.Length; i++)
+            {
+                if (estadosBusqueda[i] == Estado)
+                {
+                    Estado = estados[i];
+                    bandera = true;
+                    break;
+                }
+            }
+            if (!bandera) 
+            {
+                throw new Exception("El estado seleccionado no existe");
+            }
+        }
     }
 }
